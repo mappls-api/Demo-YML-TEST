@@ -254,52 +254,32 @@ python3 scripts/create_release.py --confirm --no-gh-release
 
 ---
 
+
 # CI pipeline: `.github/workflows/release-docs.yml`
 
-A manually-triggered GitHub Actions workflow that chains the scripts above into
-one release pipeline.
+A GitHub Actions workflow that runs the scripts above as three jobs, one after
+another. Each job only starts if the previous one succeeded.
+
+| Job | What it does |
+|---|---|
+| **1. Update documents** | `update_sdk_docs.py --skip-changelogs`: refreshes module docs and the Documentation History tables, then commits and pushes. |
+| **2. Update changelogs** | `update_sdk_docs.py --changelogs-only`: refreshes `CHANGELOG/*.md` in the newest docs folder, then commits and pushes. |
+| **3. Create git tag** | `create_release.py`: builds `RELEASE_NOTES.md` from the changelogs, creates the tag (e.g. `1.0.36`), pushes it, and publishes a GitHub release. Skipped if the tag already exists. |
+
+Each job checks out the latest `main`, so it sees the previous job's commit.
 
 ## Triggers
 
-The workflow runs three ways:
+- **Every push to `main`**: real `update-current` run of all three jobs.
+- **Weekly schedule** (Mondays 03:00 UTC): same as a push.
+- **Manually** via Actions → "Release SDK Docs" → **Run workflow**, with inputs:
+  - **mode**: `update-current` or `new-version` (creates a new `docs/vX.Y.Z`
+    folder, which then gets a new tag).
+  - **new_version**: explicit version for `new-version`, e.g. `v1.0.37`;
+    blank = auto-bump the patch.
+  - **create_github_release**: publish a GitHub release with the tag (default true).
+  - **dry_run**: preview only (default **true**).
 
-- **Automatically on push to `main`** (when `scripts/**`, `docs/**`, or
-  the workflow file change). Runs `update-current` for real and commits/pushes
-  any refreshed docs. It never creates a tag.
-- **Automatically on a weekly schedule** (Mondays 03:00 UTC) to pick up newly
-  published SPM versions.
-- **Manually** via the GitHub **Actions** tab → "Release SDK Docs" →
-  **Run workflow**, where you choose the inputs (this is also the only way to
-  run `new-version` mode or a dry-run preview). The manual button requires the
-  workflow to be on the default branch.
-
-Automatic runs never prompt; they always use `update-current`. To create a new
-doc version, trigger manually and pick `new-version`.
-
-## Inputs
-
-- **mode** — `update-current` (refresh `docs/vX.Y.Z` in place) or `new-version`
-  (create a new docs folder).
-- **new_version** — for `new-version` mode, an explicit version like `v1.0.37`;
-  leave blank to auto-bump the patch.
-- **create_release** — whether to tag + publish a GitHub release after updating.
-- **dry_run** — preview only (default **true**). Flip to false to actually
-  commit, push, and publish.
-
-## What it does
-
-1. **Update docs + changelogs** — runs `update_sdk_docs.py` with the chosen
-   mode. Refreshes module docs and `CHANGELOG/*.md` from the distribution repos.
-2. **Tag + release only for a new doc version** — if `new-version` actually
-   created a new `docs/vX.Y.Z` folder, `create_release.py` commits it, creates
-   the git tag (e.g. `1.0.37`), pushes, and publishes a GitHub release.
-3. **Otherwise commit + push only** — `update-current` runs (including all
-   automatic push/schedule runs) commit and push the refreshed docs without
-   creating a tag.
-
-The release note is built from the changelogs: each module's changelog is
-compared with the previous doc version's, and only the entries released since
-then are included, plus a list of updated (old → new) and unchanged SDKs.
-
-Keep `dry_run = true` for your first run to review the planned changes in the
-job log; re-run with `dry_run = false` to perform the release.
+The tag name comes from the newest docs folder. In `update-current` mode the
+first run tags the current version, and later runs skip job 3 because that tag
+already exists. To get a new tag, run manually with `new-version`.

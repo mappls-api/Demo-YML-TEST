@@ -871,6 +871,17 @@ def main() -> int:
                              "existing doc instead of replacing the whole module "
                              "doc with the distribution repo's full README.")
 
+    # Split the work so CI can run "update docs" and "update changelogs" as
+    # separate pipeline steps. Default (neither flag) does both.
+    scope = parser.add_mutually_exclusive_group()
+    scope.add_argument("--skip-changelogs", action="store_true",
+                       help="Update module docs and README tables only; do "
+                            "not touch CHANGELOG/*.md.")
+    scope.add_argument("--changelogs-only", action="store_true",
+                       help="Only refresh CHANGELOG/*.md files that lag the "
+                            "latest released version; leave module docs and "
+                            "README tables unchanged.")
+
     mode = parser.add_mutually_exclusive_group()
     mode.add_argument("--update-current", action="store_true",
                       help="Update the current doc version in place "
@@ -884,6 +895,9 @@ def main() -> int:
                         help="Assume defaults for any prompt "
                              "(update current in place unless --new-version).")
     args = parser.parse_args()
+
+    if args.changelogs_only and args.new_version is not None:
+        parser.error("--changelogs-only cannot be combined with --new-version")
 
     source_dir = find_latest_docs_dir(args.docs_version)
     source_version = source_dir.name
@@ -953,7 +967,27 @@ def main() -> int:
 
         latest_versions[mod.name] = mod.latest_remote
 
+        if args.changelogs_only:
+            # Changelog step: refresh only when the CHANGELOG lags the latest
+            # released version; never touch the module doc itself.
+            cl_top = _changelog_top_version(
+                docs_dir / "CHANGELOG" / f"{mod.name}.md"
+            )
+            if args.no_fetch or not is_newer(mod.latest_remote, cl_top):
+                log("    -> changelog up to date\n")
+                continue
+            cl_status = update_module_changelog(
+                docs_dir, mod.name, mod.repo_url, mod.latest_remote,
+                remote_default_branch(mod.repo_url), None,
+                args.no_fetch, args.dry_run,
+            )
+            log(f"    -> {cl_status}\n")
+            continue
+
         if not is_newer(mod.latest_remote, mod.current_doc_version):
+            if args.skip_changelogs:
+                log("    -> up to date\n")
+                continue
             # The module doc is current, but its CHANGELOG file may still be
             # behind (changelogs and the main doc are tracked separately).
             # Refresh the changelog when it lags the latest released version.
@@ -1000,6 +1034,9 @@ def main() -> int:
                 mod.path.write_text(content, encoding="utf-8")
                 log(f"    -> replaced {mod.path.name} with full remote README "
                     f"for {mod.latest_remote}")
+            if args.skip_changelogs:
+                log("    -> changelog: skipped (--skip-changelogs)\n")
+                continue
             cl_status = update_module_changelog(
                 docs_dir, mod.name, mod.repo_url, mod.latest_remote,
                 default_branch, remote_readme, args.no_fetch, args.dry_run,
@@ -1042,11 +1079,20 @@ def main() -> int:
             mod.path.write_text(new_text, encoding="utf-8")
             log(f"    -> added row: | `{mod.latest_remote}` | {row_date} | "
                 f"{preview_desc}|")
+        if args.skip_changelogs:
+            log("    -> changelog: skipped (--skip-changelogs)\n")
+            continue
         cl_status = update_module_changelog(
             docs_dir, mod.name, mod.repo_url, mod.latest_remote,
             default_branch, remote_readme, args.no_fetch, args.dry_run,
         )
         log(f"    -> {cl_status}\n")
+
+    if args.changelogs_only:
+        log("Done (changelogs only; README tables left unchanged).")
+        if args.dry_run:
+            log("This was a dry run. Re-run without --dry-run to apply the changes.")
+        return 0
 
     # Update README version tables.
     log("Updating Documentation History tables in README files...")
