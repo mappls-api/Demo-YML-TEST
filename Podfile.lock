@@ -1,0 +1,28 @@
+PODS:
+  - MapplsDrivingRangePlugin/Base (1.0.2)
+  - MapplsGeoanalytics/Base (1.0.0)
+  - MapplsRasterCatalogue/Base (0.1.0)
+  - MapplsUtils/Base (1.0.1)
+
+DEPENDENCIES:
+  - MapplsDrivingRangePlugin/Base (= 1.0.2)
+  - MapplsGeoanalytics/Base (= 1.0.0)
+  - MapplsRasterCatalogue/Base (= 0.1.0)
+  - MapplsUtils/Base
+
+SPEC REPOS:
+  trunk:
+    - MapplsDrivingRangePlugin
+    - MapplsGeoanalytics
+    - MapplsRasterCatalogue
+    - MapplsUtils
+
+SPEC CHECKSUMS:
+  MapplsDrivingRangePlugin: a706c25ca1bda12411743ce9d784f059ffe2e71a
+  MapplsGeoanalytics: fa3434679c22d73a4ff47fac50a246c9b61b0192
+  MapplsRasterCatalogue: b2b21f15928d851fb550392d7fce16a7444991b0
+  MapplsUtils: 4297be86462d8e9300d2879235a2a154c1ca08cb
+
+PODFILE CHECKSUM: a3a15c2e245131932b5ae1b38e1594d9ef95700f
+
+COCOAPODS: 1.16.2

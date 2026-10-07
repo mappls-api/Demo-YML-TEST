@@ -1,0 +1,217 @@
+name: Release SDK Docs
+
+# Pipeline:
+#   1. Update the docs, either in place (update-current) or as a brand-new doc
+#      version (new-version), and refresh each module's CHANGELOG from the
+#      MapmyIndia distribution repos.
+#   2. new-version  -> commit, create a git tag for the new doc version, push,
+#                      and publish a GitHub release whose notes are built from
+#                      the changelogs (changes since the previous doc version).
+#      update-current -> commit and push the refreshed docs only (no tag).
+#
+# Triggers
+#   * push to auth-legacy  -> automatic update-current run
+#   * schedule (weekly)    -> automatic update-current run
+#   * workflow_dispatch    -> manual run; choose new-version to tag + release
+#
+# Commits pushed with GITHUB_TOKEN do not trigger new workflow runs, so the
+# bot's own pushes won't loop.
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "scripts/**"
+      - "docs/**"
+      - ".github/workflows/release-docs.yml"
+  schedule:
+    # Weekly, Mondays 03:00 UTC: picks up newly published SPM versions.
+    - cron: "0 3 * * 1"
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "Docs update mode (new-version creates a tag + release)"
+        type: choice
+        required: true
+        default: update-current
+        options:
+          - update-current      # refresh the current docs/vX.Y.Z in place, no tag
+          - new-version         # create a new docs/vX.Y.Z folder, tag + release
+      new_version:
+        description: "Version for new-version mode (e.g. v1.0.37). Leave blank to auto-bump the patch."
+        type: string
+        required: false
+        default: ""
+      create_release:
+        description: "new-version only: create the git tag + GitHub release"
+        type: boolean
+        required: true
+        default: true
+      dry_run:
+        description: "Dry run (preview only, nothing committed/pushed/published)"
+        type: boolean
+        required: true
+        default: true
+
+permissions:
+  contents: write        # push commits/tags and create releases
+
+# Don't let overlapping runs race on the same branch's tags/commits.
+concurrency:
+  group: release-docs-auth-legacy
+  cancel-in-progress: false
+
+jobs:
+  release-docs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: auth-legacy
+          fetch-depth: 0          # full history + tags
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Configure git identity
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      # Manual runs use the inputs; automatic runs (push / schedule) always do a
+      # real update-current run, which never creates a tag.
+      - name: Resolve settings
+        id: cfg
+        run: |
+          set -euo pipefail
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            MODE="${{ inputs.mode }}"
+            NEW_VERSION="${{ inputs.new_version }}"
+            CREATE_RELEASE="${{ inputs.create_release }}"
+            DRY_RUN="${{ inputs.dry_run }}"
+          else
+            MODE="update-current"
+            NEW_VERSION=""
+            CREATE_RELEASE="false"
+            DRY_RUN="false"
+          fi
+          {
+            echo "mode=$MODE"
+            echo "new_version=$NEW_VERSION"
+            echo "create_release=$CREATE_RELEASE"
+            echo "dry_run=$DRY_RUN"
+          } >> "$GITHUB_OUTPUT"
+          echo "Resolved: mode=$MODE new_version='$NEW_VERSION' create_release=$CREATE_RELEASE dry_run=$DRY_RUN (event=${{ github.event_name }})"
+
+      # Newest docs folder BEFORE the update, so we can tell whether a new doc
+      # version was actually created.
+      - name: Record current docs version
+        id: before
+        run: |
+          set -euo pipefail
+          V="$(ls -d docs/v*/ | sed 's#docs/##; s#/##' | sort -V | tail -1)"
+          echo "version=$V" >> "$GITHUB_OUTPUT"
+          echo "Current docs version: $V"
+
+      # --- Step 1: update docs and changelogs ---------------------------------
+      - name: Update docs and changelogs
+        run: |
+          set -euo pipefail
+          ARGS="--yes"
+          if [ "${{ steps.cfg.outputs.dry_run }}" = "true" ]; then
+            ARGS="$ARGS --dry-run"
+          fi
+          if [ "${{ steps.cfg.outputs.mode }}" = "new-version" ]; then
+            if [ -n "${{ steps.cfg.outputs.new_version }}" ]; then
+              python3 scripts/update_sdk_docs.py --new-version "${{ steps.cfg.outputs.new_version }}" $ARGS
+            else
+              python3 scripts/update_sdk_docs.py --new-version $ARGS
+            fi
+          else
+            python3 scripts/update_sdk_docs.py --update-current $ARGS
+          fi
+
+      # Work out what happened: was a new doc version folder created, and are
+      # there uncommitted doc changes?
+      - name: Detect result
+        id: result
+        run: |
+          set -euo pipefail
+          BEFORE="${{ steps.before.outputs.version }}"
+          AFTER="$(ls -d docs/v*/ | sed 's#docs/##; s#/##' | sort -V | tail -1)"
+          if [ "${{ steps.cfg.outputs.mode }}" = "new-version" ] && [ "$AFTER" != "$BEFORE" ]; then
+            CREATED="true"
+          else
+            CREATED="false"
+          fi
+          if [ -n "$(git status --porcelain -- docs README.md Version-History.md)" ]; then
+            DIRTY="true"
+          else
+            DIRTY="false"
+          fi
+          {
+            echo "new_docs_version=$AFTER"
+            echo "created=$CREATED"
+            echo "dirty=$DIRTY"
+          } >> "$GITHUB_OUTPUT"
+          echo "before=$BEFORE after=$AFTER created=$CREATED dirty=$DIRTY"
+
+      # --- Step 2a: new doc version -> tag + GitHub release -------------------
+      # create_release.py builds the release note from the changelogs, commits
+      # the new docs, creates the tag, pushes branch + tag, and publishes the
+      # GitHub release.
+      - name: Tag and release new doc version
+        if: >-
+          ${{ steps.cfg.outputs.dry_run != 'true' &&
+              steps.result.outputs.created == 'true' &&
+              steps.cfg.outputs.create_release == 'true' }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          python3 scripts/create_release.py \
+            --version "${{ steps.result.outputs.new_docs_version }}" \
+            --branch auth-legacy \
+            --confirm
+
+      # --- Step 2b: everything else -> commit + push docs, no tag -------------
+      # Covers update-current runs, and new-version runs with create_release off.
+      - name: Commit and push updated docs
+        if: >-
+          ${{ steps.cfg.outputs.dry_run != 'true' &&
+              steps.result.outputs.dirty == 'true' &&
+              !(steps.result.outputs.created == 'true' &&
+                steps.cfg.outputs.create_release == 'true') }}
+        run: |
+          set -euo pipefail
+          git add docs README.md Version-History.md
+          git commit -m "docs: update SDK docs (${{ steps.result.outputs.new_docs_version }})"
+          git push origin auth-legacy
+
+      # --- Dry run summary ----------------------------------------------------
+      # In dry-run the new folder isn't created, so preview the tag name and the
+      # release note against the current docs instead.
+      - name: Dry-run summary
+        if: ${{ steps.cfg.outputs.dry_run == 'true' }}
+        run: |
+          set -euo pipefail
+          if [ "${{ steps.cfg.outputs.mode }}" = "new-version" ]; then
+            if [ -n "${{ steps.cfg.outputs.new_version }}" ]; then
+              NEXT="${{ steps.cfg.outputs.new_version }}"
+            else
+              CUR="${{ steps.before.outputs.version }}"
+              NEXT="$(echo "$CUR" | awk -F. '{ $NF = $NF + 1; print }' OFS=.)"
+            fi
+            echo "A real run would create doc version $NEXT, tag ${NEXT#v}, and publish a GitHub release."
+            echo "Release note preview (built from the current docs; the real note uses the new folder):"
+            python3 scripts/release_from_changelog.py --dry-run --allow-dirty > preview.log 2>&1 || true
+            sed -n '/RELEASE NOTE PREVIEW/,/^-----*$/p' preview.log
+            rm -f preview.log
+          else
+            echo "update-current: a real run would commit and push the refreshed docs (no tag)."
+          fi

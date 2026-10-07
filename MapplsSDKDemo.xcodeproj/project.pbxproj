@@ -1,0 +1,1498 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 54;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		181F70BA25A89A5B006024FE /* LocationsChooserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181F70B925A89A5B006024FE /* LocationsChooserTableViewController.swift */; };
+		182D24D3251B46F70098914F /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182D24D2251B46F70098914F /* UIViewController+Extension.swift */; };
+		183207B822FAC5A900C738FF /* HighlightPointExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183207B722FAC5A900C738FF /* HighlightPointExample.swift */; };
+		18404BD52303C435001D8DC0 /* DashedPolylineExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18404BD42303C435001D8DC0 /* DashedPolylineExample.swift */; };
+		18404BD72303C974001D8DC0 /* GeodesicPolylineExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18404BD62303C974001D8DC0 /* GeodesicPolylineExample.swift */; };
+		18404BD92303D44D001D8DC0 /* ClusterMarkersExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18404BD82303D44D001D8DC0 /* ClusterMarkersExample.swift */; };
+		1859BB872304041F007D70CF /* SphericalUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1859BB862304041F007D70CF /* SphericalUtil.swift */; };
+		185A74EE249B4C5300081DAE /* CovidSafetyStatusExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185A74ED249B4C5300081DAE /* CovidSafetyStatusExample.swift */; };
+		185A74F1249B4C7C00081DAE /* CovidSafetyStatusExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 185A74F0249B4C7C00081DAE /* CovidSafetyStatusExample.m */; };
+		185B7FBE214B8333000785FC /* metro-line.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 185B7FBD214B8333000785FC /* metro-line.geojson */; };
+		185B7FC0214B83C7000785FC /* MultipleShapesExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185B7FBF214B83C7000785FC /* MultipleShapesExample.swift */; };
+		185B7FC3214B848F000785FC /* MultipleShapesExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 185B7FC2214B848F000785FC /* MultipleShapesExample.m */; };
+		1861995C24DBE040004D5547 /* PlacePickerViewExampleLauncherVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1861995A24DBE03F004D5547 /* PlacePickerViewExampleLauncherVC.swift */; };
+		1861995D24DBE040004D5547 /* PlacePickerViewExampleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1861995B24DBE03F004D5547 /* PlacePickerViewExampleVC.swift */; };
+		1861996624DC305A004D5547 /* MapplsDemoSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1861996524DC305A004D5547 /* MapplsDemoSettingsVC.swift */; };
+		1861996824DC30C5004D5547 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1861996724DC30C5004D5547 /* UserDefaultsManager.swift */; };
+		186D020B248E25F4006F1C84 /* CovidLayersExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186D0209248E25F4006F1C84 /* CovidLayersExample.swift */; };
+		186D020C248E25F4006F1C84 /* CovidLayersTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186D020A248E25F4006F1C84 /* CovidLayersTableVC.swift */; };
+		186D0211248E266F006F1C84 /* DemoInteractiveLayersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 186D020E248E266F006F1C84 /* DemoInteractiveLayersTableViewController.m */; };
+		186D0212248E266F006F1C84 /* CovidLayersExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 186D0210248E266F006F1C84 /* CovidLayersExample.m */; };
+		18778C4D24751F33006DE478 /* DraggableMapMarkerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18778C4C24751F33006DE478 /* DraggableMapMarkerVC.swift */; };
+		18778C582475435C006DE478 /* UpdateCircleExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18778C572475435C006DE478 /* UpdateCircleExample.swift */; };
+		18778C5A24756C47006DE478 /* MultiplePolylinesExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18778C5924756C47006DE478 /* MultiplePolylinesExample.swift */; };
+		18894B8C23043476005DC142 /* LocationPuckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18894B8B23043476005DC142 /* LocationPuckView.swift */; };
+		188AE97821C7D66800D2C866 /* CustomAnnotationModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188AE97721C7D66800D2C866 /* CustomAnnotationModels.swift */; };
+		188AE97A21C7D92C00D2C866 /* CustomCalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188AE97921C7D92C00D2C866 /* CustomCalloutView.swift */; };
+		188AE97D21C7DAF500D2C866 /* CustomInfoWindowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 188AE97C21C7DAF500D2C866 /* CustomInfoWindowView.m */; };
+		189C4BF025A9877500B2ADB2 /* LocationChooserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189C4BEF25A9877500B2ADB2 /* LocationChooserTableViewCell.swift */; };
+		189D0B80230AA3E2005C8390 /* DemoLocationPuckView.m in Sources */ = {isa = PBXBuildFile; fileRef = 189D0B7F230AA3E2005C8390 /* DemoLocationPuckView.m */; };
+		189D0BC5230CFDC5005C8390 /* HighlightPointExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 189D0BC4230CFDC5005C8390 /* HighlightPointExample.m */; };
+		18B3DD5825AB887200B26BDF /* DirectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B3DD5725AB887200B26BDF /* DirectionsViewController.swift */; };
+		18BA17E3229E8FF000B0B135 /* GreatCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BA17E2229E8FF000B0B135 /* GreatCircle.swift */; };
+		18BDD84E22F4005D00239CDC /* InteriorPolygonExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BDD84D22F4005D00239CDC /* InteriorPolygonExample.swift */; };
+		18C9EAFC251B6C2A00F95580 /* AutosuggestWidgetTextFieldSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C9EAFB251B6C2A00F95580 /* AutosuggestWidgetTextFieldSearchVC.swift */; };
+		18C9EAFE251B7E4600F95580 /* AutosuggestCustomUISearchControllerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C9EAFD251B7E4600F95580 /* AutosuggestCustomUISearchControllerVC.swift */; };
+		18D14C9D251A39B5004A6D32 /* AutosuggestWidgetExamplesLauncherVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D14C9C251A39B5004A6D32 /* AutosuggestWidgetExamplesLauncherVC.swift */; };
+		18D14CA3251A5C35004A6D32 /* AutosuggestWidgetSampleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D14CA2251A5C35004A6D32 /* AutosuggestWidgetSampleType.swift */; };
+		18EF185E250A03EE0067182A /* POIsAlongTheRouteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EF185D250A03EE0067182A /* POIsAlongTheRouteVC.swift */; };
+		18F45358251A81BB0091A898 /* DemoStyledAutocompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F45357251A81BB0091A898 /* DemoStyledAutocompleteViewController.swift */; };
+		18F576D023FEA83B0009A2D9 /* TextInstructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F576CF23FEA83B0009A2D9 /* TextInstructions.swift */; };
+		18F576D223FEAA880009A2D9 /* TextInstructions.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18F576D123FEAA880009A2D9 /* TextInstructions.plist */; };
+		35033F5D30764F4D00C9F922 /* FittedSheets in Frameworks */ = {isa = PBXBuildFile; productRef = 35033F5C30764F4D00C9F922 /* FittedSheets */; };
+		35033F6030764F7900C9F922 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 35033F5F30764F7900C9F922 /* IQKeyboardManagerSwift */; };
+		35033F6330764FD800C9F922 /* MapplsGeofenceUI in Frameworks */ = {isa = PBXBuildFile; productRef = 35033F6230764FD800C9F922 /* MapplsGeofenceUI */; };
+		35033F65307650EE00C9F922 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35033F64307650EE00C9F922 /* SceneDelegate.swift */; };
+		350455BA3011F26300A745DE /* MapplsMap in Frameworks */ = {isa = PBXBuildFile; productRef = 350455B93011F26300A745DE /* MapplsMap */; };
+		350455BD3011F26C00A745DE /* MapplsAPIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 350455BC3011F26C00A745DE /* MapplsAPIKit */; };
+		350455C03011F27400A745DE /* MapplsAPICore in Frameworks */ = {isa = PBXBuildFile; productRef = 350455BF3011F27400A745DE /* MapplsAPICore */; };
+		350455C33011F28400A745DE /* MapplsUIWidgets in Frameworks */ = {isa = PBXBuildFile; productRef = 350455C23011F28400A745DE /* MapplsUIWidgets */; };
+		350455C63011F2AE00A745DE /* MapplsNearbyUI in Frameworks */ = {isa = PBXBuildFile; productRef = 350455C53011F2AE00A745DE /* MapplsNearbyUI */; };
+		350455C93011F2C500A745DE /* MapplsFeedbackUIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 350455C83011F2C500A745DE /* MapplsFeedbackUIKit */; };
+		350455CC3011F2D700A745DE /* MapplsFeedbackKit in Frameworks */ = {isa = PBXBuildFile; productRef = 350455CB3011F2D700A745DE /* MapplsFeedbackKit */; };
+		350455CF3011F2EF00A745DE /* MapplsDirectionUI in Frameworks */ = {isa = PBXBuildFile; productRef = 350455CE3011F2EF00A745DE /* MapplsDirectionUI */; };
+		350455D23011F30F00A745DE /* MapplsLMS in Frameworks */ = {isa = PBXBuildFile; productRef = 350455D13011F30F00A745DE /* MapplsLMS */; };
+		352BA8682EFABB3C004EF53A /* MapplsTrackingSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352BA8672EFABB33004EF53A /* MapplsTrackingSample.swift */; };
+		352BA86D2EFABCD2004EF53A /* MapRouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352BA86B2EFABCD2004EF53A /* MapRouteViewController.swift */; };
+		352BA86E2EFABCD2004EF53A /* TrackingExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352BA86C2EFABCD2004EF53A /* TrackingExampleViewController.swift */; };
+		353A3EE52D4D0A980015153C /* CustomUserLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353A3EE42D4D0A980015153C /* CustomUserLocationViewController.swift */; };
+		356BBF832D1053C200D1C518 /* IconScaleFactorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356BBF822D1053C200D1C518 /* IconScaleFactorController.swift */; };
+		3E5BBE268A8ABCF2FB38EEA0 /* Pods_MapplsSDKDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA1783C5ECF7702551DBD780 /* Pods_MapplsSDKDemo.framework */; };
+		4692D7322AA8822800B907AB /* MovingMarkerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4692D7312AA8822800B907AB /* MovingMarkerViewController.swift */; };
+		4726F0562647C017007EDB5E /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4726F0522647C017007EDB5E /* ColorPicker.swift */; };
+		4726F0582647C017007EDB5E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4726F0542647C017007EDB5E /* SettingsViewController.swift */; };
+		4726F0592647C017007EDB5E /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4726F0552647C017007EDB5E /* ColorPickerViewController.swift */; };
+		4726F0662647C412007EDB5E /* GeofenceUILunchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4726F05E2647C411007EDB5E /* GeofenceUILunchVC.swift */; };
+		4726F0672647C412007EDB5E /* ShapeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4726F05F2647C411007EDB5E /* ShapeCell.swift */; };
+		4726F0682647C412007EDB5E /* DefaultGeofenceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4726F0602647C411007EDB5E /* DefaultGeofenceVC.swift */; };
+		4726F0692647C412007EDB5E /* CustomGeofenceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4726F0612647C411007EDB5E /* CustomGeofenceVC.swift */; };
+		4726F06A2647C412007EDB5E /* MapComponantsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4726F0622647C411007EDB5E /* MapComponantsVC.swift */; };
+		4726F06B2647C412007EDB5E /* CustomGeofenceAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4726F0632647C411007EDB5E /* CustomGeofenceAnnotation.swift */; };
+		4726F06C2647C412007EDB5E /* PolygonPointsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4726F0642647C411007EDB5E /* PolygonPointsVC.swift */; };
+		4726F06D2647C412007EDB5E /* DrawCircleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4726F0652647C412007EDB5E /* DrawCircleVC.swift */; };
+		4726F0712648503B007EDB5E /* ShapeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4726F0702648503B007EDB5E /* ShapeCell.xib */; };
+		472912892722783F0089A329 /* RoadTrafficDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472912882722783F0089A329 /* RoadTrafficDetailsViewController.swift */; };
+		47513EAD29FA35AC00BA6C83 /* CustomMapplsPinMarkerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47513EAC29FA35AC00BA6C83 /* CustomMapplsPinMarkerViewController.swift */; };
+		47513EAF29FA402E00BA6C83 /* SetSymbolSortKeySample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47513EAE29FA402E00BA6C83 /* SetSymbolSortKeySample.swift */; };
+		476B0D062615D89100FE8EC6 /* NearbyViewControllerLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476B0D052615D89100FE8EC6 /* NearbyViewControllerLauncher.swift */; };
+		476B0D0D2616CF4700FE8EC6 /* NearbyUIFilterConfigurationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476B0D0C2616CF4700FE8EC6 /* NearbyUIFilterConfigurationCell.swift */; };
+		476B0D192618309F00FE8EC6 /* NearbyFilterConfigurationSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476B0D182618309F00FE8EC6 /* NearbyFilterConfigurationSetting.swift */; };
+		476B0D1D2618341E00FE8EC6 /* CustomNearbyUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476B0D1C2618341E00FE8EC6 /* CustomNearbyUIViewController.swift */; };
+		47858FE428A25656003059A1 /* MapplsTrafficVectorTilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47858FE328A25656003059A1 /* MapplsTrafficVectorTilesViewController.swift */; };
+		47858FE828A2640A003059A1 /* MapplsReverseGeocodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47858FE728A26409003059A1 /* MapplsReverseGeocodeViewController.swift */; };
+		47858FEB28A266B6003059A1 /* RasterCatalougeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47858FEA28A266B6003059A1 /* RasterCatalougeViewController.swift */; };
+		47BB1A3A2722CA640050597E /* DemoNearbyReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BB1A392722CA640050597E /* DemoNearbyReportViewController.swift */; };
+		47DF638B2716AB0F0069AAA8 /* GeoanalyticsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DF638A2716AB0F0069AAA8 /* GeoanalyticsTableViewCell.swift */; };
+		47DF638D2716AB250069AAA8 /* DemoGeoanalyticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DF638C2716AB250069AAA8 /* DemoGeoanalyticsViewController.swift */; };
+		47DF63982716B1750069AAA8 /* DemoMapStyleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DF63972716B1750069AAA8 /* DemoMapStyleViewController.swift */; };
+		47DF639A2716B18E0069AAA8 /* DemoMapStyleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DF63992716B18E0069AAA8 /* DemoMapStyleTableViewCell.swift */; };
+		47DF63A42716B6FF0069AAA8 /* DrivingRangeSampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DF63A32716B6FF0069AAA8 /* DrivingRangeSampleViewController.swift */; };
+		47DF63A62716BC5D0069AAA8 /* DrivingRangeSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DF63A52716BC5D0069AAA8 /* DrivingRangeSettingViewController.swift */; };
+		68417CC5210B329100424A00 /* InitialVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68417CC4210B329100424A00 /* InitialVC.swift */; };
+		68417CC7210B32A700424A00 /* ListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68417CC6210B32A700424A00 /* ListVC.swift */; };
+		68417CCD210B48FB00424A00 /* MainC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68417CCC210B48FB00424A00 /* MainC.storyboard */; };
+		684CCDD32B04CB1900D38CFE /* CustomTapGestureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684CCDD22B04CB1900D38CFE /* CustomTapGestureController.swift */; };
+		6850349125B6ACB900A347FB /* AttributionSettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6850349025B6ACB900A347FB /* AttributionSettingTableViewController.swift */; };
+		68534685210EDF59000ED395 /* ListVCOC.m in Sources */ = {isa = PBXBuildFile; fileRef = 68534684210EDF59000ED395 /* ListVCOC.m */; };
+		6853468A210EF14B000ED395 /* mapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68534689210EF14B000ED395 /* mapVC.swift */; };
+		6853468D210EF161000ED395 /* mapVCOC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6853468C210EF161000ED395 /* mapVCOC.m */; };
+		68A6BF172106E03C00547929 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A6BF162106E03C00547929 /* AppDelegate.swift */; };
+		68A6BF192106E03C00547929 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A6BF182106E03C00547929 /* ViewController.swift */; };
+		68A6BF1C2106E03C00547929 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68A6BF1A2106E03C00547929 /* Main.storyboard */; };
+		68A6BF1E2106E03F00547929 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68A6BF1D2106E03F00547929 /* Assets.xcassets */; };
+		68A6BF212106E03F00547929 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68A6BF1F2106E03F00547929 /* LaunchScreen.storyboard */; };
+		68B4DBC62ADE982700AB0F85 /* GradientPolylineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B4DBC52ADE982700AB0F85 /* GradientPolylineViewController.swift */; };
+		68B927C825A63587002E6B8A /* DistanceMatrixViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B927C725A63587002E6B8A /* DistanceMatrixViewController.swift */; };
+		68BF2EAF2B6A309A00C84F31 /* DeviceSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BF2EAE2B6A309A00C84F31 /* DeviceSearchViewController.swift */; };
+		68BF2EB12B6A372400C84F31 /* DeviceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BF2EB02B6A372400C84F31 /* DeviceTableViewController.swift */; };
+		68D07A6025B1CBD2005B86CB /* DirectionUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D07A5F25B1CBD1005B86CB /* DirectionUIViewController.swift */; };
+		68D07A9425B555AC005B86CB /* LocationChooserTableViewDirectionUIPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D07A9325B555AC005B86CB /* LocationChooserTableViewDirectionUIPlugin.swift */; };
+		68D777D02AEBB8960048957A /* CategoriesMarkerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D777CF2AEBB8960048957A /* CategoriesMarkerViewController.swift */; };
+		68DA0A6C2B107C73009E10C4 /* DottedLineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DA0A6B2B107C73009E10C4 /* DottedLineViewController.swift */; };
+		68E69CA12B62510B005E6E21 /* HeatMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E69CA02B62510B005E6E21 /* HeatMapViewController.swift */; };
+		68E69CA32B625148005E6E21 /* AI_PotLoc4SDB.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 68E69CA22B625147005E6E21 /* AI_PotLoc4SDB.geojson */; };
+		A41DFAC9239906CE00D39EF9 /* AutoSuggestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41DFAC8239906CE00D39EF9 /* AutoSuggestVC.swift */; };
+		A45C2997239A157100EC81F6 /* CustomIndoorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45C2995239A157000EC81F6 /* CustomIndoorVC.swift */; };
+		A45C2998239A157100EC81F6 /* DefaultIndoorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45C2996239A157100EC81F6 /* DefaultIndoorVC.swift */; };
+		A464439023E2A9D60089E7CE /* PointOnMapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A464438F23E2A9D60089E7CE /* PointOnMapVC.swift */; };
+		A49EB60923DC00EB00A08E42 /* InstructionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49EB60823DC00EB00A08E42 /* InstructionTableViewCell.swift */; };
+		A49EB60F23DEC56A00A08E42 /* CustomCalloutViewForPolyline.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49EB60E23DEC56A00A08E42 /* CustomCalloutViewForPolyline.swift */; };
+		A49EB61323E004BA00A08E42 /* InteractiveMarkerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49EB61223E004BA00A08E42 /* InteractiveMarkerVC.swift */; };
+		A4ACEA4D23D80C6400447644 /* InstructionTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ACEA4C23D80C6400447644 /* InstructionTableVC.swift */; };
+		A4DA1E9523DB16BF0010743F /* DirectionIndicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DA1E9323DB16BE0010743F /* DirectionIndicationView.swift */; };
+		A4DA1E9623DB16BF0010743F /* DirectionIndicationViewStyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DA1E9423DB16BE0010743F /* DirectionIndicationViewStyleKit.swift */; };
+		B127A27E2C660EAE0046B2DC /* PolylineLayerPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B127A27D2C660EAE0046B2DC /* PolylineLayerPlugin.swift */; };
+		B127A2802C660ED20046B2DC /* RouteTrafficPolylineSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = B127A27F2C660ED20046B2DC /* RouteTrafficPolylineSample.swift */; };
+		D115F99C2A0A3BD1003CBEDC /* PredictiveRouteManeuversVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D115F99B2A0A3BD1003CBEDC /* PredictiveRouteManeuversVC.swift */; };
+		D115F9A22A0A3E81003CBEDC /* PredictiveRouteManeuverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D115F9A12A0A3E81003CBEDC /* PredictiveRouteManeuverCell.swift */; };
+		D13C05DB2893A53B0024B8E6 /* AutosuggestWidgetExampleSwiftUIRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13C05DA2893A53B0024B8E6 /* AutosuggestWidgetExampleSwiftUIRowView.swift */; };
+		D176683D2C99798300BA71DC /* ItemPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D176683C2C99798300BA71DC /* ItemPickerViewController.swift */; };
+		D17F05462889BE05005333E8 /* MapplsAutocompleteViewControllerSwiftUIWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17F05452889BE05005333E8 /* MapplsAutocompleteViewControllerSwiftUIWrapper.swift */; };
+		D17F054C288EBE65005333E8 /* AutosuggestWidgetExamplesLauncherSwiftUIListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17F054B288EBE65005333E8 /* AutosuggestWidgetExamplesLauncherSwiftUIListView.swift */; };
+		D17F0552288FD181005333E8 /* SampleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17F0551288FD181005333E8 /* SampleType.swift */; };
+		D17F0558288FD1ED005333E8 /* SampleTypeSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17F0557288FD1ED005333E8 /* SampleTypeSwiftUI.swift */; };
+		D1A67F382CA18D43009C8E52 /* FeedbackManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A67F372CA18D43009C8E52 /* FeedbackManagerViewController.swift */; };
+		D1B09A942896FC59008881E0 /* StyledMapplsAutocompleteViewControllerSwiftUIWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B09A932896FC59008881E0 /* StyledMapplsAutocompleteViewControllerSwiftUIWrapper.swift */; };
+		D1CD0F5E2BE6437B00A84A04 /* PlacemarkDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CD0F5D2BE6437B00A84A04 /* PlacemarkDetailsVC.swift */; };
+		D1CE04382C0091BB00717CB9 /* ClusterAdvancedMarkersExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CE04372C0091BB00717CB9 /* ClusterAdvancedMarkersExample.swift */; };
+		D1F199A32A028EFF00836308 /* PredictiveDirectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F199A22A028EFF00836308 /* PredictiveDirectionsViewController.swift */; };
+		D1F199A52A028F6200836308 /* RouteFetchSettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F199A42A028F6200836308 /* RouteFetchSettingController.swift */; };
+		D1F199A82A03CBB300836308 /* LocationPickerTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F199A72A03CBB300836308 /* LocationPickerTableCell.swift */; };
+		D1F199AA2A04FC1800836308 /* AttributionChooserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F199A92A04FC1800836308 /* AttributionChooserVC.swift */; };
+		D1F199AC2A04FD7000836308 /* MapplsAttributeOptions+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F199AB2A04FD7000836308 /* MapplsAttributeOptions+Extension.swift */; };
+		D1FC987C289103BD00C35D3A /* MapplsMapViewSampleSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FC987B289103BD00C35D3A /* MapplsMapViewSampleSwiftUI.swift */; };
+		D1FC987E289103E800C35D3A /* MapplsMapViewSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FC987D289103E800C35D3A /* MapplsMapViewSwiftUIView.swift */; };
+		D1FC98812891058F00C35D3A /* MGLPointAnnotation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FC98802891058F00C35D3A /* MGLPointAnnotation+Extension.swift */; };
+		D1FC988328910ABF00C35D3A /* SampleLauncherSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FC988228910ABF00C35D3A /* SampleLauncherSwiftUIView.swift */; };
+		D1FFC0A72D87E608007DD9F4 /* DynamicClusteringViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FFC0A62D87E608007DD9F4 /* DynamicClusteringViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D1E80E882BDF74A3000D232B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		181F70B925A89A5B006024FE /* LocationsChooserTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsChooserTableViewController.swift; sourceTree = "<group>"; };
+		182D24D2251B46F70098914F /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		183207B722FAC5A900C738FF /* HighlightPointExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightPointExample.swift; sourceTree = "<group>"; };
+		18404BD42303C435001D8DC0 /* DashedPolylineExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashedPolylineExample.swift; sourceTree = "<group>"; };
+		18404BD62303C974001D8DC0 /* GeodesicPolylineExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeodesicPolylineExample.swift; sourceTree = "<group>"; };
+		18404BD82303D44D001D8DC0 /* ClusterMarkersExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClusterMarkersExample.swift; sourceTree = "<group>"; };
+		1859BB862304041F007D70CF /* SphericalUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SphericalUtil.swift; sourceTree = "<group>"; };
+		185A74ED249B4C5300081DAE /* CovidSafetyStatusExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CovidSafetyStatusExample.swift; sourceTree = "<group>"; };
+		185A74EF249B4C7C00081DAE /* CovidSafetyStatusExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CovidSafetyStatusExample.h; sourceTree = "<group>"; };
+		185A74F0249B4C7C00081DAE /* CovidSafetyStatusExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CovidSafetyStatusExample.m; sourceTree = "<group>"; };
+		185B7FBD214B8333000785FC /* metro-line.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "metro-line.geojson"; sourceTree = "<group>"; };
+		185B7FBF214B83C7000785FC /* MultipleShapesExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleShapesExample.swift; sourceTree = "<group>"; };
+		185B7FC1214B848F000785FC /* MultipleShapesExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MultipleShapesExample.h; sourceTree = "<group>"; };
+		185B7FC2214B848F000785FC /* MultipleShapesExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MultipleShapesExample.m; sourceTree = "<group>"; };
+		1861995A24DBE03F004D5547 /* PlacePickerViewExampleLauncherVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacePickerViewExampleLauncherVC.swift; sourceTree = "<group>"; };
+		1861995B24DBE03F004D5547 /* PlacePickerViewExampleVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacePickerViewExampleVC.swift; sourceTree = "<group>"; };
+		1861996524DC305A004D5547 /* MapplsDemoSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapplsDemoSettingsVC.swift; sourceTree = "<group>"; };
+		1861996724DC30C5004D5547 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		186D0209248E25F4006F1C84 /* CovidLayersExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CovidLayersExample.swift; sourceTree = "<group>"; };
+		186D020A248E25F4006F1C84 /* CovidLayersTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CovidLayersTableVC.swift; sourceTree = "<group>"; };
+		186D020D248E266F006F1C84 /* CovidLayersExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CovidLayersExample.h; sourceTree = "<group>"; };
+		186D020E248E266F006F1C84 /* DemoInteractiveLayersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoInteractiveLayersTableViewController.m; sourceTree = "<group>"; };
+		186D020F248E266F006F1C84 /* DemoInteractiveLayersTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoInteractiveLayersTableViewController.h; sourceTree = "<group>"; };
+		186D0210248E266F006F1C84 /* CovidLayersExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CovidLayersExample.m; sourceTree = "<group>"; };
+		18778C4C24751F33006DE478 /* DraggableMapMarkerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraggableMapMarkerVC.swift; sourceTree = "<group>"; };
+		18778C572475435C006DE478 /* UpdateCircleExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCircleExample.swift; sourceTree = "<group>"; };
+		18778C5924756C47006DE478 /* MultiplePolylinesExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplePolylinesExample.swift; sourceTree = "<group>"; };
+		18894B8B23043476005DC142 /* LocationPuckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPuckView.swift; sourceTree = "<group>"; };
+		188AE97721C7D66800D2C866 /* CustomAnnotationModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotationModels.swift; sourceTree = "<group>"; };
+		188AE97921C7D92C00D2C866 /* CustomCalloutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCalloutView.swift; sourceTree = "<group>"; };
+		188AE97B21C7DAF500D2C866 /* CustomInfoWindowView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomInfoWindowView.h; sourceTree = "<group>"; };
+		188AE97C21C7DAF500D2C866 /* CustomInfoWindowView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomInfoWindowView.m; sourceTree = "<group>"; };
+		188AE98121C8B27600D2C866 /* CustomAnnotationModels.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomAnnotationModels.h; sourceTree = "<group>"; };
+		189C4BEF25A9877500B2ADB2 /* LocationChooserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationChooserTableViewCell.swift; sourceTree = "<group>"; };
+		189D0B7E230AA3E2005C8390 /* DemoLocationPuckView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DemoLocationPuckView.h; sourceTree = "<group>"; };
+		189D0B7F230AA3E2005C8390 /* DemoLocationPuckView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DemoLocationPuckView.m; sourceTree = "<group>"; };
+		189D0BC3230CFDC5005C8390 /* HighlightPointExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HighlightPointExample.h; sourceTree = "<group>"; };
+		189D0BC4230CFDC5005C8390 /* HighlightPointExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HighlightPointExample.m; sourceTree = "<group>"; };
+		18B3DD5725AB887200B26BDF /* DirectionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionsViewController.swift; sourceTree = "<group>"; };
+		18BA17E2229E8FF000B0B135 /* GreatCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreatCircle.swift; sourceTree = "<group>"; };
+		18BDD84D22F4005D00239CDC /* InteriorPolygonExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteriorPolygonExample.swift; sourceTree = "<group>"; };
+		18C9EAFB251B6C2A00F95580 /* AutosuggestWidgetTextFieldSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutosuggestWidgetTextFieldSearchVC.swift; sourceTree = "<group>"; };
+		18C9EAFD251B7E4600F95580 /* AutosuggestCustomUISearchControllerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutosuggestCustomUISearchControllerVC.swift; sourceTree = "<group>"; };
+		18D14C9C251A39B5004A6D32 /* AutosuggestWidgetExamplesLauncherVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutosuggestWidgetExamplesLauncherVC.swift; sourceTree = "<group>"; };
+		18D14CA2251A5C35004A6D32 /* AutosuggestWidgetSampleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutosuggestWidgetSampleType.swift; sourceTree = "<group>"; };
+		18EF185D250A03EE0067182A /* POIsAlongTheRouteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POIsAlongTheRouteVC.swift; sourceTree = "<group>"; };
+		18F45357251A81BB0091A898 /* DemoStyledAutocompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoStyledAutocompleteViewController.swift; sourceTree = "<group>"; };
+		18F576CF23FEA83B0009A2D9 /* TextInstructions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInstructions.swift; sourceTree = "<group>"; };
+		18F576D123FEAA880009A2D9 /* TextInstructions.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TextInstructions.plist; sourceTree = "<group>"; };
+		1D1CE60A0F058C1C6F8D4F27 /* Pods-MapplsSDKDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapplsSDKDemo.debug.xcconfig"; path = "Target Support Files/Pods-MapplsSDKDemo/Pods-MapplsSDKDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		35033F64307650EE00C9F922 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		352BA8672EFABB33004EF53A /* MapplsTrackingSample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapplsTrackingSample.swift; sourceTree = "<group>"; };
+		352BA86B2EFABCD2004EF53A /* MapRouteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapRouteViewController.swift; sourceTree = "<group>"; };
+		352BA86C2EFABCD2004EF53A /* TrackingExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingExampleViewController.swift; sourceTree = "<group>"; };
+		353A3EE42D4D0A980015153C /* CustomUserLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUserLocationViewController.swift; sourceTree = "<group>"; };
+		356BBF822D1053C200D1C518 /* IconScaleFactorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconScaleFactorController.swift; sourceTree = "<group>"; };
+		4692D7312AA8822800B907AB /* MovingMarkerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovingMarkerViewController.swift; sourceTree = "<group>"; };
+		4726F0522647C017007EDB5E /* ColorPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
+		4726F0542647C017007EDB5E /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		4726F0552647C017007EDB5E /* ColorPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
+		4726F05E2647C411007EDB5E /* GeofenceUILunchVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeofenceUILunchVC.swift; sourceTree = "<group>"; };
+		4726F05F2647C411007EDB5E /* ShapeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShapeCell.swift; sourceTree = "<group>"; };
+		4726F0602647C411007EDB5E /* DefaultGeofenceVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultGeofenceVC.swift; sourceTree = "<group>"; };
+		4726F0612647C411007EDB5E /* CustomGeofenceVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomGeofenceVC.swift; sourceTree = "<group>"; };
+		4726F0622647C411007EDB5E /* MapComponantsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapComponantsVC.swift; sourceTree = "<group>"; };
+		4726F0632647C411007EDB5E /* CustomGeofenceAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomGeofenceAnnotation.swift; sourceTree = "<group>"; };
+		4726F0642647C411007EDB5E /* PolygonPointsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PolygonPointsVC.swift; sourceTree = "<group>"; };
+		4726F0652647C412007EDB5E /* DrawCircleVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawCircleVC.swift; sourceTree = "<group>"; };
+		4726F0702648503B007EDB5E /* ShapeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShapeCell.xib; sourceTree = "<group>"; };
+		472912882722783F0089A329 /* RoadTrafficDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadTrafficDetailsViewController.swift; sourceTree = "<group>"; };
+		47513EAC29FA35AC00BA6C83 /* CustomMapplsPinMarkerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMapplsPinMarkerViewController.swift; sourceTree = "<group>"; };
+		47513EAE29FA402E00BA6C83 /* SetSymbolSortKeySample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetSymbolSortKeySample.swift; sourceTree = "<group>"; };
+		476B0D052615D89100FE8EC6 /* NearbyViewControllerLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyViewControllerLauncher.swift; sourceTree = "<group>"; };
+		476B0D0C2616CF4700FE8EC6 /* NearbyUIFilterConfigurationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyUIFilterConfigurationCell.swift; sourceTree = "<group>"; };
+		476B0D182618309F00FE8EC6 /* NearbyFilterConfigurationSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearbyFilterConfigurationSetting.swift; sourceTree = "<group>"; };
+		476B0D1C2618341E00FE8EC6 /* CustomNearbyUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNearbyUIViewController.swift; sourceTree = "<group>"; };
+		47858FE328A25656003059A1 /* MapplsTrafficVectorTilesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapplsTrafficVectorTilesViewController.swift; sourceTree = "<group>"; };
+		47858FE728A26409003059A1 /* MapplsReverseGeocodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapplsReverseGeocodeViewController.swift; sourceTree = "<group>"; };
+		47858FEA28A266B6003059A1 /* RasterCatalougeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RasterCatalougeViewController.swift; sourceTree = "<group>"; };
+		47BB1A392722CA640050597E /* DemoNearbyReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoNearbyReportViewController.swift; sourceTree = "<group>"; };
+		47DF638A2716AB0F0069AAA8 /* GeoanalyticsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoanalyticsTableViewCell.swift; sourceTree = "<group>"; };
+		47DF638C2716AB250069AAA8 /* DemoGeoanalyticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoGeoanalyticsViewController.swift; sourceTree = "<group>"; };
+		47DF63972716B1750069AAA8 /* DemoMapStyleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoMapStyleViewController.swift; sourceTree = "<group>"; };
+		47DF63992716B18E0069AAA8 /* DemoMapStyleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoMapStyleTableViewCell.swift; sourceTree = "<group>"; };
+		47DF63A32716B6FF0069AAA8 /* DrivingRangeSampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrivingRangeSampleViewController.swift; sourceTree = "<group>"; };
+		47DF63A52716BC5D0069AAA8 /* DrivingRangeSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrivingRangeSettingViewController.swift; sourceTree = "<group>"; };
+		68417CC4210B329100424A00 /* InitialVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialVC.swift; sourceTree = "<group>"; };
+		68417CC6210B32A700424A00 /* ListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListVC.swift; sourceTree = "<group>"; };
+		68417CC8210B330D00424A00 /* MapplsSDKDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MapplsSDKDemo-Bridging-Header.h"; sourceTree = "<group>"; };
+		68417CCC210B48FB00424A00 /* MainC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainC.storyboard; sourceTree = "<group>"; };
+		684CCDD22B04CB1900D38CFE /* CustomTapGestureController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTapGestureController.swift; sourceTree = "<group>"; };
+		6850349025B6ACB900A347FB /* AttributionSettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributionSettingTableViewController.swift; sourceTree = "<group>"; };
+		68534683210EDF59000ED395 /* ListVCOC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListVCOC.h; sourceTree = "<group>"; };
+		68534684210EDF59000ED395 /* ListVCOC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListVCOC.m; sourceTree = "<group>"; };
+		68534689210EF14B000ED395 /* mapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mapVC.swift; sourceTree = "<group>"; };
+		6853468B210EF161000ED395 /* mapVCOC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mapVCOC.h; sourceTree = "<group>"; };
+		6853468C210EF161000ED395 /* mapVCOC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = mapVCOC.m; sourceTree = "<group>"; };
+		68A6BF132106E03C00547929 /* MapplsSDKDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapplsSDKDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		68A6BF162106E03C00547929 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		68A6BF182106E03C00547929 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		68A6BF1B2106E03C00547929 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		68A6BF1D2106E03F00547929 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		68A6BF202106E03F00547929 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		68A6BF222106E03F00547929 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		68B4DBC52ADE982700AB0F85 /* GradientPolylineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientPolylineViewController.swift; sourceTree = "<group>"; };
+		68B927C725A63587002E6B8A /* DistanceMatrixViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceMatrixViewController.swift; sourceTree = "<group>"; };
+		68BF2EAE2B6A309A00C84F31 /* DeviceSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceSearchViewController.swift; sourceTree = "<group>"; };
+		68BF2EB02B6A372400C84F31 /* DeviceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceTableViewController.swift; sourceTree = "<group>"; };
+		68D07A5F25B1CBD1005B86CB /* DirectionUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionUIViewController.swift; sourceTree = "<group>"; };
+		68D07A9325B555AC005B86CB /* LocationChooserTableViewDirectionUIPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationChooserTableViewDirectionUIPlugin.swift; sourceTree = "<group>"; };
+		68D777CF2AEBB8960048957A /* CategoriesMarkerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesMarkerViewController.swift; sourceTree = "<group>"; };
+		68DA0A6B2B107C73009E10C4 /* DottedLineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DottedLineViewController.swift; sourceTree = "<group>"; };
+		68E69CA02B62510B005E6E21 /* HeatMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeatMapViewController.swift; sourceTree = "<group>"; };
+		68E69CA22B625147005E6E21 /* AI_PotLoc4SDB.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AI_PotLoc4SDB.geojson; sourceTree = "<group>"; };
+		A41DFAC8239906CE00D39EF9 /* AutoSuggestVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoSuggestVC.swift; sourceTree = "<group>"; };
+		A45C2995239A157000EC81F6 /* CustomIndoorVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomIndoorVC.swift; sourceTree = "<group>"; };
+		A45C2996239A157100EC81F6 /* DefaultIndoorVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultIndoorVC.swift; sourceTree = "<group>"; };
+		A464438F23E2A9D60089E7CE /* PointOnMapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointOnMapVC.swift; sourceTree = "<group>"; };
+		A49EB60823DC00EB00A08E42 /* InstructionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionTableViewCell.swift; sourceTree = "<group>"; };
+		A49EB60E23DEC56A00A08E42 /* CustomCalloutViewForPolyline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCalloutViewForPolyline.swift; sourceTree = "<group>"; };
+		A49EB61223E004BA00A08E42 /* InteractiveMarkerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractiveMarkerVC.swift; sourceTree = "<group>"; };
+		A4ACEA4C23D80C6400447644 /* InstructionTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionTableVC.swift; sourceTree = "<group>"; };
+		A4DA1E9323DB16BE0010743F /* DirectionIndicationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionIndicationView.swift; sourceTree = "<group>"; };
+		A4DA1E9423DB16BE0010743F /* DirectionIndicationViewStyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionIndicationViewStyleKit.swift; sourceTree = "<group>"; };
+		B127A27D2C660EAE0046B2DC /* PolylineLayerPlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PolylineLayerPlugin.swift; sourceTree = "<group>"; };
+		B127A27F2C660ED20046B2DC /* RouteTrafficPolylineSample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteTrafficPolylineSample.swift; sourceTree = "<group>"; };
+		D115F99B2A0A3BD1003CBEDC /* PredictiveRouteManeuversVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictiveRouteManeuversVC.swift; sourceTree = "<group>"; };
+		D115F9A12A0A3E81003CBEDC /* PredictiveRouteManeuverCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictiveRouteManeuverCell.swift; sourceTree = "<group>"; };
+		D13C05DA2893A53B0024B8E6 /* AutosuggestWidgetExampleSwiftUIRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutosuggestWidgetExampleSwiftUIRowView.swift; sourceTree = "<group>"; };
+		D15463212A25DC6A00E8AE5D /* MapplsAPICore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MapplsAPICore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D16CB8D72A24ABAE00EF345A /* MapplsAPICore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MapplsAPICore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D176683C2C99798300BA71DC /* ItemPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemPickerViewController.swift; sourceTree = "<group>"; };
+		D17F05452889BE05005333E8 /* MapplsAutocompleteViewControllerSwiftUIWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapplsAutocompleteViewControllerSwiftUIWrapper.swift; sourceTree = "<group>"; };
+		D17F054B288EBE65005333E8 /* AutosuggestWidgetExamplesLauncherSwiftUIListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutosuggestWidgetExamplesLauncherSwiftUIListView.swift; sourceTree = "<group>"; };
+		D17F0551288FD181005333E8 /* SampleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleType.swift; sourceTree = "<group>"; };
+		D17F0557288FD1ED005333E8 /* SampleTypeSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleTypeSwiftUI.swift; sourceTree = "<group>"; };
+		D1A67F372CA18D43009C8E52 /* FeedbackManagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackManagerViewController.swift; sourceTree = "<group>"; };
+		D1B09A932896FC59008881E0 /* StyledMapplsAutocompleteViewControllerSwiftUIWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyledMapplsAutocompleteViewControllerSwiftUIWrapper.swift; sourceTree = "<group>"; };
+		D1B2F27B2A2DB23B00FEAD39 /* MapplsAPICore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MapplsAPICore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1CD0F5D2BE6437B00A84A04 /* PlacemarkDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacemarkDetailsVC.swift; sourceTree = "<group>"; };
+		D1CE04372C0091BB00717CB9 /* ClusterAdvancedMarkersExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClusterAdvancedMarkersExample.swift; sourceTree = "<group>"; };
+		D1F199A22A028EFF00836308 /* PredictiveDirectionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictiveDirectionsViewController.swift; sourceTree = "<group>"; };
+		D1F199A42A028F6200836308 /* RouteFetchSettingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteFetchSettingController.swift; sourceTree = "<group>"; };
+		D1F199A72A03CBB300836308 /* LocationPickerTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPickerTableCell.swift; sourceTree = "<group>"; };
+		D1F199A92A04FC1800836308 /* AttributionChooserVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributionChooserVC.swift; sourceTree = "<group>"; };
+		D1F199AB2A04FD7000836308 /* MapplsAttributeOptions+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapplsAttributeOptions+Extension.swift"; sourceTree = "<group>"; };
+		D1FC987B289103BD00C35D3A /* MapplsMapViewSampleSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapplsMapViewSampleSwiftUI.swift; sourceTree = "<group>"; };
+		D1FC987D289103E800C35D3A /* MapplsMapViewSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapplsMapViewSwiftUIView.swift; sourceTree = "<group>"; };
+		D1FC98802891058F00C35D3A /* MGLPointAnnotation+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MGLPointAnnotation+Extension.swift"; sourceTree = "<group>"; };
+		D1FC988228910ABF00C35D3A /* SampleLauncherSwiftUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleLauncherSwiftUIView.swift; sourceTree = "<group>"; };
+		D1FFC0A62D87E608007DD9F4 /* DynamicClusteringViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicClusteringViewController.swift; sourceTree = "<group>"; };
+		DE6D733F3E4343C6B6A83F7C /* Pods-MapplsSDKDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapplsSDKDemo.release.xcconfig"; path = "Target Support Files/Pods-MapplsSDKDemo/Pods-MapplsSDKDemo.release.xcconfig"; sourceTree = "<group>"; };
+		FA1783C5ECF7702551DBD780 /* Pods_MapplsSDKDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MapplsSDKDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		68A6BF102106E03C00547929 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				35033F6330764FD800C9F922 /* MapplsGeofenceUI in Frameworks */,
+				350455BA3011F26300A745DE /* MapplsMap in Frameworks */,
+				35033F5D30764F4D00C9F922 /* FittedSheets in Frameworks */,
+				350455CF3011F2EF00A745DE /* MapplsDirectionUI in Frameworks */,
+				350455C33011F28400A745DE /* MapplsUIWidgets in Frameworks */,
+				350455C93011F2C500A745DE /* MapplsFeedbackUIKit in Frameworks */,
+				35033F6030764F7900C9F922 /* IQKeyboardManagerSwift in Frameworks */,
+				350455CC3011F2D700A745DE /* MapplsFeedbackKit in Frameworks */,
+				350455C63011F2AE00A745DE /* MapplsNearbyUI in Frameworks */,
+				350455D23011F30F00A745DE /* MapplsLMS in Frameworks */,
+				350455C03011F27400A745DE /* MapplsAPICore in Frameworks */,
+				3E5BBE268A8ABCF2FB38EEA0 /* Pods_MapplsSDKDemo.framework in Frameworks */,
+				350455BD3011F26C00A745DE /* MapplsAPIKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1861995924DBE02D004D5547 /* PlacePicker */ = {
+			isa = PBXGroup;
+			children = (
+				1861995A24DBE03F004D5547 /* PlacePickerViewExampleLauncherVC.swift */,
+				1861995B24DBE03F004D5547 /* PlacePickerViewExampleVC.swift */,
+			);
+			path = PlacePicker;
+			sourceTree = "<group>";
+		};
+		1861996424DC302A004D5547 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				4726F05B2647C0E3007EDB5E /* GeofenceUISetting */,
+				1861996524DC305A004D5547 /* MapplsDemoSettingsVC.swift */,
+				1861996724DC30C5004D5547 /* UserDefaultsManager.swift */,
+				D176683C2C99798300BA71DC /* ItemPickerViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		18B3DD5525AB87EF00B26BDF /* LocationsChooser */ = {
+			isa = PBXGroup;
+			children = (
+				181F70B925A89A5B006024FE /* LocationsChooserTableViewController.swift */,
+				189C4BEF25A9877500B2ADB2 /* LocationChooserTableViewCell.swift */,
+				68D07A9325B555AC005B86CB /* LocationChooserTableViewDirectionUIPlugin.swift */,
+				6850349025B6ACB900A347FB /* AttributionSettingTableViewController.swift */,
+			);
+			path = LocationsChooser;
+			sourceTree = "<group>";
+		};
+		18B3DD5625AB880100B26BDF /* Directions */ = {
+			isa = PBXGroup;
+			children = (
+				18B3DD5725AB887200B26BDF /* DirectionsViewController.swift */,
+			);
+			path = Directions;
+			sourceTree = "<group>";
+		};
+		18D14C9F251A5815004A6D32 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				D1FC987F2891057900C35D3A /* Extensions */,
+				18D14CA2251A5C35004A6D32 /* AutosuggestWidgetSampleType.swift */,
+				182D24D2251B46F70098914F /* UIViewController+Extension.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		18D14CA1251A59C3004A6D32 /* AutosuggestWidget */ = {
+			isa = PBXGroup;
+			children = (
+				18D14C9C251A39B5004A6D32 /* AutosuggestWidgetExamplesLauncherVC.swift */,
+				18F45357251A81BB0091A898 /* DemoStyledAutocompleteViewController.swift */,
+				18C9EAFB251B6C2A00F95580 /* AutosuggestWidgetTextFieldSearchVC.swift */,
+				18C9EAFD251B7E4600F95580 /* AutosuggestCustomUISearchControllerVC.swift */,
+			);
+			path = AutosuggestWidget;
+			sourceTree = "<group>";
+		};
+		18F576CE23FEA8100009A2D9 /* InstructionFormatterHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				18F576D123FEAA880009A2D9 /* TextInstructions.plist */,
+				18F576CF23FEA83B0009A2D9 /* TextInstructions.swift */,
+			);
+			path = InstructionFormatterHelpers;
+			sourceTree = "<group>";
+		};
+		352BA86A2EFABC4C004EF53A /* TrackingPlugin */ = {
+			isa = PBXGroup;
+			children = (
+				352BA86B2EFABCD2004EF53A /* MapRouteViewController.swift */,
+				352BA86C2EFABCD2004EF53A /* TrackingExampleViewController.swift */,
+				352BA8672EFABB33004EF53A /* MapplsTrackingSample.swift */,
+			);
+			path = TrackingPlugin;
+			sourceTree = "<group>";
+		};
+		352BA86F2EFB96DC004EF53A /* Location */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
+		353A3EE32D4D0A2F0015153C /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		4692D7302AA8820400B907AB /* Moving Marker */ = {
+			isa = PBXGroup;
+			children = (
+				4692D7312AA8822800B907AB /* MovingMarkerViewController.swift */,
+			);
+			path = "Moving Marker";
+			sourceTree = "<group>";
+		};
+		4726F0412647BCF3007EDB5E /* GeofenceUI */ = {
+			isa = PBXGroup;
+			children = (
+				4726F0632647C411007EDB5E /* CustomGeofenceAnnotation.swift */,
+				4726F0612647C411007EDB5E /* CustomGeofenceVC.swift */,
+				4726F0602647C411007EDB5E /* DefaultGeofenceVC.swift */,
+				4726F0652647C412007EDB5E /* DrawCircleVC.swift */,
+				4726F05E2647C411007EDB5E /* GeofenceUILunchVC.swift */,
+				4726F0622647C411007EDB5E /* MapComponantsVC.swift */,
+				4726F0642647C411007EDB5E /* PolygonPointsVC.swift */,
+				4726F05F2647C411007EDB5E /* ShapeCell.swift */,
+			);
+			path = GeofenceUI;
+			sourceTree = "<group>";
+		};
+		4726F05B2647C0E3007EDB5E /* GeofenceUISetting */ = {
+			isa = PBXGroup;
+			children = (
+				4726F0522647C017007EDB5E /* ColorPicker.swift */,
+				4726F0552647C017007EDB5E /* ColorPickerViewController.swift */,
+				4726F0542647C017007EDB5E /* SettingsViewController.swift */,
+			);
+			path = GeofenceUISetting;
+			sourceTree = "<group>";
+		};
+		47291287272277F00089A329 /* Road traffic details */ = {
+			isa = PBXGroup;
+			children = (
+				472912882722783F0089A329 /* RoadTrafficDetailsViewController.swift */,
+			);
+			path = "Road traffic details";
+			sourceTree = "<group>";
+		};
+		47858FE628A26409003059A1 /* ReverseGeocode */ = {
+			isa = PBXGroup;
+			children = (
+				47858FE728A26409003059A1 /* MapplsReverseGeocodeViewController.swift */,
+			);
+			path = ReverseGeocode;
+			sourceTree = "<group>";
+		};
+		47858FE928A266B6003059A1 /* RasterCatalogue */ = {
+			isa = PBXGroup;
+			children = (
+				47858FEA28A266B6003059A1 /* RasterCatalougeViewController.swift */,
+			);
+			path = RasterCatalogue;
+			sourceTree = "<group>";
+		};
+		47BB1A382722CA0C0050597E /* Nearby reports */ = {
+			isa = PBXGroup;
+			children = (
+				47BB1A392722CA640050597E /* DemoNearbyReportViewController.swift */,
+			);
+			path = "Nearby reports";
+			sourceTree = "<group>";
+		};
+		47D882A5261340DA0000429D /* NearbyUI */ = {
+			isa = PBXGroup;
+			children = (
+				476B0D052615D89100FE8EC6 /* NearbyViewControllerLauncher.swift */,
+				476B0D0C2616CF4700FE8EC6 /* NearbyUIFilterConfigurationCell.swift */,
+				476B0D182618309F00FE8EC6 /* NearbyFilterConfigurationSetting.swift */,
+				476B0D1C2618341E00FE8EC6 /* CustomNearbyUIViewController.swift */,
+			);
+			path = NearbyUI;
+			sourceTree = "<group>";
+		};
+		47DF63892716AAE80069AAA8 /* Geoanalytics */ = {
+			isa = PBXGroup;
+			children = (
+				47DF638A2716AB0F0069AAA8 /* GeoanalyticsTableViewCell.swift */,
+				47DF638C2716AB250069AAA8 /* DemoGeoanalyticsViewController.swift */,
+			);
+			path = Geoanalytics;
+			sourceTree = "<group>";
+		};
+		47DF63962716B0BA0069AAA8 /* MapStyles */ = {
+			isa = PBXGroup;
+			children = (
+				47DF63992716B18E0069AAA8 /* DemoMapStyleTableViewCell.swift */,
+				47DF63972716B1750069AAA8 /* DemoMapStyleViewController.swift */,
+			);
+			path = MapStyles;
+			sourceTree = "<group>";
+		};
+		47DF63A22716B6F30069AAA8 /* DrivingRange */ = {
+			isa = PBXGroup;
+			children = (
+				47DF63A32716B6FF0069AAA8 /* DrivingRangeSampleViewController.swift */,
+				47DF63A52716BC5D0069AAA8 /* DrivingRangeSettingViewController.swift */,
+			);
+			path = DrivingRange;
+			sourceTree = "<group>";
+		};
+		60899A189A49EB8A023BCDD4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D1B2F27B2A2DB23B00FEAD39 /* MapplsAPICore.framework */,
+				D15463212A25DC6A00E8AE5D /* MapplsAPICore.framework */,
+				D16CB8D72A24ABAE00EF345A /* MapplsAPICore.framework */,
+				FA1783C5ECF7702551DBD780 /* Pods_MapplsSDKDemo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		68417CC2210B2DB800424A00 /* Objective C */ = {
+			isa = PBXGroup;
+			children = (
+				68417CC8210B330D00424A00 /* MapplsSDKDemo-Bridging-Header.h */,
+				68534683210EDF59000ED395 /* ListVCOC.h */,
+				68534684210EDF59000ED395 /* ListVCOC.m */,
+				6853468B210EF161000ED395 /* mapVCOC.h */,
+				6853468C210EF161000ED395 /* mapVCOC.m */,
+				185B7FC1214B848F000785FC /* MultipleShapesExample.h */,
+				185B7FC2214B848F000785FC /* MultipleShapesExample.m */,
+				189D0BC3230CFDC5005C8390 /* HighlightPointExample.h */,
+				189D0BC4230CFDC5005C8390 /* HighlightPointExample.m */,
+				188AE97B21C7DAF500D2C866 /* CustomInfoWindowView.h */,
+				188AE97C21C7DAF500D2C866 /* CustomInfoWindowView.m */,
+				188AE98121C8B27600D2C866 /* CustomAnnotationModels.h */,
+				189D0B7E230AA3E2005C8390 /* DemoLocationPuckView.h */,
+				189D0B7F230AA3E2005C8390 /* DemoLocationPuckView.m */,
+				186D020D248E266F006F1C84 /* CovidLayersExample.h */,
+				186D0210248E266F006F1C84 /* CovidLayersExample.m */,
+				186D020F248E266F006F1C84 /* DemoInteractiveLayersTableViewController.h */,
+				186D020E248E266F006F1C84 /* DemoInteractiveLayersTableViewController.m */,
+				185A74EF249B4C7C00081DAE /* CovidSafetyStatusExample.h */,
+				185A74F0249B4C7C00081DAE /* CovidSafetyStatusExample.m */,
+			);
+			path = "Objective C";
+			sourceTree = "<group>";
+		};
+		68417CC3210B2DCE00424A00 /* Swift */ = {
+			isa = PBXGroup;
+			children = (
+				352BA86F2EFB96DC004EF53A /* Location */,
+				352BA86A2EFABC4C004EF53A /* TrackingPlugin */,
+				D1A67F362CA18B9B009C8E52 /* Feedback */,
+				B127A27C2C660E980046B2DC /* RouteTrafficPolyline */,
+				68BF2EAD2B6A306200C84F31 /* DeviceSearch */,
+				4692D7302AA8820400B907AB /* Moving Marker */,
+				D1F1999D2A028ED900836308 /* PredictiveDirections */,
+				47858FE928A266B6003059A1 /* RasterCatalogue */,
+				47858FE628A26409003059A1 /* ReverseGeocode */,
+				D17F054D288FD153005333E8 /* Samples */,
+				47BB1A382722CA0C0050597E /* Nearby reports */,
+				47291287272277F00089A329 /* Road traffic details */,
+				47DF63A22716B6F30069AAA8 /* DrivingRange */,
+				47DF63962716B0BA0069AAA8 /* MapStyles */,
+				47DF63892716AAE80069AAA8 /* Geoanalytics */,
+				4726F0412647BCF3007EDB5E /* GeofenceUI */,
+				47D882A5261340DA0000429D /* NearbyUI */,
+				18B3DD5525AB87EF00B26BDF /* LocationsChooser */,
+				68B927C025A63542002E6B8A /* DistanceMatrix */,
+				18B3DD5625AB880100B26BDF /* Directions */,
+				18D14CA1251A59C3004A6D32 /* AutosuggestWidget */,
+				1861996424DC302A004D5547 /* Settings */,
+				1861995924DBE02D004D5547 /* PlacePicker */,
+				68417CC6210B32A700424A00 /* ListVC.swift */,
+				68534689210EF14B000ED395 /* mapVC.swift */,
+				47513EAE29FA402E00BA6C83 /* SetSymbolSortKeySample.swift */,
+				185B7FBF214B83C7000785FC /* MultipleShapesExample.swift */,
+				18BDD84D22F4005D00239CDC /* InteriorPolygonExample.swift */,
+				356BBF822D1053C200D1C518 /* IconScaleFactorController.swift */,
+				18404BD42303C435001D8DC0 /* DashedPolylineExample.swift */,
+				D1FFC0A62D87E608007DD9F4 /* DynamicClusteringViewController.swift */,
+				18404BD62303C974001D8DC0 /* GeodesicPolylineExample.swift */,
+				47858FE328A25656003059A1 /* MapplsTrafficVectorTilesViewController.swift */,
+				68D777CF2AEBB8960048957A /* CategoriesMarkerViewController.swift */,
+				18404BD82303D44D001D8DC0 /* ClusterMarkersExample.swift */,
+				D1CE04372C0091BB00717CB9 /* ClusterAdvancedMarkersExample.swift */,
+				183207B722FAC5A900C738FF /* HighlightPointExample.swift */,
+				188AE97721C7D66800D2C866 /* CustomAnnotationModels.swift */,
+				188AE97921C7D92C00D2C866 /* CustomCalloutView.swift */,
+				18BA17E2229E8FF000B0B135 /* GreatCircle.swift */,
+				1859BB862304041F007D70CF /* SphericalUtil.swift */,
+				18894B8B23043476005DC142 /* LocationPuckView.swift */,
+				A41DFAC8239906CE00D39EF9 /* AutoSuggestVC.swift */,
+				A45C2995239A157000EC81F6 /* CustomIndoorVC.swift */,
+				A45C2996239A157100EC81F6 /* DefaultIndoorVC.swift */,
+				A4ACEA4C23D80C6400447644 /* InstructionTableVC.swift */,
+				A49EB60823DC00EB00A08E42 /* InstructionTableViewCell.swift */,
+				A4DA1E9323DB16BE0010743F /* DirectionIndicationView.swift */,
+				A4DA1E9423DB16BE0010743F /* DirectionIndicationViewStyleKit.swift */,
+				A49EB60E23DEC56A00A08E42 /* CustomCalloutViewForPolyline.swift */,
+				A49EB61223E004BA00A08E42 /* InteractiveMarkerVC.swift */,
+				A464438F23E2A9D60089E7CE /* PointOnMapVC.swift */,
+				18778C4C24751F33006DE478 /* DraggableMapMarkerVC.swift */,
+				18778C572475435C006DE478 /* UpdateCircleExample.swift */,
+				18778C5924756C47006DE478 /* MultiplePolylinesExample.swift */,
+				186D0209248E25F4006F1C84 /* CovidLayersExample.swift */,
+				186D020A248E25F4006F1C84 /* CovidLayersTableVC.swift */,
+				185A74ED249B4C5300081DAE /* CovidSafetyStatusExample.swift */,
+				18EF185D250A03EE0067182A /* POIsAlongTheRouteVC.swift */,
+				68D07A5F25B1CBD1005B86CB /* DirectionUIViewController.swift */,
+				68B4DBC52ADE982700AB0F85 /* GradientPolylineViewController.swift */,
+				684CCDD22B04CB1900D38CFE /* CustomTapGestureController.swift */,
+				68E69CA02B62510B005E6E21 /* HeatMapViewController.swift */,
+				68DA0A6B2B107C73009E10C4 /* DottedLineViewController.swift */,
+				353A3EE42D4D0A980015153C /* CustomUserLocationViewController.swift */,
+				D1CD0F5D2BE6437B00A84A04 /* PlacemarkDetailsVC.swift */,
+			);
+			path = Swift;
+			sourceTree = "<group>";
+		};
+		68A6BF0A2106E03C00547929 = {
+			isa = PBXGroup;
+			children = (
+				68A6BF152106E03C00547929 /* MapplsSDKDemo */,
+				68A6BF142106E03C00547929 /* Products */,
+				F560EFD69E767ADFE19F5A20 /* Pods */,
+				60899A189A49EB8A023BCDD4 /* Frameworks */,
+				353A3EE32D4D0A2F0015153C /* Recovered References */,
+			);
+			sourceTree = "<group>";
+		};
+		68A6BF142106E03C00547929 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				68A6BF132106E03C00547929 /* MapplsSDKDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		68A6BF152106E03C00547929 /* MapplsSDKDemo */ = {
+			isa = PBXGroup;
+			children = (
+				D17F0554288FD1BB005333E8 /* SwiftUI */,
+				18D14C9F251A5815004A6D32 /* Common */,
+				18F576CE23FEA8100009A2D9 /* InstructionFormatterHelpers */,
+				185B7FBD214B8333000785FC /* metro-line.geojson */,
+				68E69CA22B625147005E6E21 /* AI_PotLoc4SDB.geojson */,
+				68417CC3210B2DCE00424A00 /* Swift */,
+				68417CC2210B2DB800424A00 /* Objective C */,
+				68A6BF162106E03C00547929 /* AppDelegate.swift */,
+				68A6BF182106E03C00547929 /* ViewController.swift */,
+				68A6BF1A2106E03C00547929 /* Main.storyboard */,
+				4726F0702648503B007EDB5E /* ShapeCell.xib */,
+				68417CCC210B48FB00424A00 /* MainC.storyboard */,
+				68A6BF1D2106E03F00547929 /* Assets.xcassets */,
+				68A6BF1F2106E03F00547929 /* LaunchScreen.storyboard */,
+				68A6BF222106E03F00547929 /* Info.plist */,
+				68417CC4210B329100424A00 /* InitialVC.swift */,
+				47513EAC29FA35AC00BA6C83 /* CustomMapplsPinMarkerViewController.swift */,
+				35033F64307650EE00C9F922 /* SceneDelegate.swift */,
+			);
+			path = MapplsSDKDemo;
+			sourceTree = "<group>";
+		};
+		68B927C025A63542002E6B8A /* DistanceMatrix */ = {
+			isa = PBXGroup;
+			children = (
+				68B927C725A63587002E6B8A /* DistanceMatrixViewController.swift */,
+			);
+			path = DistanceMatrix;
+			sourceTree = "<group>";
+		};
+		68BF2EAD2B6A306200C84F31 /* DeviceSearch */ = {
+			isa = PBXGroup;
+			children = (
+				68BF2EAE2B6A309A00C84F31 /* DeviceSearchViewController.swift */,
+				68BF2EB02B6A372400C84F31 /* DeviceTableViewController.swift */,
+			);
+			path = DeviceSearch;
+			sourceTree = "<group>";
+		};
+		B127A27C2C660E980046B2DC /* RouteTrafficPolyline */ = {
+			isa = PBXGroup;
+			children = (
+				B127A27D2C660EAE0046B2DC /* PolylineLayerPlugin.swift */,
+				B127A27F2C660ED20046B2DC /* RouteTrafficPolylineSample.swift */,
+			);
+			path = RouteTrafficPolyline;
+			sourceTree = "<group>";
+		};
+		D17F054D288FD153005333E8 /* Samples */ = {
+			isa = PBXGroup;
+			children = (
+				D17F0551288FD181005333E8 /* SampleType.swift */,
+			);
+			path = Samples;
+			sourceTree = "<group>";
+		};
+		D17F0554288FD1BB005333E8 /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				D17F0559288FD32B005333E8 /* AutosuggestWidget */,
+				D1FC987A2891037B00C35D3A /* Map */,
+				D1FC988428910D5C00C35D3A /* PlacePicker */,
+				D17F0555288FD1C9005333E8 /* Samples */,
+			);
+			path = SwiftUI;
+			sourceTree = "<group>";
+		};
+		D17F0555288FD1C9005333E8 /* Samples */ = {
+			isa = PBXGroup;
+			children = (
+				D1FC988228910ABF00C35D3A /* SampleLauncherSwiftUIView.swift */,
+				D17F0557288FD1ED005333E8 /* SampleTypeSwiftUI.swift */,
+			);
+			path = Samples;
+			sourceTree = "<group>";
+		};
+		D17F0559288FD32B005333E8 /* AutosuggestWidget */ = {
+			isa = PBXGroup;
+			children = (
+				D17F054B288EBE65005333E8 /* AutosuggestWidgetExamplesLauncherSwiftUIListView.swift */,
+				D13C05DA2893A53B0024B8E6 /* AutosuggestWidgetExampleSwiftUIRowView.swift */,
+				D17F05452889BE05005333E8 /* MapplsAutocompleteViewControllerSwiftUIWrapper.swift */,
+				D1B09A932896FC59008881E0 /* StyledMapplsAutocompleteViewControllerSwiftUIWrapper.swift */,
+			);
+			path = AutosuggestWidget;
+			sourceTree = "<group>";
+		};
+		D1A67F362CA18B9B009C8E52 /* Feedback */ = {
+			isa = PBXGroup;
+			children = (
+				D1A67F372CA18D43009C8E52 /* FeedbackManagerViewController.swift */,
+			);
+			path = Feedback;
+			sourceTree = "<group>";
+		};
+		D1F1999D2A028ED900836308 /* PredictiveDirections */ = {
+			isa = PBXGroup;
+			children = (
+				D1F199A92A04FC1800836308 /* AttributionChooserVC.swift */,
+				D1F199A72A03CBB300836308 /* LocationPickerTableCell.swift */,
+				D1F199AB2A04FD7000836308 /* MapplsAttributeOptions+Extension.swift */,
+				D1F199A22A028EFF00836308 /* PredictiveDirectionsViewController.swift */,
+				D115F9A12A0A3E81003CBEDC /* PredictiveRouteManeuverCell.swift */,
+				D115F99B2A0A3BD1003CBEDC /* PredictiveRouteManeuversVC.swift */,
+				D1F199A42A028F6200836308 /* RouteFetchSettingController.swift */,
+			);
+			path = PredictiveDirections;
+			sourceTree = "<group>";
+		};
+		D1FC987A2891037B00C35D3A /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				D1FC987B289103BD00C35D3A /* MapplsMapViewSampleSwiftUI.swift */,
+				D1FC987D289103E800C35D3A /* MapplsMapViewSwiftUIView.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		D1FC987F2891057900C35D3A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D1FC98802891058F00C35D3A /* MGLPointAnnotation+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D1FC988428910D5C00C35D3A /* PlacePicker */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = PlacePicker;
+			sourceTree = "<group>";
+		};
+		F560EFD69E767ADFE19F5A20 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1D1CE60A0F058C1C6F8D4F27 /* Pods-MapplsSDKDemo.debug.xcconfig */,
+				DE6D733F3E4343C6B6A83F7C /* Pods-MapplsSDKDemo.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		68A6BF122106E03C00547929 /* MapplsSDKDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 68A6BF252106E03F00547929 /* Build configuration list for PBXNativeTarget "MapplsSDKDemo" */;
+			buildPhases = (
+				DC2450A50F23FE0C88C69C38 /* [CP] Check Pods Manifest.lock */,
+				68A6BF0F2106E03C00547929 /* Sources */,
+				68A6BF102106E03C00547929 /* Frameworks */,
+				68A6BF112106E03C00547929 /* Resources */,
+				47AB0D70260B0C890055B864 /* ShellScript */,
+				22B9D1E6B4AFD2D9C83C6F19 /* [CP] Embed Pods Frameworks */,
+				D1E80E882BDF74A3000D232B /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MapplsSDKDemo;
+			packageProductDependencies = (
+				35033F5C30764F4D00C9F922 /* FittedSheets */,
+				35033F5F30764F7900C9F922 /* IQKeyboardManagerSwift */,
+				35033F6230764FD800C9F922 /* MapplsGeofenceUI */,
+			);
+			productName = MapDemo;
+			productReference = 68A6BF132106E03C00547929 /* MapplsSDKDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		68A6BF0B2106E03C00547929 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0940;
+				LastUpgradeCheck = 1240;
+				ORGANIZATIONNAME = MMI;
+				TargetAttributes = {
+					68A6BF122106E03C00547929 = {
+						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 0940;
+					};
+				};
+			};
+			buildConfigurationList = 68A6BF0E2106E03C00547929 /* Build configuration list for PBXProject "MapplsSDKDemo" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 68A6BF0A2106E03C00547929;
+			packageReferences = (
+				350455B83011F26300A745DE /* XCRemoteSwiftPackageReference "mappls-map-ios-distribution" */,
+				350455BB3011F26C00A745DE /* XCRemoteSwiftPackageReference "mappls-api-kit-distribution" */,
+				350455BE3011F27400A745DE /* XCRemoteSwiftPackageReference "mappls-api-core-distribution" */,
+				350455C13011F28400A745DE /* XCRemoteSwiftPackageReference "mappls-ui-widget-ios-distribution" */,
+				350455C43011F2AE00A745DE /* XCRemoteSwiftPackageReference "mappls-nearby-ui-ios-distribution" */,
+				350455C73011F2C500A745DE /* XCRemoteSwiftPackageReference "mappls-feedback-ui-kit-ios-distribution" */,
+				350455CA3011F2D700A745DE /* XCRemoteSwiftPackageReference "mappls-feedback-kit-ios-distribution" */,
+				350455CD3011F2EF00A745DE /* XCRemoteSwiftPackageReference "mappls-direction-ui-ios-distribution" */,
+				350455D03011F30F00A745DE /* XCRemoteSwiftPackageReference "mappls-lms-distribution" */,
+				35033F5B30764F4C00C9F922 /* XCRemoteSwiftPackageReference "FittedSheets" */,
+				35033F5E30764F7900C9F922 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				35033F6130764FD800C9F922 /* XCRemoteSwiftPackageReference "mappls-geofence-ui-ios-distribution" */,
+			);
+			productRefGroup = 68A6BF142106E03C00547929 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				68A6BF122106E03C00547929 /* MapplsSDKDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		68A6BF112106E03C00547929 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				68A6BF212106E03F00547929 /* LaunchScreen.storyboard in Resources */,
+				68A6BF1E2106E03F00547929 /* Assets.xcassets in Resources */,
+				18F576D223FEAA880009A2D9 /* TextInstructions.plist in Resources */,
+				68A6BF1C2106E03C00547929 /* Main.storyboard in Resources */,
+				4726F0712648503B007EDB5E /* ShapeCell.xib in Resources */,
+				185B7FBE214B8333000785FC /* metro-line.geojson in Resources */,
+				68417CCD210B48FB00424A00 /* MainC.storyboard in Resources */,
+				68E69CA32B625148005E6E21 /* AI_PotLoc4SDB.geojson in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		22B9D1E6B4AFD2D9C83C6F19 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MapplsSDKDemo/Pods-MapplsSDKDemo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MapplsSDKDemo/Pods-MapplsSDKDemo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MapplsSDKDemo/Pods-MapplsSDKDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		47AB0D70260B0C890055B864 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "
+";
+		};
+		DC2450A50F23FE0C88C69C38 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MapplsSDKDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		68A6BF0F2106E03C00547929 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18EF185E250A03EE0067182A /* POIsAlongTheRouteVC.swift in Sources */,
+				18778C5A24756C47006DE478 /* MultiplePolylinesExample.swift in Sources */,
+				D1FFC0A72D87E608007DD9F4 /* DynamicClusteringViewController.swift in Sources */,
+				181F70BA25A89A5B006024FE /* LocationsChooserTableViewController.swift in Sources */,
+				186D020C248E25F4006F1C84 /* CovidLayersTableVC.swift in Sources */,
+				188AE97A21C7D92C00D2C866 /* CustomCalloutView.swift in Sources */,
+				189D0B80230AA3E2005C8390 /* DemoLocationPuckView.m in Sources */,
+				D1FC987C289103BD00C35D3A /* MapplsMapViewSampleSwiftUI.swift in Sources */,
+				A41DFAC9239906CE00D39EF9 /* AutoSuggestVC.swift in Sources */,
+				68D07A9425B555AC005B86CB /* LocationChooserTableViewDirectionUIPlugin.swift in Sources */,
+				18778C4D24751F33006DE478 /* DraggableMapMarkerVC.swift in Sources */,
+				684CCDD32B04CB1900D38CFE /* CustomTapGestureController.swift in Sources */,
+				D1F199AC2A04FD7000836308 /* MapplsAttributeOptions+Extension.swift in Sources */,
+				4726F0592647C017007EDB5E /* ColorPickerViewController.swift in Sources */,
+				18D14CA3251A5C35004A6D32 /* AutosuggestWidgetSampleType.swift in Sources */,
+				18F45358251A81BB0091A898 /* DemoStyledAutocompleteViewController.swift in Sources */,
+				47DF63A42716B6FF0069AAA8 /* DrivingRangeSampleViewController.swift in Sources */,
+				A45C2998239A157100EC81F6 /* DefaultIndoorVC.swift in Sources */,
+				4726F06A2647C412007EDB5E /* MapComponantsVC.swift in Sources */,
+				D1FC98812891058F00C35D3A /* MGLPointAnnotation+Extension.swift in Sources */,
+				68417CC7210B32A700424A00 /* ListVC.swift in Sources */,
+				6850349125B6ACB900A347FB /* AttributionSettingTableViewController.swift in Sources */,
+				47DF63982716B1750069AAA8 /* DemoMapStyleViewController.swift in Sources */,
+				4726F0662647C412007EDB5E /* GeofenceUILunchVC.swift in Sources */,
+				18894B8C23043476005DC142 /* LocationPuckView.swift in Sources */,
+				A49EB60923DC00EB00A08E42 /* InstructionTableViewCell.swift in Sources */,
+				A4DA1E9623DB16BF0010743F /* DirectionIndicationViewStyleKit.swift in Sources */,
+				1861996624DC305A004D5547 /* MapplsDemoSettingsVC.swift in Sources */,
+				47DF63A62716BC5D0069AAA8 /* DrivingRangeSettingViewController.swift in Sources */,
+				35033F65307650EE00C9F922 /* SceneDelegate.swift in Sources */,
+				68417CC5210B329100424A00 /* InitialVC.swift in Sources */,
+				D1F199A52A028F6200836308 /* RouteFetchSettingController.swift in Sources */,
+				D17F05462889BE05005333E8 /* MapplsAutocompleteViewControllerSwiftUIWrapper.swift in Sources */,
+				1861995D24DBE040004D5547 /* PlacePickerViewExampleVC.swift in Sources */,
+				47858FE828A2640A003059A1 /* MapplsReverseGeocodeViewController.swift in Sources */,
+				D115F99C2A0A3BD1003CBEDC /* PredictiveRouteManeuversVC.swift in Sources */,
+				476B0D062615D89100FE8EC6 /* NearbyViewControllerLauncher.swift in Sources */,
+				A49EB60F23DEC56A00A08E42 /* CustomCalloutViewForPolyline.swift in Sources */,
+				1859BB872304041F007D70CF /* SphericalUtil.swift in Sources */,
+				352BA8682EFABB3C004EF53A /* MapplsTrackingSample.swift in Sources */,
+				476B0D192618309F00FE8EC6 /* NearbyFilterConfigurationSetting.swift in Sources */,
+				356BBF832D1053C200D1C518 /* IconScaleFactorController.swift in Sources */,
+				476B0D1D2618341E00FE8EC6 /* CustomNearbyUIViewController.swift in Sources */,
+				68E69CA12B62510B005E6E21 /* HeatMapViewController.swift in Sources */,
+				18B3DD5825AB887200B26BDF /* DirectionsViewController.swift in Sources */,
+				D17F0552288FD181005333E8 /* SampleType.swift in Sources */,
+				18404BD72303C974001D8DC0 /* GeodesicPolylineExample.swift in Sources */,
+				4726F06C2647C412007EDB5E /* PolygonPointsVC.swift in Sources */,
+				D1F199A82A03CBB300836308 /* LocationPickerTableCell.swift in Sources */,
+				47858FE428A25656003059A1 /* MapplsTrafficVectorTilesViewController.swift in Sources */,
+				6853468D210EF161000ED395 /* mapVCOC.m in Sources */,
+				18C9EAFE251B7E4600F95580 /* AutosuggestCustomUISearchControllerVC.swift in Sources */,
+				18C9EAFC251B6C2A00F95580 /* AutosuggestWidgetTextFieldSearchVC.swift in Sources */,
+				476B0D0D2616CF4700FE8EC6 /* NearbyUIFilterConfigurationCell.swift in Sources */,
+				47BB1A3A2722CA640050597E /* DemoNearbyReportViewController.swift in Sources */,
+				185A74EE249B4C5300081DAE /* CovidSafetyStatusExample.swift in Sources */,
+				183207B822FAC5A900C738FF /* HighlightPointExample.swift in Sources */,
+				4726F0672647C412007EDB5E /* ShapeCell.swift in Sources */,
+				A49EB61323E004BA00A08E42 /* InteractiveMarkerVC.swift in Sources */,
+				D1F199A32A028EFF00836308 /* PredictiveDirectionsViewController.swift in Sources */,
+				4726F0692647C412007EDB5E /* CustomGeofenceVC.swift in Sources */,
+				D1F199AA2A04FC1800836308 /* AttributionChooserVC.swift in Sources */,
+				47DF638D2716AB250069AAA8 /* DemoGeoanalyticsViewController.swift in Sources */,
+				68DA0A6C2B107C73009E10C4 /* DottedLineViewController.swift in Sources */,
+				D1CE04382C0091BB00717CB9 /* ClusterAdvancedMarkersExample.swift in Sources */,
+				A464439023E2A9D60089E7CE /* PointOnMapVC.swift in Sources */,
+				4726F0562647C017007EDB5E /* ColorPicker.swift in Sources */,
+				A4ACEA4D23D80C6400447644 /* InstructionTableVC.swift in Sources */,
+				4726F06D2647C412007EDB5E /* DrawCircleVC.swift in Sources */,
+				68BF2EAF2B6A309A00C84F31 /* DeviceSearchViewController.swift in Sources */,
+				4726F0582647C017007EDB5E /* SettingsViewController.swift in Sources */,
+				68D07A6025B1CBD2005B86CB /* DirectionUIViewController.swift in Sources */,
+				1861995C24DBE040004D5547 /* PlacePickerViewExampleLauncherVC.swift in Sources */,
+				D13C05DB2893A53B0024B8E6 /* AutosuggestWidgetExampleSwiftUIRowView.swift in Sources */,
+				18404BD92303D44D001D8DC0 /* ClusterMarkersExample.swift in Sources */,
+				68A6BF192106E03C00547929 /* ViewController.swift in Sources */,
+				A4DA1E9523DB16BF0010743F /* DirectionIndicationView.swift in Sources */,
+				68B4DBC62ADE982700AB0F85 /* GradientPolylineViewController.swift in Sources */,
+				4692D7322AA8822800B907AB /* MovingMarkerViewController.swift in Sources */,
+				18BA17E3229E8FF000B0B135 /* GreatCircle.swift in Sources */,
+				18D14C9D251A39B5004A6D32 /* AutosuggestWidgetExamplesLauncherVC.swift in Sources */,
+				47513EAF29FA402E00BA6C83 /* SetSymbolSortKeySample.swift in Sources */,
+				186D0211248E266F006F1C84 /* DemoInteractiveLayersTableViewController.m in Sources */,
+				47DF639A2716B18E0069AAA8 /* DemoMapStyleTableViewCell.swift in Sources */,
+				D1A67F382CA18D43009C8E52 /* FeedbackManagerViewController.swift in Sources */,
+				18F576D023FEA83B0009A2D9 /* TextInstructions.swift in Sources */,
+				D1B09A942896FC59008881E0 /* StyledMapplsAutocompleteViewControllerSwiftUIWrapper.swift in Sources */,
+				188AE97821C7D66800D2C866 /* CustomAnnotationModels.swift in Sources */,
+				18BDD84E22F4005D00239CDC /* InteriorPolygonExample.swift in Sources */,
+				D1FC988328910ABF00C35D3A /* SampleLauncherSwiftUIView.swift in Sources */,
+				D1CD0F5E2BE6437B00A84A04 /* PlacemarkDetailsVC.swift in Sources */,
+				D17F054C288EBE65005333E8 /* AutosuggestWidgetExamplesLauncherSwiftUIListView.swift in Sources */,
+				B127A2802C660ED20046B2DC /* RouteTrafficPolylineSample.swift in Sources */,
+				68BF2EB12B6A372400C84F31 /* DeviceTableViewController.swift in Sources */,
+				18404BD52303C435001D8DC0 /* DashedPolylineExample.swift in Sources */,
+				68B927C825A63587002E6B8A /* DistanceMatrixViewController.swift in Sources */,
+				4726F06B2647C412007EDB5E /* CustomGeofenceAnnotation.swift in Sources */,
+				186D020B248E25F4006F1C84 /* CovidLayersExample.swift in Sources */,
+				188AE97D21C7DAF500D2C866 /* CustomInfoWindowView.m in Sources */,
+				182D24D3251B46F70098914F /* UIViewController+Extension.swift in Sources */,
+				472912892722783F0089A329 /* RoadTrafficDetailsViewController.swift in Sources */,
+				47513EAD29FA35AC00BA6C83 /* CustomMapplsPinMarkerViewController.swift in Sources */,
+				189D0BC5230CFDC5005C8390 /* HighlightPointExample.m in Sources */,
+				4726F0682647C412007EDB5E /* DefaultGeofenceVC.swift in Sources */,
+				D115F9A22A0A3E81003CBEDC /* PredictiveRouteManeuverCell.swift in Sources */,
+				A45C2997239A157100EC81F6 /* CustomIndoorVC.swift in Sources */,
+				1861996824DC30C5004D5547 /* UserDefaultsManager.swift in Sources */,
+				D17F0558288FD1ED005333E8 /* SampleTypeSwiftUI.swift in Sources */,
+				68534685210EDF59000ED395 /* ListVCOC.m in Sources */,
+				189C4BF025A9877500B2ADB2 /* LocationChooserTableViewCell.swift in Sources */,
+				D176683D2C99798300BA71DC /* ItemPickerViewController.swift in Sources */,
+				D1FC987E289103E800C35D3A /* MapplsMapViewSwiftUIView.swift in Sources */,
+				68D777D02AEBB8960048957A /* CategoriesMarkerViewController.swift in Sources */,
+				185B7FC0214B83C7000785FC /* MultipleShapesExample.swift in Sources */,
+				186D0212248E266F006F1C84 /* CovidLayersExample.m in Sources */,
+				185B7FC3214B848F000785FC /* MultipleShapesExample.m in Sources */,
+				18778C582475435C006DE478 /* UpdateCircleExample.swift in Sources */,
+				47858FEB28A266B6003059A1 /* RasterCatalougeViewController.swift in Sources */,
+				68A6BF172106E03C00547929 /* AppDelegate.swift in Sources */,
+				353A3EE52D4D0A980015153C /* CustomUserLocationViewController.swift in Sources */,
+				B127A27E2C660EAE0046B2DC /* PolylineLayerPlugin.swift in Sources */,
+				185A74F1249B4C7C00081DAE /* CovidSafetyStatusExample.m in Sources */,
+				6853468A210EF14B000ED395 /* mapVC.swift in Sources */,
+				47DF638B2716AB0F0069AAA8 /* GeoanalyticsTableViewCell.swift in Sources */,
+				352BA86D2EFABCD2004EF53A /* MapRouteViewController.swift in Sources */,
+				352BA86E2EFABCD2004EF53A /* TrackingExampleViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		68A6BF1A2106E03C00547929 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				68A6BF1B2106E03C00547929 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		68A6BF1F2106E03F00547929 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				68A6BF202106E03F00547929 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		68A6BF232106E03F00547929 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VALIDATE_WORKSPACE = YES;
+			};
+			name = Debug;
+		};
+		68A6BF242106E03F00547929 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+				VALIDATE_WORKSPACE = YES;
+			};
+			name = Release;
+		};
+		68A6BF262106E03F00547929 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1D1CE60A0F058C1C6F8D4F27 /* Pods-MapplsSDKDemo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 33;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 22L95D5KTZ;
+				INFOPLIST_FILE = MapplsSDKDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.26;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Mappls.MapplsSDKDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "MapplsSDKDemo/Objective C/MapplsSDKDemo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		68A6BF272106E03F00547929 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DE6D733F3E4343C6B6A83F7C /* Pods-MapplsSDKDemo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 33;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 22L95D5KTZ;
+				INFOPLIST_FILE = MapplsSDKDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.26;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Mappls.MapplsSDKDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "MapplsSDKDemo/Objective C/MapplsSDKDemo-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		68A6BF0E2106E03C00547929 /* Build configuration list for PBXProject "MapplsSDKDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				68A6BF232106E03F00547929 /* Debug */,
+				68A6BF242106E03F00547929 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		68A6BF252106E03F00547929 /* Build configuration list for PBXNativeTarget "MapplsSDKDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				68A6BF262106E03F00547929 /* Debug */,
+				68A6BF272106E03F00547929 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		35033F5B30764F4C00C9F922 /* XCRemoteSwiftPackageReference "FittedSheets" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/gordontucker/FittedSheets.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.7.1;
+			};
+		};
+		35033F5E30764F7900C9F922 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.3;
+			};
+		};
+		35033F6130764FD800C9F922 /* XCRemoteSwiftPackageReference "mappls-geofence-ui-ios-distribution" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MapmyIndia/mappls-geofence-ui-ios-distribution.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.6;
+			};
+		};
+		350455B83011F26300A745DE /* XCRemoteSwiftPackageReference "mappls-map-ios-distribution" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MapmyIndia/mappls-map-ios-distribution.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.2;
+			};
+		};
+		350455BB3011F26C00A745DE /* XCRemoteSwiftPackageReference "mappls-api-kit-distribution" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MapmyIndia/mappls-api-kit-distribution.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.37;
+			};
+		};
+		350455BE3011F27400A745DE /* XCRemoteSwiftPackageReference "mappls-api-core-distribution" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MapmyIndia/mappls-api-core-distribution.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.18;
+			};
+		};
+		350455C13011F28400A745DE /* XCRemoteSwiftPackageReference "mappls-ui-widget-ios-distribution" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MapmyIndia/mappls-ui-widget-ios-distribution.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.13;
+			};
+		};
+		350455C43011F2AE00A745DE /* XCRemoteSwiftPackageReference "mappls-nearby-ui-ios-distribution" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MapmyIndia/mappls-nearby-ui-ios-distribution.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.2;
+			};
+		};
+		350455C73011F2C500A745DE /* XCRemoteSwiftPackageReference "mappls-feedback-ui-kit-ios-distribution" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MapmyIndia/mappls-feedback-ui-kit-ios-distribution.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		350455CA3011F2D700A745DE /* XCRemoteSwiftPackageReference "mappls-feedback-kit-ios-distribution" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MapmyIndia/mappls-feedback-kit-ios-distribution.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		350455CD3011F2EF00A745DE /* XCRemoteSwiftPackageReference "mappls-direction-ui-ios-distribution" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MapmyIndia/mappls-direction-ui-ios-distribution.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.10;
+			};
+		};
+		350455D03011F30F00A745DE /* XCRemoteSwiftPackageReference "mappls-lms-distribution" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MapmyIndia/mappls-lms-distribution.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.6;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		35033F5C30764F4D00C9F922 /* FittedSheets */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 35033F5B30764F4C00C9F922 /* XCRemoteSwiftPackageReference "FittedSheets" */;
+			productName = FittedSheets;
+		};
+		35033F5F30764F7900C9F922 /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 35033F5E30764F7900C9F922 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
+		};
+		35033F6230764FD800C9F922 /* MapplsGeofenceUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 35033F6130764FD800C9F922 /* XCRemoteSwiftPackageReference "mappls-geofence-ui-ios-distribution" */;
+			productName = MapplsGeofenceUI;
+		};
+		350455B93011F26300A745DE /* MapplsMap */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 350455B83011F26300A745DE /* XCRemoteSwiftPackageReference "mappls-map-ios-distribution" */;
+			productName = MapplsMap;
+		};
+		350455BC3011F26C00A745DE /* MapplsAPIKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 350455BB3011F26C00A745DE /* XCRemoteSwiftPackageReference "mappls-api-kit-distribution" */;
+			productName = MapplsAPIKit;
+		};
+		350455BF3011F27400A745DE /* MapplsAPICore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 350455BE3011F27400A745DE /* XCRemoteSwiftPackageReference "mappls-api-core-distribution" */;
+			productName = MapplsAPICore;
+		};
+		350455C23011F28400A745DE /* MapplsUIWidgets */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 350455C13011F28400A745DE /* XCRemoteSwiftPackageReference "mappls-ui-widget-ios-distribution" */;
+			productName = MapplsUIWidgets;
+		};
+		350455C53011F2AE00A745DE /* MapplsNearbyUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 350455C43011F2AE00A745DE /* XCRemoteSwiftPackageReference "mappls-nearby-ui-ios-distribution" */;
+			productName = MapplsNearbyUI;
+		};
+		350455C83011F2C500A745DE /* MapplsFeedbackUIKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 350455C73011F2C500A745DE /* XCRemoteSwiftPackageReference "mappls-feedback-ui-kit-ios-distribution" */;
+			productName = MapplsFeedbackUIKit;
+		};
+		350455CB3011F2D700A745DE /* MapplsFeedbackKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 350455CA3011F2D700A745DE /* XCRemoteSwiftPackageReference "mappls-feedback-kit-ios-distribution" */;
+			productName = MapplsFeedbackKit;
+		};
+		350455CE3011F2EF00A745DE /* MapplsDirectionUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 350455CD3011F2EF00A745DE /* XCRemoteSwiftPackageReference "mappls-direction-ui-ios-distribution" */;
+			productName = MapplsDirectionUI;
+		};
+		350455D13011F30F00A745DE /* MapplsLMS */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 350455D03011F30F00A745DE /* XCRemoteSwiftPackageReference "mappls-lms-distribution" */;
+			productName = MapplsLMS;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 68A6BF0B2106E03C00547929 /* Project object */;
+}

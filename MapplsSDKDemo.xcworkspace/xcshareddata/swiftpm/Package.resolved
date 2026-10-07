@@ -1,0 +1,177 @@
+{
+  "originHash" : "9de36f2c2f69b51760465ef936468ebb18e69af6d2cd69c2e360cc126fe5bd53",
+  "pins" : [
+    {
+      "identity" : "fittedsheets",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/gordontucker/FittedSheets.git",
+      "state" : {
+        "revision" : "ba34781367fb7c947e2a19334318cf440c92968c",
+        "version" : "2.7.1"
+      }
+    },
+    {
+      "identity" : "iqkeyboardcore",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/hackiftekhar/IQKeyboardCore.git",
+      "state" : {
+        "revision" : "4ece00fae7ddff664eb7b2c7d3b4b722bcdd438c",
+        "version" : "1.0.9"
+      }
+    },
+    {
+      "identity" : "iqkeyboardmanager",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/hackiftekhar/IQKeyboardManager.git",
+      "state" : {
+        "revision" : "0972dd6eded87c930fb6ad36b3c5ecd620f06894",
+        "version" : "8.0.3"
+      }
+    },
+    {
+      "identity" : "iqkeyboardnotification",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/hackiftekhar/IQKeyboardNotification.git",
+      "state" : {
+        "revision" : "efa705d7200edd95b6e31e65e25171f7e897f995",
+        "version" : "1.0.7"
+      }
+    },
+    {
+      "identity" : "iqkeyboardreturnmanager",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/hackiftekhar/IQKeyboardReturnManager.git",
+      "state" : {
+        "revision" : "495f694a6e62e431d776b4926a18fc26c62db317",
+        "version" : "1.0.6"
+      }
+    },
+    {
+      "identity" : "iqkeyboardtoolbar",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/hackiftekhar/IQKeyboardToolbar.git",
+      "state" : {
+        "revision" : "9d44e6b5d49776b8b979d5ff24cd4c7b3a4917c1",
+        "version" : "1.1.5"
+      }
+    },
+    {
+      "identity" : "iqkeyboardtoolbarmanager",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/hackiftekhar/IQKeyboardToolbarManager.git",
+      "state" : {
+        "revision" : "f462b3310ac31d4ece7b1346b35abf2c0b3e7eca",
+        "version" : "1.1.6"
+      }
+    },
+    {
+      "identity" : "iqtextinputviewnotification",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/hackiftekhar/IQTextInputViewNotification.git",
+      "state" : {
+        "revision" : "723784a2197121bb76a940cc6d79fd2fa6c23f43",
+        "version" : "1.0.9"
+      }
+    },
+    {
+      "identity" : "iqtextview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/hackiftekhar/IQTextView.git",
+      "state" : {
+        "revision" : "76f514eba5218bdf67659168ba227c77da5f75fe",
+        "version" : "1.0.5"
+      }
+    },
+    {
+      "identity" : "mappls-api-core-distribution",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/MapmyIndia/mappls-api-core-distribution.git",
+      "state" : {
+        "revision" : "939eae99c3ce399cc220825b001220b32eeec9ce",
+        "version" : "1.0.18"
+      }
+    },
+    {
+      "identity" : "mappls-api-kit-distribution",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/MapmyIndia/mappls-api-kit-distribution.git",
+      "state" : {
+        "revision" : "7bf341ae6f9bb73ae7df818050c5a200c30948a5",
+        "version" : "2.0.38"
+      }
+    },
+    {
+      "identity" : "mappls-direction-ui-ios-distribution",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/MapmyIndia/mappls-direction-ui-ios-distribution.git",
+      "state" : {
+        "revision" : "4f6540cece18430be0c2c1901c64d023cc25c703",
+        "version" : "1.0.11"
+      }
+    },
+    {
+      "identity" : "mappls-feedback-kit-ios-distribution",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/MapmyIndia/mappls-feedback-kit-ios-distribution.git",
+      "state" : {
+        "revision" : "c0b8a47cec2b462feea7ecf41cbd2fd4301593e0",
+        "version" : "2.0.0"
+      }
+    },
+    {
+      "identity" : "mappls-feedback-ui-kit-ios-distribution",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/MapmyIndia/mappls-feedback-ui-kit-ios-distribution.git",
+      "state" : {
+        "revision" : "9788f93caa2795b5af79acbf4711191928cca275",
+        "version" : "2.0.0"
+      }
+    },
+    {
+      "identity" : "mappls-geofence-ui-ios-distribution",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/MapmyIndia/mappls-geofence-ui-ios-distribution.git",
+      "state" : {
+        "revision" : "d8f17a38ba6f62ef68ae6c6b0756b0407b3015c4",
+        "version" : "1.0.6"
+      }
+    },
+    {
+      "identity" : "mappls-lms-distribution",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/MapmyIndia/mappls-lms-distribution.git",
+      "state" : {
+        "revision" : "8351072fac4c0f2e8b4236aa8575720b4a66a7c2",
+        "version" : "1.0.8"
+      }
+    },
+    {
+      "identity" : "mappls-map-ios-distribution",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/MapmyIndia/mappls-map-ios-distribution.git",
+      "state" : {
+        "revision" : "7dad6ad27c0bcbf5fa4f49affb7f877f485172cb",
+        "version" : "6.0.2"
+      }
+    },
+    {
+      "identity" : "mappls-nearby-ui-ios-distribution",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/MapmyIndia/mappls-nearby-ui-ios-distribution.git",
+      "state" : {
+        "revision" : "aad1b15eac7397ec196521a190215f4f0a6dbbe1",
+        "version" : "1.0.3"
+      }
+    },
+    {
+      "identity" : "mappls-ui-widget-ios-distribution",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/MapmyIndia/mappls-ui-widget-ios-distribution.git",
+      "state" : {
+        "revision" : "a946658b0852c4bc795bda5e63ebb43f2051f237",
+        "version" : "1.0.15"
+      }
+    }
+  ],
+  "version" : 3
+}
