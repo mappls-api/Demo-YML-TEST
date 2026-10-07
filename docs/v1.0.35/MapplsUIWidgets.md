@@ -5,37 +5,63 @@
 ## [Introduction](#Introduction)
 The MapplsUIWidgets SDK for iOS allows you can build rich apps by quickly implement reday made UI components. Currently this SDK have a widget for Searching a place using [AutoSuggest API](https://about.mappls.com/api/advanced-maps/doc/autosuggest-api).
 
+### [Dependencies](#Dependencies)
+
+This library depends upon several Mappls's own libraries. All dependent libraries will be automatically installed using CocoaPods.
+
+Below are the list of dependencies which are required to run this SDK:
+
+| Dependency | Minimum Version |
+| :---- | :---- |
+| [MapplsAPICore](https://github.com/mappls-api/mappls-ios-sdk/blob/main/docs/MapplsAPICore.md) | `1.0.18` |
+| [MapplsAPIKit](https://github.com/mappls-api/mappls-ios-sdk/blob/main/docs/MapplsAPIKit.md) | `2.0.38` |
+| [MapplsMap](https://github.com/mappls-api/mappls-ios-sdk/blob/main/docs/MapplsMap.md) | `6.0.2` |
+
 ## [Installation](#Installation)
 
 ### [CocoaPods](#CocoaPods)
 
-1. Add the following line to your `Podfile`:
-   ```ruby
-   pod 'MapplsUIWidgets', '1.0.12'
-   ```
-2. Run `pod install` or `pod update` (to update existing pods).
+This library is available through `CocoaPods`. To install, simply add the following line to your `podfile`:
+
+```ruby
+pod 'MapplsUIWidgets', '1.0.15'
+```
+On running `pod install` command it will automatically download and setup `MapplsUIWidgets` and dependent frameworks.
 
 ### [Swift Package Manager](#Swift-Package-Manager)
 
-1. In Xcode, go to **File > Add Package Dependencies...**
-2. Enter the repository URL:
-   ```
-   https://github.com/MapmyIndia/mappls-ui-widget-ios-distribution
-   ```
-3. Select the version rule (e.g. **Up to Next Major**) and click **Add Package**.
+`MapplsUIWidgets` is also distributed as a Swift Package. The package is hosted at:
+
+```
+https://github.com/MapmyIndia/mappls-ui-widget-ios-distribution
+```
+
+To add it in Xcode, go to **File → Add Package Dependencies…**, paste the URL above, and select version `1.0.15` or later.
+
+Or add it to your `Package.swift` dependencies:
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/MapmyIndia/mappls-ui-widget-ios-distribution.git", from: "1.0.15")
+]
+```
+
+> **Note:** `MapplsUIWidgets` is distributed as a binary framework. When integrating via Swift Package Manager you must also add its [dependencies](#Dependencies) (`MapplsAPICore`, `MapplsLMS`, `MapplsAPIKit`, `MapplsMap`) to your project.
 
 ### [Version History](#Version-History)
 
 | Version | Dated | Description |
 | :---- | :---- | :---- |
-| `1.0.13` | 03 Apr, 2026 | - Removed hyerLocal and zoom request parameters. - Introduced venue heighlight feature in MapplsPlacePikcer.|
-| `1.0.12` | 28 Jul, 2025 | - Resolved an issue where the initial center coordinate set on the map was ignored in favor of the current location. - Resolved an issue where switching to dark theme caused the map to re-center to the current location.|
+| `1.0.15` | 06 Oct, 2026 | - Updated the release pipeline and build scripts for the MapplsUIWidgets SDK. |
+| `1.0.14` | 06 Oct, 2026 | - Restructured the project by flattening the directory layout and migrating dependency management from CocoaPods/Carthage to Swift Package Manager. |
+| `1.0.13` | 06 Apr, 2026 | - Added venue highlight feature along with a sample. <br> - Added a delegate method to modify the request of autosuggest and text search. <br> - Removed the `hyperLocal` and `zoom` parameters from the request. |
+| `1.0.12` | 28 Jul, 2025 | - Resolved an issue where the initial center coordinate set on the map was ignored in favor of the current location. <br> - Resolved an issue where switching to dark theme caused the map to re-center to the current location.|
 | `1.0.11` | 15 May, 2025 | - Improved place name and address format is place picker view. |
 | `1.0.10` | 15 Dec, 2024 | - Added option to set base url for search and reversegeocode. |
 | `1.0.9` | 15 Nov, 2024 | - Bitcode disabled to support Xcode 16. - Some improvements. |
-| `1.0.8` | 09 Oct, 2024 | - Support is added for Landscape mode.|
-| `1.0.7` | 17 Sep, 2024 | - In Autosuggest Widget, option to set type of logo is added.|
-| `1.0.6` | 08 May, 2024 | - Logic is optimized to show name and address of place. - Option to show boundry of building for selected place.|
+| `1.0.8` | 09 Oct, 2024 | In Autosuggest Widget, option to set type of logo is added.|
+| `1.0.7` | 17 Sep, 2024 | In Autosuggest Widget, option to set type of logo is added.|
+| `1.0.6` | 08 May, 2024 | - Logic is optimized to show name and address of place., - Option to show boundry of building for selected place.|
 | `1.0.5` | 28 Nov, 2023 | Add a provision to change highlighted color of cell.|
 | `1.0.4` | 11 June, 2023 | Added a provision to change the theme in initilizer of `MapplsAutocompleteViewController`. its default value is `auto`. its excepted value can `.day`, `.night` and `.auto`|
 | `1.0.3` | 02 June, 2023 | Added functionality to show favourites/custom places in Autosuggest Widget. Added related callbacks etc.|
@@ -43,19 +69,9 @@ The MapplsUIWidgets SDK for iOS allows you can build rich apps by quickly implem
 | `1.0.1` | 03 Sept, 2022 | Added hyperLocal property.|
 | `1.0.0` | 12 June, 2022 | Initial Mappls UIWidget Release.|
 
-### [Dependencies](#Dependencies)
+## [Authorization](#Authorization)
 
-This library depends upon several Mappls's own libraries. All dependent libraries will be automatically installed using CocoaPods.
-
-Below are list of dependencies which are required to run this SDK:
-
-- [MapplsAPICore](https://github.com/mappls-api/mappls-ios-sdk/docs/v1.0.0/MapplsAPICore.md)
-- [MapplsAPIKit](https://github.com/mappls-api/mappls-ios-sdk/docs/v1.0.0/MapplsAPIKit.md)
-- [MapplsMap](https://github.com/mappls-api/mappls-ios-sdk/docs/v1.0.0/MapplsMap.md)
-
-### [Authorization](#Authorization)
-
-#### [MapplsAPICore](#MapplsAPICore)
+### [MapplsAPICore](#MapplsAPICore)
 It is required to set Mappls keys to use any Mappls SDK. Please refer the documentation [here](MapplsAPICore.md).
 
 ## [Autocomplete](#Autocomplete)

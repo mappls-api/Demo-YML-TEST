@@ -1,4 +1,13 @@
 # Changes to the MapplsAPIKit SDK for iOS
+## 2.0.38 - 25 Sep, 2026
+### Added
+- Added a `responseLanguage` option to `MapplsNearbyAtlasOptions`, `MapplsTextSearchAtlasOptions`, and `MapplsPOIAlongTheRouteOptions` to request the response in a specified language.
+- Added a `lang` property to the AutoSuggest (`MapplsAutoSuggestLocationResults`) and Nearby (`NearbyResult`) responses indicating the language of the returned results.
+- Added an `isKeyword` property to `MapplsPlaceExplanation`.
+### Changed
+- Renamed the `searchType` request parameter to `global` in `MapplsAutoSearchAtlasOptions`, `MapplsNearbyAtlasOptions`, `MapplsAtlasGeocodeOptions`, and `MapplsReverseGeocodeOptions`.
+### Removed
+- Removed the unused internal `AutoSuggestResult` struct.
 
 ## 2.0.32 - 25 Jul, 2025
 
@@ -10,6 +19,7 @@
 
 - Resolved an issue with EntryCoordinates in the reverse geocode API response.
 
+
 ## 2.0.31 - 10 Apr, 2025
 
 ### Fixed
@@ -17,17 +27,13 @@
 - Improved DIGIPIN logic.
 - Fixed error hadling in reverse geocode.
 
-## 2.0.30 - 02 Feb, 2025
-
-### Changed
-- Updated the response format for the POI Along the Route API (getPOIsAlongTheRoute). It now returns `MapplsPOIAlongTheRouteResult` instead of `[MapplsPOISuggestion]`.
+## 2.0.30 - 03 Feb, 2025
 
 ### Added
-- Introduced `MapplsDigipinUtility` for converting coordinates to DIGIPIN and vice versa.
-- Added entry coordinates to the reverse geocode response
-- Added a `filter` option in the POI Along the Route API request.
-- Added `PageInfo`, `hourOfOperation`, `longDescription`, `shortDescription`, `richInfo` and `partnersFlag` in Poi Along the Route Api Response.
-- Revamped Smart Trip Planning Api
+- Added Smart trip api.
+- Added a `MapplsDigiPinUtility` class to get digipin from coordinate and vice-versa. 
+- Added a page info, partner flag and filters in poi along the route.
+- Added `EntryCoordinates` in response of reverse geocode api.
 
 ## 2.0.29 - 17 Dec, 2024
 

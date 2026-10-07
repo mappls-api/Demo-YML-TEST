@@ -41,6 +41,7 @@ https://github.com/MapmyIndia/mappls-geofence-ui-ios-distribution.git
 
 | Version | Dated | Description |
 | :---- | :---- | :---- |
+| `1.0.6` | 07 Oct 2026 | - Improvements and Bug Fixes.|
 | `1.0.3` | 19 Dec, 2025 | Added a delegate method to stop polyline dragging and a new optional parameter called delegate in the init method. |
 | `1.0.2` | 25 Feb, 2025 | 'bitcode' disabled to support Xcode 15. |
 | `1.0.1` | 01 Nov, 2022 | Bug fixes due to dependency of APIKit version 2.0.7 |

@@ -6,20 +6,29 @@
 
 Our APIs, SDKs, and live updating map data available for [200+ countries & territories](https://github.com/MapmyIndia/mapmyindia-rest-api/blob/master/docs/countryISO.md) give developers tools to build better experiences across various platforms.
 
-1. You can get your api key to be used in this document here: [https://apis.mappls.com/console/](https://apis.mappls.com/console/)
+1. Get the API keys used in this document from the [Mappls Console](https://apis.mappls.com/console/).
 
-2. The sample code is provided to help you understand the basic functionality of Mappls REST APIs working on iOS native development platform. 
+2. The sample code is provided to help you understand the basic functionality of the Mappls REST APIs on the iOS native development platform.
+
+## [Requirements](#Requirements)
+
+| Requirement | Minimum |
+| :---- | :---- |
+| iOS deployment target | 13.0 |
+| Xcode | 14.0+ |
+| Mappls REST API keys | Required (see [Authorization](#Authorization)) |
 
 ## [Installation](#Installation)
 
-This library is available through `CocoaPods`. To install, simply add the following line to your `podfile`:
+### CocoaPods
+
+This library is available through `CocoaPods`. Add the following line to your `Podfile`:
 
 ```ruby
-pod 'MapplsAPIKit', '2.0.36'
+pod 'MapplsAPIKit', '2.0.38'
 ```
 
-Run pod repo update && pod install and open the resulting Xcode workspace.
-
+Then run `pod repo update && pod install` and open the resulting Xcode workspace.
 
 ### Swift Package Manager
 
@@ -32,15 +41,15 @@ https://github.com/MapmyIndia/mappls-api-kit-distribution.git
 
 3. Select the version rule (e.g. **Up to Next Major**) and click **Add Package**.
 
-
 ### [Dependencies](#Dependencies)
 
-This library depends upon `MapplsAPICore`. All dependent libraries will be automatically installed on using CocoaPods.
+This library depends on `MapplsAPICore`. When you install `MapplsAPIKit` through CocoaPods, all dependent libraries are installed automatically.
 
 ## [Version History](#Version-History)
 
 | Version | Dated | Description |
 | :---- | :---- | :---- |
+| `2.0.38`| 25 Sep 2026 | - Renamed the `searchType` request parameter to `global` in `MapplsAutoSearchAtlasOptions`, `MapplsNearbyAtlasOptions`, `MapplsAtlasGeocodeOptions`, and `MapplsReverseGeocodeOptions`. <br>- Added a `responseLanguage` option to `MapplsNearbyAtlasOptions`, `MapplsTextSearchAtlasOptions`, and `MapplsPOIAlongTheRouteOptions`. <br>- Added a `lang` field to the AutoSuggest and Nearby responses. <br>- Added an `isKeyword` field to `MapplsPlaceExplanation`.|
 | `2.0.37`| 17 jul 2026 | - Improvements and Bug Fixes.|
 | `2.0.36`| 17 jul 2026 | - Improvements and Bug Fixes.|
 | `2.0.34`| 03 Apr 2026 |- Added a `fromNodeIdx` and `toNodeIdxobject` in `RouteStep` object of routing api response. <br>- Added `suggestedSearchAtlas` object in response of POI Along the route api. <br> - Added `filter`, `refLocation`, `bridge` and `bounds` in request params `MapplsPOIAlongTheRouteOptions` <br> - Added `fallBackSpeed` and `fallBackCoordinate` in reuest of distance matrix api.|
@@ -80,7 +89,13 @@ This library depends upon `MapplsAPICore`. All dependent libraries will be autom
 
 ## [Getting Started](#Getting-Started)
 
-Mappls Map SDK for iOS lets you easily add Mappls Map and services to your own iOS app.It supports iOS SDK 9.0 and above and Xcode 10.1 or later. You can have a look at the map and features you will get in your own app by using the Mappls Map app for iOS. The SDK handles Map Display along with a bunch of controls and native gestures.
+`MapplsAPIKit` gives you Swift/Objective-C wrappers for Mappls REST services. The typical flow is:
+
+1. Set your Mappls keys once at launch (see [Authorization](#Authorization)).
+2. Build a request `Options` object for the API you want (for example `MapplsAutoSearchAtlasOptions`).
+3. Call the corresponding manager (for example `MapplsAutoSuggestManager.shared`) and read the typed response in the completion handler.
+
+Each API section below lists its request parameters, response parameters, and Objective-C / Swift code samples.
 
 ## [Authorization](#Authorization)
 
@@ -131,9 +146,13 @@ Additionally you can also set location and restriction filters in object of `Map
 
 8. **responseLanguage:** It is of type `string` it is use to get the response in specified language.
 
+9. **global:** A `Bool` that, when set to `true`, searches across the country instead of restricting results to the account's default region. *(Replaces the earlier `searchType` parameter.)*
+
 ### Response Parameters
 
 In response of auto suggest search either you will receive an error or an object of `MapplsAutoSuggestLocationResults`(derived from `MapplsLocationResults`) which contains an array of `MapplsAtlasSuggestion` (derived from `MapplsSuggestion`) and an array of suggested searches of type `MapplsSearchPrediction`.
+
+The `MapplsAutoSuggestLocationResults` object also exposes a **`lang`** (`String?`) property indicating the language of the returned results.
 
 ***Note:*** As class of response object will be derived from `MapplsLocationResults`, You will need to cast it into `MapplsAutoSuggestLocationResults`.
 
@@ -257,6 +276,7 @@ To perform the translation use `MapplsReverseGeocodeOptions` class to pass coord
 
 - **coordinate:** 
 - **language**
+- **global:** A `Bool` that, when set to `true`, searches across the country instead of restricting results to the account's default region. *(Replaces the earlier `searchType` parameter.)*
 
 
 `MapplsRegionType` is used to validate and get result for different countries. 
@@ -403,6 +423,10 @@ MapplsNearbySearchFilter have following properties.
     -   City
     -   Village    
 
+12. **responseLanguage:** It is of type `String`. Use it to request the response in the specified language.
+
+13. **global:** A `Bool` that, when set to `true`, searches across the country instead of restricting results to the account's default region. *(Replaces the earlier `searchType` parameter.)*
+
 ### Response Parameters
 
 You will find below useful properties in suggestion object :
@@ -444,6 +468,8 @@ You will find below useful properties in suggestion object :
 	- **totalHits**
 	- **totalPages**
 	- **pageSize**
+
+The Nearby result object also exposes a **`lang`** (`String?`) property indicating the language of the returned results.
 
 ### Code Samples
 
@@ -603,6 +629,8 @@ To perform geocode use `getGeocodeResults` method of instance of `MapplsAtlasGeo
 Additionally you can also set some other parameters in object of `MapplsAtlasGeocodeOptions` to get some specific results. Which are:  
 
 2. **`maximumResultCount`**: The number of results which needs to be return in response.
+
+3. **`global`**: A `Bool` that, when set to `true`, geocodes across the country instead of restricting results to the account's default region. *(Replaces the earlier `searchType` parameter.)*
 
 ### Response Parameters
 
@@ -1038,12 +1066,11 @@ Additionally you can pass some other parameters to get filtered/specific results
 1.  **geometries:**  It is of enum type `MapplsPolylineGeometryType`, default value is `polyline5`. Values of enum specifies type of geometry encoding.
 1.  **buffer:** It is of type `Int`. Buffer of the road.
 1. **page:**  It is of type `Int`. Used for pagination. By default, a request returns maximum 10 results and to get the next 10 or so on pass the page value accordingly. Default is 1.
-1. **filter**  It is of type `String`, This feature in POI Along the Route API empowers the user a fine discovery of EV charging stations along with the existing keyword and category code lookups. It uses multiple keys like "model", "plugType", "macVType". It uses key:value pair(s).
-(e.g. plugType:IEC).
-1. **filter** 
-1. **refLocation**
-1. **bridge**
-1. **bounds**
+1. **filter:**  It is of type `String`. This feature in POI Along the Route API empowers the user with a fine discovery of EV charging stations along with the existing keyword and category code lookups. It uses multiple keys like "model", "plugType", "macVType" as key:value pair(s) (e.g. `plugType:IEC`).
+1. **refLocation:** A reference location (`CLLocation`) used to bias the results.
+1. **bridge:** It is of type `Bool`.
+1. **bounds:** A `MapplsRectangularRegion` that restricts the search to the given area.
+1. **responseLanguage:** It is of type `Bool`. When `true`, requests localized fields in the response (sent as the `responseLang` parameter).
 
 ### Response Parameters:
 

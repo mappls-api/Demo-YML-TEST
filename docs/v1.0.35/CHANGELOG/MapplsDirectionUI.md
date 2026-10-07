@@ -1,3 +1,9 @@
+# Changes to the MapplsDirectionUI SDK for iOS
+## 1.0.11 - 07 Oct, 2026
+
+### Added
+- Added support for latest Mappls SDKs.
+
 ## 1.0.10 - 06 Feb, 2025
 
 ### Added
@@ -12,6 +18,14 @@
 - Added provision to change the base url of routing and search apis.
 - direction list ui enchancement
 - added support for manuever image
+
+## 1.0.8 - 27 Dec, 2023
+
+### Added
+- Added dotted polyline for walking profile.
+
+### Fixed
+- Bug fixes.
 
 ## 1.0.8 - 27 Dec, 2023
 
