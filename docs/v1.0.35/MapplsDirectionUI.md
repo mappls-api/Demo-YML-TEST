@@ -15,7 +15,7 @@ For details, please contact apisupport@mappls.com.
 
 ## [Installation](#Installation)
 
-This plugin can be installed using CocoaPods. It is available with name `MapplsDirectionUI`.
+This plugin can be installed using CocoaPods or Swift Package Manager (SPM). It is available with the name `MapplsDirectionUI`.
 
 ### [Using CocoaPods](#Using-CocoaPods)
 
@@ -24,40 +24,51 @@ To install the MapplsDirectionUI using CocoaPods:
 Create a Podfile with the following specification:
 
 ```
-pod 'MapplsDirectionUI', '1.0.10'
+pod 'MapplsDirectionUI', '1.0.11'
 ```
 
 Run `pod repo update && pod install` and open the resulting Xcode workspace.
 
-### Swift Package Manager
+### [Using Swift Package Manager](#Using-Swift-Package-Manager)
 
-1. In Xcode, go to **File > Add Package Dependencies...**
-2. Enter the repository URL:
+To add MapplsDirectionUI to your project using SPM:
 
-```
-https://github.com/MapmyIndia/mappls-direction-ui-ios-distribution.git
-```
+1. In Xcode, select **File > Add Packages...**
+2. Enter the repository URL in the search field:
 
-3. Select the version rule (e.g. **Up to Next Major**) and click **Add Package**.
+   ```
+   https://github.com/mappls-api/mappls-direction-ui-ios-distribution
+   ```
 
+3. Choose the version rule (for example, **Up to Next Major** starting from `1.0.11`) and add the package.
+
+> **Note:** Unlike CocoaPods, Swift Package Manager does **not** resolve the transitive Mappls dependencies automatically. When you integrate via SPM, you must add **each** of the dependencies listed below to your project **manually** using their respective repository URLs, otherwise the build will fail with missing-module errors.
 
 #### [Dependencies](#Dependencies)
 
-This library depends upon several Mappls's own and third party libraries. All dependent libraries will be automatically installed using CocoaPods.
+This library depends upon several of Mappls's own and third party libraries.
 
-Below are list of dependcies which are required to run this SDK:
+When installing via **CocoaPods**, all dependent libraries are installed automatically. When installing via **Swift Package Manager**, you must add each dependency manually using the repository URLs below.
 
-- [MapplsAPICore](MapplsAPICore.md)
-- [MapplsAPIKit](MapplsAPIKit.md)
-- [MapplsMaps](MapplsMap.md)
-- [MapplsUIWidgets](MapplsUIWidgets.md)
+Below is the list of dependencies which are required to run this SDK:
+
+| Dependency | Version | Repository URL |
+| :---- | :---- | :---- |
+| [MapplsAPICore](MapplsAPICore.md) | `~> 1.0.18` | https://github.com/MapmyIndia/mappls-api-core-distribution.git |
+| [MapplsAPIKit](MapplsAPIKit.md) | `~> 2.0.38` | https://github.com/MapmyIndia/mappls-api-kit-distribution.git |
+| [MapplsMap](MapplsMap.md) | `~> 6.0.2` | https://github.com/MapmyIndia/mappls-map-ios-distribution.git |
+| [MapplsUIWidgets](MapplsUIWidgets.md) | `~> 1.0.15` | https://github.com/MapmyIndia/mappls-ui-widget-ios-distribution.git |
+| [MapplsNearbyUI](MapplsNearbyUI.md) | `~> 1.0.3` | https://github.com/MapmyIndia/mappls-nearby-ui-ios-distribution.git |
+| [MapplsLMS](MapplsLMS.md) | `~> 1.0.8` | https://github.com/MapmyIndia/mappls-lms-distribution.git |
 
 ### [Version History](#Version-History)
 
 | Version | Dated | Description |
 | :---- | :---- | :---- |
+| `1.0.11` | 07 Oct 2026 | - Added support for latest Mappls SDKs. |
 | `1.0.10` | 06 Feb 2025 | - Added a function to rest Mappls Direction Controller. <Br>- Added `controller` parameter in `didRequestForGoBack` delegate function <br>- Improvemtns. |
 | `1.0.9` | 18 Dec 2024 | - Added provision to change the base url of routing and search apis. <Br> - direction list ui enchancement. <br> - Added property `shouldUseManeuverView` in `MapplsDirectionUIConfiguration` class its default value is `false`. |
+| `1.0.8` | 27 Dec 2023 | - Added provision to change the base url of routing and search apis. <Br> - direction list ui enchancement. <br> - Added property `shouldShowManueverView` in `MapplsDirectionUIConfiguration` class its default value is `false`. |
 | `1.0.8` | 27 Dec 2023 | - Added dotted polyline for walking profile. <Br> - Bug Fixes |
 | `1.0.7` | 11 Oct 2023 | - Added support for dark, light and auto theme.|
 | `1.0.6` | 24 Aug 2023 | - Bugs & Improvemtns. |
@@ -230,8 +241,7 @@ It is a protocol class which will be used for callback methods as shown below:
 Swift
 ```swift
 /// This meathod will be called when back button is clicked in `TopBannerView`
-/// If this method is implemented, Then back functionality will be handled on the app side. 
-1. func didRequestForGoBack(for view: MapplsDirectionTopBannerView, controller: UIViewController)
+1. didRequestForGoBack(for view: MapplsDirectionTopBannerView, controller: UIViewController)
 
 ```
 
