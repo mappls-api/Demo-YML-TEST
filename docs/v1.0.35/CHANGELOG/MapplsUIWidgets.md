@@ -1,5 +1,24 @@
 # Changes to the MapplsUIWidgets SDK for iOS
 
+## 1.0.15 - 06 Oct, 2026
+
+### Changed
+- Updated the release pipeline and build scripts for the MapplsUIWidgets SDK.
+
+## 1.0.14 - 06 Oct, 2026
+
+### Changed
+- Restructured the project by flattening the directory layout and migrating dependency management from CocoaPods/Carthage to Swift Package Manager.
+
+## 1.0.13 - 06 Apr, 2026
+
+### Added
+- Added venue highlight feature along with a sample.
+- Added a delegate method to modify the request of autosuggest and text search.
+
+### Removed
+- Removed the `hyperLocal` and `zoom` parameters from the request.
+
 ## 1.0.12 - 28 Jul, 2025
 
 ### Fixed
@@ -20,7 +39,7 @@
 - Bitcode disabled to support Xcode 16.
 
 ### Changed
-- For PlacePicker set property 'attributions' of 'MapplsAutocompleteFilter' to true by default.
+- Property 'attributions' of 'MapplsAutocompleteFilter' set to true by default.
 - In PlacePicker on Autosuggest logic is improved to set name of place.
 
 
