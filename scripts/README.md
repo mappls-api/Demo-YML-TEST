@@ -270,16 +270,22 @@ Each job checks out the latest `main`, so it sees the previous job's commit.
 
 ## Triggers
 
-- **Every push to `main`**: real `update-current` run of all three jobs.
+- **Every push to `main`**: real `auto` run of all three jobs.
 - **Weekly schedule** (Mondays 03:00 UTC): same as a push.
 - **Manually** via Actions → "Release SDK Docs" → **Run workflow**, with inputs:
-  - **mode**: `update-current` or `new-version` (creates a new `docs/vX.Y.Z`
-    folder, which then gets a new tag).
+  - **mode**:
+    - `auto` (default): if any SDK has a newer SPM release than the current
+      docs, create a new `docs/vX.Y.Z` folder (patch bump, e.g. `v1.0.35` →
+      `v1.0.36`). Otherwise refresh the current folder in place.
+    - `update-current`: always refresh the current folder in place.
+    - `new-version`: always create a new folder.
   - **new_version**: explicit version for `new-version`, e.g. `v1.0.37`;
     blank = auto-bump the patch.
   - **create_github_release**: publish a GitHub release with the tag (default true).
   - **dry_run**: preview only (default **true**).
 
-The tag name comes from the newest docs folder. In `update-current` mode the
-first run tags the current version, and later runs skip job 3 because that tag
-already exists. To get a new tag, run manually with `new-version`.
+The tag name comes from the newest docs folder, so a new folder gets a new tag
+(e.g. `1.0.36`). When nothing new has shipped, no folder is created and job 3
+skips because the current version's tag already exists.
+
+Locally, the same behaviour is `python3 scripts/update_sdk_docs.py --auto`.

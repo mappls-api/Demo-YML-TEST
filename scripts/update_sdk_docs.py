@@ -54,6 +54,7 @@ from __future__ import annotations
 
 import argparse
 import datetime as _dt
+import functools
 import re
 import shutil
 import subprocess
@@ -126,6 +127,7 @@ def is_newer(candidate: str, baseline: str | None) -> bool:
 # Git interaction
 # --------------------------------------------------------------------------- #
 
+@functools.lru_cache(maxsize=None)  # --auto probes first; don't re-query
 def latest_remote_version(repo_url: str) -> str | None:
     """Return the highest semantic-version git tag for ``repo_url``.
 
@@ -891,13 +893,19 @@ def main() -> int:
                       help="Create a new doc version folder. Optionally pass a "
                            "version like v1.0.36; omit it to auto-bump the "
                            "patch number. Skips the prompt.")
+    mode.add_argument("--auto", action="store_true",
+                      help="Create a new doc version (patch bump) only if at "
+                           "least one module has a newer SPM release; "
+                           "otherwise update the current version in place. "
+                           "Skips the prompt.")
     parser.add_argument("-y", "--yes", action="store_true",
                         help="Assume defaults for any prompt "
                              "(update current in place unless --new-version).")
     args = parser.parse_args()
 
-    if args.changelogs_only and args.new_version is not None:
-        parser.error("--changelogs-only cannot be combined with --new-version")
+    if args.changelogs_only and (args.new_version is not None or args.auto):
+        parser.error("--changelogs-only cannot be combined with "
+                     "--new-version or --auto")
 
     source_dir = find_latest_docs_dir(args.docs_version)
     source_version = source_dir.name
@@ -911,6 +919,23 @@ def main() -> int:
         create_new = True
         new_version = (suggested_new if args.new_version == "__auto__"
                        else normalise_version_arg(args.new_version))
+    elif args.auto:
+        # Probe the current docs: any module with a newer SPM release means
+        # this is a new SDK release, so it gets a new doc version folder.
+        log(f"--auto: checking {source_version} modules for newer SPM releases...")
+        newer = []
+        for mod in collect_modules(source_dir, args.only):
+            latest = latest_remote_version(mod.repo_url)
+            if latest and is_newer(latest, mod.current_doc_version):
+                newer.append(f"{mod.name} {mod.current_doc_version} -> {latest}")
+        if newer:
+            create_new, new_version = True, suggested_new
+            log(f"--auto: {len(newer)} module(s) updated; creating {new_version}:")
+            for item in newer:
+                log(f"    {item}")
+        else:
+            create_new = False
+            log(f"--auto: no newer SPM releases; updating {source_version} in place.")
     elif args.update_current or args.yes:
         create_new = False
     else:

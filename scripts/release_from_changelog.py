@@ -163,7 +163,7 @@ def build_release_note(docs_dir: Path, docs_version: str) -> tuple[str, dict[str
     Each module's changelog is compared with the same module's changelog in the
     previous docs version. Only the entries released since then go into the
     note, so it describes what actually changed in this doc version. Modules
-    with no new entries are listed as unchanged. If there is no previous docs
+    with no new entries are left out of the note. If there is no previous docs
     version, each module's latest entry is used.
 
     Returns ``(note_markdown, module_versions)`` where ``module_versions`` maps
@@ -176,7 +176,6 @@ def build_release_note(docs_dir: Path, docs_version: str) -> tuple[str, dict[str
 
     module_versions: dict[str, str] = {}
     updated: list[tuple[str, str | None, str]] = []   # (module, old, new)
-    unchanged: list[tuple[str, str]] = []             # (module, version)
     sections: list[str] = []
 
     if not changelog_dir.is_dir():
@@ -203,7 +202,8 @@ def build_release_note(docs_dir: Path, docs_version: str) -> tuple[str, dict[str
                 new_entries = entries[:1]
 
             if not new_entries:
-                unchanged.append((module, newest))
+                # No new entries since the previous doc version: leave the
+                # module out of the release note entirely.
                 continue
 
             updated.append((module, old, newest))
@@ -236,11 +236,6 @@ def build_release_note(docs_dir: Path, docs_version: str) -> tuple[str, dict[str
     else:
         lines += [f"## Updated SDKs{since}", "",
                   "_No SDK changes in this release._", ""]
-
-    if unchanged:
-        lines += ["## Unchanged SDKs", ""]
-        lines += [f"- {module} {ver}" for module, ver in unchanged]
-        lines.append("")
 
     if sections:
         lines += ["## Changelog", ""]

@@ -13,8 +13,13 @@ name: Release SDK Docs
 # so the bot's own commits won't loop.
 #
 # Triggers
-#   * push to main       -> automatic run (update-current, real run)
-#   * schedule (weekly)  -> automatic run (update-current, real run)
+#   * push to main       -> automatic run (auto, real run)
+#   * schedule (weekly)  -> automatic run (auto, real run)
+#
+# auto mode: if any SDK has a newer SPM release than the current docs, step 1
+# creates a new docs/vX.Y.Z folder (patch bump), step 2 fills its changelogs,
+# and step 3 tags it. If nothing is newer, the current folder is refreshed in
+# place and step 3 skips because its tag already exists.
 #   * workflow_dispatch  -> manual run with inputs (new-version, dry run, ...)
 
 on:
@@ -27,11 +32,12 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: "update-current = refresh docs/vX.Y.Z in place; new-version = create a new docs folder"
+        description: "auto = new docs folder only if an SDK has a newer SPM release; update-current = refresh in place; new-version = always create a new folder"
         type: choice
         required: true
-        default: update-current
+        default: auto
         options:
+          - auto
           - update-current
           - new-version
       new_version:
@@ -104,7 +110,7 @@ jobs:
             MODE="$IN_MODE"; NEW_VERSION="$IN_NEW_VERSION"
             GH_RELEASE="$IN_GH_RELEASE"; DRY_RUN="$IN_DRY_RUN"
           else
-            MODE="update-current"; NEW_VERSION=""
+            MODE="auto"; NEW_VERSION=""
             GH_RELEASE="true"; DRY_RUN="false"
           fi
           if [ -n "$NEW_VERSION" ] && ! [[ "$NEW_VERSION" =~ ^v?[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
@@ -134,6 +140,8 @@ jobs:
             else
               ARGS+=(--new-version)
             fi
+          elif [ "$MODE" = "auto" ]; then
+            ARGS+=(--auto)
           else
             ARGS+=(--update-current)
           fi
@@ -266,7 +274,7 @@ jobs:
           ARGS=(--version "$VERSION" --branch main)
           [ "$DRY_RUN" != "true" ] && ARGS+=(--confirm)
           [ "$GH_RELEASE" != "true" ] && ARGS+=(--no-gh-release)
-          if [ "$DRY_RUN" = "true" ] && [ "${{ needs.update-docs.outputs.mode }}" = "new-version" ]; then
+          if [ "$DRY_RUN" = "true" ] && [ "${{ needs.update-docs.outputs.mode }}" != "update-current" ]; then
             echo "Dry run: the new docs folder wasn't created, so this previews against $VERSION."
           fi
           python3 scripts/create_release.py "${ARGS[@]}"
