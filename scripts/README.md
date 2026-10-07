@@ -263,7 +263,7 @@ one release pipeline.
 
 The workflow runs three ways:
 
-- **Automatically on push to `auth-legacy`** (when `scripts/**`, `docs/**`, or
+- **Automatically on push to `main`** (when `scripts/**`, `docs/**`, or
   the workflow file change). Runs `update-current` for real and commits/pushes
   any refreshed docs. It never creates a tag.
 - **Automatically on a weekly schedule** (Mondays 03:00 UTC) to pick up newly

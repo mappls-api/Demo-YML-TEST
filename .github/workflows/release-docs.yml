@@ -70,7 +70,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          ref: auth-legacy
+          ref: main
           fetch-depth: 0          # full history + tags
 
       - name: Set up Python
@@ -176,7 +176,7 @@ jobs:
           set -euo pipefail
           python3 scripts/create_release.py \
             --version "${{ steps.result.outputs.new_docs_version }}" \
-            --branch auth-legacy \
+            --branch main \
             --confirm
 
       # --- Step 2b: everything else -> commit + push docs, no tag -------------
@@ -191,7 +191,7 @@ jobs:
           set -euo pipefail
           git add docs README.md Version-History.md
           git commit -m "docs: update SDK docs (${{ steps.result.outputs.new_docs_version }})"
-          git push origin auth-legacy
+          git push origin main
 
       # --- Dry run summary ----------------------------------------------------
       # In dry-run the new folder isn't created, so preview the tag name and the
