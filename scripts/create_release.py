@@ -79,24 +79,34 @@ def git_out(cmd: list[str]) -> str:
     ).stdout.strip()
 
 
+def _gh_release_exists(tag: str) -> bool:
+    """True if a GitHub release already exists for ``tag`` (via the gh CLI)."""
+    r = subprocess.run(["gh", "release", "view", tag],
+                       capture_output=True, text=True)
+    return r.returncode == 0
+
+
 # --------------------------------------------------------------------------- #
 # Pre-flight checks
 # --------------------------------------------------------------------------- #
 
-def preflight(tag: str, no_gh: bool) -> None:
+def preflight(tag: str, no_gh: bool, release_only: bool) -> None:
     # Must be inside a git repo.
     if git_out(["rev-parse", "--is-inside-work-tree"]) != "true":
         sys.exit("error: not inside a git working tree.")
 
-    # Tag must not already exist locally.
-    if git_out(["tag", "--list", tag]):
-        sys.exit(f"error: tag '{tag}' already exists locally. "
-                 f"Choose another with --tag or delete it first.")
+    # In --release-only mode the tag is expected to already exist (we're just
+    # (re)publishing the release for it), so skip the "must not exist" checks.
+    if not release_only:
+        # Tag must not already exist locally.
+        if git_out(["tag", "--list", tag]):
+            sys.exit(f"error: tag '{tag}' already exists locally. "
+                     f"Choose another with --tag or delete it first.")
 
-    # Tag must not already exist on the remote.
-    remote_tags = git_out(["ls-remote", "--tags", "origin", tag])
-    if remote_tags:
-        sys.exit(f"error: tag '{tag}' already exists on the remote.")
+        # Tag must not already exist on the remote.
+        remote_tags = git_out(["ls-remote", "--tags", "origin", tag])
+        if remote_tags:
+            sys.exit(f"error: tag '{tag}' already exists on the remote.")
 
     # gh must be available/authenticated if we intend to publish.
     if not no_gh:
@@ -140,7 +150,16 @@ def main() -> int:
                              "as-is (assumes docs are already committed).")
     parser.add_argument("--no-gh-release", action="store_true",
                         help="Skip creating the GitHub release.")
+    parser.add_argument("--release-only", action="store_true",
+                        help="Only (re)publish the GitHub release for an "
+                             "already-existing tag: no commit, no new tag, no "
+                             "push. The release notes are rebuilt from the "
+                             "changed SDKs' changelogs.")
     args = parser.parse_args()
+
+    if args.release_only:
+        # Release-only implies: don't commit, don't make a tag, don't push.
+        args.no_commit = True
 
     confirm = args.confirm
     docs_dir = rfc.find_docs_dir(args.version)
@@ -161,7 +180,7 @@ def main() -> int:
     log(f"Mode          : {'EXECUTE' if confirm else 'DRY-RUN (nothing will change)'}")
     log("")
 
-    preflight(tag, args.no_gh_release)
+    preflight(tag, args.no_gh_release, args.release_only)
 
     # 1. Build and write the release note.
     note, module_versions = rfc.build_release_note(docs_dir, docs_version)
@@ -201,13 +220,18 @@ def main() -> int:
         log("")
 
     # 3. Create the annotated tag (verbatim so markdown '#' headings survive).
-    log("Creating annotated tag...")
-    run(["git", "tag", "-a", tag, "--cleanup=verbatim", "-F", str(notes_path)],
-        confirm)
-    log("")
+    if args.release_only:
+        log("Skipping tag creation (--release-only; tag already exists).\n")
+    else:
+        log("Creating annotated tag...")
+        run(["git", "tag", "-a", tag, "--cleanup=verbatim", "-F",
+             str(notes_path)], confirm)
+        log("")
 
     # 4. Push branch + tag.
-    if push:
+    if args.release_only:
+        log("Skipping push (--release-only).\n")
+    elif push:
         log("Pushing branch and tag...")
         run(["git", "push", args.remote, branch], confirm)
         run(["git", "push", args.remote, tag], confirm)
@@ -217,14 +241,30 @@ def main() -> int:
     else:
         log("Skipping push (dry-run; use --confirm to push).\n")
 
-    # 5. GitHub release.
+    # 5. GitHub release. Create it, or update it if it already exists so the
+    #    notes reflect the latest changed-SDK changelog.
     if not args.no_gh_release:
-        log("Creating GitHub release...")
-        gh_cmd = ["gh", "release", "create", tag,
-                  "--title", args.title or f"Mappls iOS SDK {bare}",
-                  "--notes-file", str(notes_path),
-                  "--target", branch]
-        if push:
+        title = args.title or f"Mappls iOS SDK {bare}"
+        # The tag must exist on the remote for a release. That's true when we
+        # just pushed it, or in --release-only mode (the tag is pre-existing).
+        tag_on_remote = push or args.release_only
+        # A brand-new tag can't have a release yet, so only look for an
+        # existing release (and fall back to editing it) in --release-only.
+        update_existing = (args.release_only and confirm
+                           and _gh_release_exists(tag))
+        if update_existing:
+            log("Updating existing GitHub release...")
+            gh_cmd = ["gh", "release", "edit", tag,
+                      "--title", title,
+                      "--notes-file", str(notes_path),
+                      "--target", branch]
+        else:
+            log("Creating GitHub release...")
+            gh_cmd = ["gh", "release", "create", tag,
+                      "--title", title,
+                      "--notes-file", str(notes_path),
+                      "--target", branch]
+        if tag_on_remote:
             run(gh_cmd, confirm)
         else:
             # Can't publish a release for an unpushed tag.

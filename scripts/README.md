@@ -251,6 +251,9 @@ python3 scripts/create_release.py --confirm --no-gh-release
 - `--local` — commit + tag, no push.
 - `--no-commit` — tag HEAD as-is, no new commit.
 - `--no-gh-release` — skip the GitHub release.
+- `--release-only` — don't commit, tag, or push; only (re)publish the GitHub
+  release for an existing tag, rebuilding its notes from the changed SDKs'
+  changelogs. (Creates the release if missing, edits it if it already exists.)
 
 ---
 
@@ -264,9 +267,13 @@ another. Each job only starts if the previous one succeeded.
 |---|---|
 | **1. Update documents** | `update_sdk_docs.py --skip-changelogs`: refreshes module docs and the Documentation History tables, then commits and pushes. |
 | **2. Update changelogs** | `update_sdk_docs.py --changelogs-only`: copies each distribution repo's `CHANGELOG.md` verbatim into `CHANGELOG/<Module>.md` in the newest docs folder (repos without one are skipped), then commits and pushes. |
-| **3. Create git tag** | `create_release.py`: builds `RELEASE_NOTES.md` from the changelogs, creates the tag (e.g. `1.0.36`), pushes it, and publishes a GitHub release. Skipped if the tag already exists. |
+| **3. Create tag + release** | `create_release.py`: builds `RELEASE_NOTES.md` from the changed SDKs' changelogs, then **always publishes a GitHub release**. If the tag is new it also creates and pushes the tag (e.g. `1.0.36`); if the tag already exists it skips tagging and just (re)publishes the release for it (`--release-only`). |
 
-Each job checks out the latest `main`, so it sees the previous job's commit.
+Each job checks out the latest `auth-legacy`, so it sees the previous job's commit.
+
+The release name is `<doc version> auth-legacy` (e.g. `v1.0.36 auth-legacy`),
+and its body lists only the SDKs that changed since the previous doc version,
+with their changelog entries.
 
 ## Triggers
 
@@ -283,12 +290,12 @@ only. Inputs:
     - `new-version`: always create a new folder.
   - **new_version**: explicit version for `new-version`, e.g. `v1.0.37`;
     blank = auto-bump the patch.
-  - **create_github_release**: publish a GitHub release with the tag (default true).
   - **dry_run**: preview only (default **false**, so a run commits, tags, and
     pushes for real; tick it to preview).
 
-The tag name comes from the newest docs folder, so a new folder gets a new tag
-(e.g. `1.0.36`). When nothing new has shipped, no folder is created and job 3
-skips because the current version's tag already exists.
+The tag name comes from the newest docs folder (e.g. `1.0.36`). A new folder
+gets a new tag plus a fresh release. When nothing new has shipped, no folder is
+created, so job 3 keeps the existing tag and refreshes that version's release
+from the latest changelogs.
 
 Locally, the same behaviour is `python3 scripts/update_sdk_docs.py --auto`.

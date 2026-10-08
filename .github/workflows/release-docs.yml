@@ -38,11 +38,6 @@ on:
         type: string
         required: false
         default: ""
-      create_github_release:
-        description: "Also publish a GitHub release with the tag"
-        type: boolean
-        required: true
-        default: true
       dry_run:
         description: "Dry run (preview only, nothing committed/pushed/published). Off = changes are committed, tagged and pushed."
         type: boolean
@@ -76,7 +71,6 @@ jobs:
     outputs:
       mode: ${{ steps.cfg.outputs.mode }}
       dry_run: ${{ steps.cfg.outputs.dry_run }}
-      gh_release: ${{ steps.cfg.outputs.gh_release }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -101,12 +95,10 @@ jobs:
         env:
           IN_MODE: ${{ inputs.mode }}
           IN_NEW_VERSION: ${{ inputs.new_version }}
-          IN_GH_RELEASE: ${{ inputs.create_github_release }}
           IN_DRY_RUN: ${{ inputs.dry_run }}
         run: |
           set -euo pipefail
-          MODE="$IN_MODE"; NEW_VERSION="$IN_NEW_VERSION"
-          GH_RELEASE="$IN_GH_RELEASE"; DRY_RUN="$IN_DRY_RUN"
+          MODE="$IN_MODE"; NEW_VERSION="$IN_NEW_VERSION"; DRY_RUN="$IN_DRY_RUN"
           if [ -n "$NEW_VERSION" ] && ! [[ "$NEW_VERSION" =~ ^v?[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
             echo "::error::new_version must look like v1.0.37 (got '$NEW_VERSION')"
             exit 1
@@ -114,10 +106,9 @@ jobs:
           {
             echo "mode=$MODE"
             echo "new_version=$NEW_VERSION"
-            echo "gh_release=$GH_RELEASE"
             echo "dry_run=$DRY_RUN"
           } >> "$GITHUB_OUTPUT"
-          echo "Resolved: mode=$MODE new_version='$NEW_VERSION' gh_release=$GH_RELEASE dry_run=$DRY_RUN"
+          echo "Resolved: mode=$MODE new_version='$NEW_VERSION' dry_run=$DRY_RUN"
 
       - name: Update module docs
         env:
@@ -238,7 +229,8 @@ jobs:
             echo "::error::No docs/vX.Y.Z folder found."
             exit 1
           fi
-          TAG="${VERSION#v}"
+          # Tag = "<doc version>(<branch>)", e.g. "v1.0.36(auth-legacy)".
+          TAG="${VERSION}(${TARGET_BRANCH})"
           if git rev-parse -q --verify "refs/tags/$TAG" >/dev/null \
              || [ -n "$(git ls-remote --tags origin "refs/tags/$TAG")" ]; then
             EXISTS="true"
@@ -253,23 +245,37 @@ jobs:
             echo "exists=$EXISTS"
           } >> "$GITHUB_OUTPUT"
 
-      # create_release.py: writes RELEASE_NOTES.md from the changelogs, commits
-      # it, creates the annotated tag, pushes branch + tag, and (optionally)
-      # publishes the GitHub release. Without --confirm it only previews.
+      # New tag -> create the tag AND publish the release.
+      # create_release.py writes RELEASE_NOTES.md from the changed SDKs'
+      # changelogs, commits it, tags, pushes, and publishes the release.
       - name: Create tag and release
         if: ${{ steps.tag.outputs.exists != 'true' }}
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VERSION: ${{ steps.tag.outputs.version }}
+          TAG: ${{ steps.tag.outputs.tag }}
           DRY_RUN: ${{ needs.update-docs.outputs.dry_run }}
-          GH_RELEASE: ${{ needs.update-docs.outputs.gh_release }}
         run: |
           set -euo pipefail
-          # Release name = doc version + branch, e.g. "v1.0.36 auth-legacy".
-          ARGS=(--version "$VERSION" --branch "$TARGET_BRANCH" --title "$VERSION $TARGET_BRANCH")
+          # Tag + release name = "<doc version>(<branch>)".
+          ARGS=(--version "$VERSION" --tag "$TAG" --branch "$TARGET_BRANCH" --title "$TAG")
           [ "$DRY_RUN" != "true" ] && ARGS+=(--confirm)
-          [ "$GH_RELEASE" != "true" ] && ARGS+=(--no-gh-release)
           if [ "$DRY_RUN" = "true" ] && [ "${{ needs.update-docs.outputs.mode }}" != "update-current" ]; then
             echo "Dry run: the new docs folder wasn't created, so this previews against $VERSION."
           fi
+          python3 scripts/create_release.py "${ARGS[@]}"
+
+      # Tag already existed -> don't re-tag, but still (re)publish the release
+      # so its notes reflect the changed SDKs' changelogs.
+      - name: Publish release for existing tag
+        if: ${{ steps.tag.outputs.exists == 'true' }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VERSION: ${{ steps.tag.outputs.version }}
+          TAG: ${{ steps.tag.outputs.tag }}
+          DRY_RUN: ${{ needs.update-docs.outputs.dry_run }}
+        run: |
+          set -euo pipefail
+          ARGS=(--version "$VERSION" --tag "$TAG" --branch "$TARGET_BRANCH" --title "$TAG" --release-only)
+          [ "$DRY_RUN" != "true" ] && ARGS+=(--confirm)
           python3 scripts/create_release.py "${ARGS[@]}"
