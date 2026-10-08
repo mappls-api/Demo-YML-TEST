@@ -19,12 +19,10 @@ distribution repos under [github.com/MapmyIndia](https://github.com/MapmyIndia).
    only `Package.swift`), or if you pass `--row-only`, the script instead
    splices a single version-history row (real date/description when a README
    exists, otherwise the `--date` / `--note` fallback).
-5. The matching **`CHANGELOG/<Module>.md`** file is also refreshed from the
-   distribution repo: it uses the repo's native `CHANGELOG.md` when present,
-   otherwise it derives the changelog from the README's Version History table.
-   This runs even when the main doc is already current (so a lagging changelog
-   still gets caught up), and keeps the release-note script's source data fresh.
-   Repos with no README or changelog are left unchanged.
+5. The matching **`CHANGELOG/<Module>.md`** file is a verbatim copy of the
+   distribution repo's `CHANGELOG.md` (at the released version tag, falling
+   back to the default branch). If the repo has no CHANGELOG file, nothing is
+   done: the local changelog file is left exactly as it is.
 6. Refreshes the module version numbers in the current-version row of the
    **Documentation History** table in both `README.md` and
    `docs/vX.Y.Z/README.md`.
@@ -263,7 +261,7 @@ another. Each job only starts if the previous one succeeded.
 | Job | What it does |
 |---|---|
 | **1. Update documents** | `update_sdk_docs.py --skip-changelogs`: refreshes module docs and the Documentation History tables, then commits and pushes. |
-| **2. Update changelogs** | `update_sdk_docs.py --changelogs-only`: refreshes `CHANGELOG/*.md` in the newest docs folder, then commits and pushes. |
+| **2. Update changelogs** | `update_sdk_docs.py --changelogs-only`: copies each distribution repo's `CHANGELOG.md` verbatim into `CHANGELOG/<Module>.md` in the newest docs folder (repos without one are skipped), then commits and pushes. |
 | **3. Create git tag** | `create_release.py`: builds `RELEASE_NOTES.md` from the changelogs, creates the tag (e.g. `1.0.36`), pushes it, and publishes a GitHub release. Skipped if the tag already exists. |
 
 Each job checks out the latest `main`, so it sees the previous job's commit.

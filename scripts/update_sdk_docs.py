@@ -257,62 +257,8 @@ def fetch_remote_changelog(repo_url: str, version: str,
     """Fetch a native CHANGELOG file from the distribution repo, if present."""
     return fetch_remote_file(
         repo_url, version, default_branch,
-        ("CHANGELOG.md", "Changelog.md", "changelog.md",
-         "CHANGELOG", "CHANGES.md"),
+        ("CHANGELOG.md", "Changelog.md", "changelog.md", "CHANGELOG"),
     )
-
-
-def derive_changelog_from_readme(readme_text: str, module_name: str) -> str | None:
-    """Convert a README "Version History" table into CHANGELOG markdown.
-
-    Produces the same shape the local ``CHANGELOG/<Module>.md`` files use:
-
-        # Changes to the <Module> SDK for iOS
-
-        ## <ver> - <date>
-
-        ### Changes
-        - <bullet>
-        - <bullet>
-
-    Returns ``None`` if no version-history rows are found.
-    """
-    rows: list[tuple[str, str, str]] = []
-    for line in readme_text.splitlines():
-        m = VERSION_ROW_RE.match(line)
-        if not m:
-            continue
-        version = m.group(1)
-        cells = [c.strip() for c in line.strip().strip("|").split("|")]
-        if len(cells) < 3:
-            continue
-        date = cells[1].strip()
-        description = cells[2].strip()
-        rows.append((version, date, description))
-
-    if not rows:
-        return None
-
-    out: list[str] = [f"# Changes to the {module_name} SDK for iOS", ""]
-    for version, date, description in rows:
-        out.append(f"## {version} - {date}")
-        out.append("")
-        out.append("### Changes")
-        # Descriptions use "<br>" (or "<Br>") as line separators and often
-        # start each item with a leading "- ". Normalise into clean bullets.
-        parts = re.split(r"(?i)<br\s*/?>", description)
-        wrote_bullet = False
-        for part in parts:
-            text = part.strip()
-            text = re.sub(r"^-\s*", "", text).strip()  # drop existing leading dash
-            if not text:
-                continue
-            out.append(f"- {text}")
-            wrote_bullet = True
-        if not wrote_bullet:
-            out.append("- Improvements and bug fixes.")
-        out.append("")
-    return "\n".join(out).rstrip() + "\n"
 
 
 def extract_history_row(readme_text: str, version: str) -> tuple[str, str] | None:
@@ -751,18 +697,6 @@ def _rewrite_new_folder_readme(new_readme: Path, old_version: str,
         + (f", dropped oldest row {dropped}" if dropped else ""))
 
 
-def _dedupe_leading_title(text: str) -> str:
-    """Collapse an immediately-repeated leading '# ...' title line.
-
-    Some upstream CHANGELOG files accidentally repeat their title line twice;
-    keep just the first.
-    """
-    lines = text.splitlines()
-    if len(lines) >= 2 and lines[0].startswith("# ") and lines[0] == lines[1]:
-        del lines[1]
-    return "\n".join(lines)
-
-
 def _changelog_top_version(path: Path) -> str | None:
     """Return the newest version in a local CHANGELOG file, or None."""
     if not path.exists():
@@ -778,11 +712,12 @@ def update_module_changelog(docs_dir: Path, module_name: str, repo_url: str,
                             version: str, default_branch: str | None,
                             remote_readme: str | None, no_fetch: bool,
                             dry_run: bool) -> str:
-    """Refresh ``docs/<version>/CHANGELOG/<Module>.md`` from the distribution repo.
+    """Copy the distribution repo's CHANGELOG into ``docs/<version>/CHANGELOG/<Module>.md``.
 
-    Prefers a native CHANGELOG file in the repo; otherwise derives one from the
-    README's Version History table (reusing an already-fetched README when
-    available). Returns a short status label describing what was done.
+    The repo's CHANGELOG file is copied verbatim. If the repo has no CHANGELOG
+    file, nothing is done: the local file is left exactly as it is (it is not
+    derived from the README). ``remote_readme`` is accepted for call-site
+    compatibility but no longer used. Returns a short status label.
     """
     changelog_dir = docs_dir / "CHANGELOG"
     target = changelog_dir / f"{module_name}.md"
@@ -790,32 +725,19 @@ def update_module_changelog(docs_dir: Path, module_name: str, repo_url: str,
     if no_fetch:
         return "changelog: skipped (--no-fetch)"
 
-    # 1. Prefer the repo's own CHANGELOG file.
     content = fetch_remote_changelog(repo_url, version, default_branch)
-    source = "native CHANGELOG"
-
-    # 2. Otherwise derive from the README version-history table.
     if not content:
-        readme = remote_readme
-        if readme is None:
-            readme = fetch_remote_readme(repo_url, version, default_branch)
-        if readme:
-            content = derive_changelog_from_readme(readme, module_name)
-            source = "derived from README version history"
+        return "changelog: no CHANGELOG in repo (nothing done)"
 
-    if not content:
-        return "changelog: no source available (left unchanged)"
-
-    content = _dedupe_leading_title(content)
-    if not content.endswith("\n"):
-        content += "\n"
+    if target.exists() and target.read_text(encoding="utf-8") == content:
+        return f"changelog: {target.name} already matches repo CHANGELOG"
 
     if dry_run:
-        return f"changelog: WOULD write {target.name} ({source})"
+        return f"changelog: WOULD copy repo CHANGELOG -> {target.name}"
 
     changelog_dir.mkdir(parents=True, exist_ok=True)
     target.write_text(content, encoding="utf-8")
-    return f"changelog: wrote {target.name} ({source})"
+    return f"changelog: copied repo CHANGELOG -> {target.name}"
 
 
 def prompt_mode(current_version: str, suggested_new: str) -> tuple[bool, str | None]:
@@ -993,14 +915,8 @@ def main() -> int:
         latest_versions[mod.name] = mod.latest_remote
 
         if args.changelogs_only:
-            # Changelog step: refresh only when the CHANGELOG lags the latest
-            # released version; never touch the module doc itself.
-            cl_top = _changelog_top_version(
-                docs_dir / "CHANGELOG" / f"{mod.name}.md"
-            )
-            if args.no_fetch or not is_newer(mod.latest_remote, cl_top):
-                log("    -> changelog up to date\n")
-                continue
+            # Changelog step: copy the repo's CHANGELOG verbatim (no-op when
+            # it's identical or the repo has none). Never touches module docs.
             cl_status = update_module_changelog(
                 docs_dir, mod.name, mod.repo_url, mod.latest_remote,
                 remote_default_branch(mod.repo_url), None,
