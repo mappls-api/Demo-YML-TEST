@@ -243,6 +243,8 @@ python3 scripts/create_release.py --confirm --no-gh-release
 
 - `--version` — docs version to release (default: newest).
 - `--tag` — tag name (default: bare version, e.g. `1.0.36`).
+- `--title` — GitHub release name (default: `Mappls iOS SDK <version>`; the CI
+  pipeline passes `<doc version> auth-legacy`, e.g. `v1.0.36 auth-legacy`).
 - `--branch` / `--remote` — target branch / remote (defaults: current branch, `origin`).
 - `--message` — commit message (default: `docs: release <tag>`).
 - `--confirm` — actually execute (otherwise dry-run).
@@ -268,9 +270,11 @@ Each job checks out the latest `main`, so it sees the previous job's commit.
 
 ## Triggers
 
-- **Every push to `main`**: real `auto` run of all three jobs.
-- **Weekly schedule** (Mondays 03:00 UTC): same as a push.
-- **Manually** via Actions → "Release SDK Docs" → **Run workflow**, with inputs:
+Manual only, and only on the **`auth-legacy`** branch: pushes and schedules
+don't start it. Run it from Actions → "Release SDK Docs" → **Run workflow** and
+pick `auth-legacy` under "Use workflow from". Started from any other branch,
+all three jobs are skipped. Commits, tags, and releases go to `auth-legacy`
+only. Inputs:
   - **mode**:
     - `auto` (default): if any SDK has a newer SPM release than the current
       docs, create a new `docs/vX.Y.Z` folder (patch bump, e.g. `v1.0.35` →
@@ -280,7 +284,8 @@ Each job checks out the latest `main`, so it sees the previous job's commit.
   - **new_version**: explicit version for `new-version`, e.g. `v1.0.37`;
     blank = auto-bump the patch.
   - **create_github_release**: publish a GitHub release with the tag (default true).
-  - **dry_run**: preview only (default **true**).
+  - **dry_run**: preview only (default **false**, so a run commits, tags, and
+    pushes for real; tick it to preview).
 
 The tag name comes from the newest docs folder, so a new folder gets a new tag
 (e.g. `1.0.36`). When nothing new has shipped, no folder is created and job 3

@@ -118,6 +118,9 @@ def main() -> int:
     parser.add_argument("--version", default=None,
                         help="Docs version to release, e.g. v1.0.36 "
                              "(defaults to the newest docs folder).")
+    parser.add_argument("--title", default=None,
+                        help="GitHub release name (default: "
+                             "'Mappls iOS SDK <version>').")
     parser.add_argument("--tag", default=None,
                         help="Tag name (defaults to the bare version, e.g. "
                              "1.0.36, matching existing repo tags).")
@@ -218,7 +221,7 @@ def main() -> int:
     if not args.no_gh_release:
         log("Creating GitHub release...")
         gh_cmd = ["gh", "release", "create", tag,
-                  "--title", f"Mappls iOS SDK {bare}",
+                  "--title", args.title or f"Mappls iOS SDK {bare}",
                   "--notes-file", str(notes_path),
                   "--target", branch]
         if push:

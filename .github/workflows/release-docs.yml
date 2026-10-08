@@ -9,26 +9,19 @@ name: Release SDK Docs
 #                         publish a GitHub release. Skipped if the tag exists.
 #
 # Each job commits and pushes its own changes, and the next job checks out the
-# updated main. Pushes made with GITHUB_TOKEN don't trigger new workflow runs,
+# updated branch. Pushes made with GITHUB_TOKEN don't trigger new workflow runs,
 # so the bot's own commits won't loop.
 #
-# Triggers
-#   * push to main       -> automatic run (auto, real run)
-#   * schedule (weekly)  -> automatic run (auto, real run)
+# Trigger: manual only. Actions tab -> "Release SDK Docs" -> Run workflow.
+# Pushes and schedules do NOT start this pipeline. It only runs when started
+# on the auth-legacy branch, and only commits/tags/pushes auth-legacy.
 #
 # auto mode: if any SDK has a newer SPM release than the current docs, step 1
 # creates a new docs/vX.Y.Z folder (patch bump), step 2 fills its changelogs,
 # and step 3 tags it. If nothing is newer, the current folder is refreshed in
 # place and step 3 skips because its tag already exists.
-#   * workflow_dispatch  -> manual run with inputs (new-version, dry run, ...)
 
 on:
-  push:
-    branches:
-      - main
-  schedule:
-    # Weekly, Mondays 03:00 UTC: picks up newly published SPM versions.
-    - cron: "0 3 * * 1"
   workflow_dispatch:
     inputs:
       mode:
@@ -51,17 +44,21 @@ on:
         required: true
         default: true
       dry_run:
-        description: "Dry run (preview only, nothing committed/pushed/published)"
+        description: "Dry run (preview only, nothing committed/pushed/published). Off = changes are committed, tagged and pushed."
         type: boolean
         required: true
-        default: true
+        default: false
 
 permissions:
   contents: write        # push commits/tags and create releases
 
-# Don't let overlapping runs race on main's commits/tags.
+# Only this branch is updated, tagged and released.
+env:
+  TARGET_BRANCH: auth-legacy
+
+# Don't let overlapping runs race on the branch's commits/tags.
 concurrency:
-  group: release-docs-main
+  group: release-docs-auth-legacy
   cancel-in-progress: false
 
 jobs:
@@ -70,6 +67,10 @@ jobs:
   # ------------------------------------------------------------------------ #
   update-docs:
     name: "1. Update documents"
+    # Only run when started on auth-legacy (pick it in the "Use workflow
+    # from" dropdown). On any other branch this job, and so jobs 2 and 3,
+    # are skipped.
+    if: github.ref == 'refs/heads/auth-legacy'
     runs-on: ubuntu-latest
     timeout-minutes: 30
     outputs:
@@ -80,7 +81,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          ref: main
+          ref: ${{ env.TARGET_BRANCH }}
           fetch-depth: 0
 
       - name: Set up Python
@@ -93,26 +94,19 @@ jobs:
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-      # Manual runs use the inputs; push / schedule runs always do a real
-      # update-current run. Inputs go through env (not ${{ }} in the script)
-      # so user-typed values can't inject shell commands.
+      # Inputs go through env (not ${{ }} in the script) so user-typed values
+      # can't inject shell commands.
       - name: Resolve settings
         id: cfg
         env:
-          EVENT: ${{ github.event_name }}
           IN_MODE: ${{ inputs.mode }}
           IN_NEW_VERSION: ${{ inputs.new_version }}
           IN_GH_RELEASE: ${{ inputs.create_github_release }}
           IN_DRY_RUN: ${{ inputs.dry_run }}
         run: |
           set -euo pipefail
-          if [ "$EVENT" = "workflow_dispatch" ]; then
-            MODE="$IN_MODE"; NEW_VERSION="$IN_NEW_VERSION"
-            GH_RELEASE="$IN_GH_RELEASE"; DRY_RUN="$IN_DRY_RUN"
-          else
-            MODE="auto"; NEW_VERSION=""
-            GH_RELEASE="true"; DRY_RUN="false"
-          fi
+          MODE="$IN_MODE"; NEW_VERSION="$IN_NEW_VERSION"
+          GH_RELEASE="$IN_GH_RELEASE"; DRY_RUN="$IN_DRY_RUN"
           if [ -n "$NEW_VERSION" ] && ! [[ "$NEW_VERSION" =~ ^v?[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
             echo "::error::new_version must look like v1.0.37 (got '$NEW_VERSION')"
             exit 1
@@ -123,7 +117,7 @@ jobs:
             echo "gh_release=$GH_RELEASE"
             echo "dry_run=$DRY_RUN"
           } >> "$GITHUB_OUTPUT"
-          echo "Resolved: event=$EVENT mode=$MODE new_version='$NEW_VERSION' gh_release=$GH_RELEASE dry_run=$DRY_RUN"
+          echo "Resolved: mode=$MODE new_version='$NEW_VERSION' gh_release=$GH_RELEASE dry_run=$DRY_RUN"
 
       - name: Update module docs
         env:
@@ -157,8 +151,8 @@ jobs:
             exit 0
           fi
           git commit -m "docs: update SDK module docs"
-          git pull --rebase origin main
-          git push origin main
+          git pull --rebase origin "$TARGET_BRANCH"
+          git push origin "$TARGET_BRANCH"
 
   # ------------------------------------------------------------------------ #
   # Step 2: update changelogs
@@ -172,7 +166,7 @@ jobs:
       - name: Checkout (includes step 1's commit)
         uses: actions/checkout@v4
         with:
-          ref: main
+          ref: ${{ env.TARGET_BRANCH }}
           fetch-depth: 0
 
       - name: Set up Python
@@ -206,8 +200,8 @@ jobs:
             exit 0
           fi
           git commit -m "docs: update SDK changelogs"
-          git pull --rebase origin main
-          git push origin main
+          git pull --rebase origin "$TARGET_BRANCH"
+          git push origin "$TARGET_BRANCH"
 
   # ------------------------------------------------------------------------ #
   # Step 3: create git tag (+ GitHub release)
@@ -221,7 +215,7 @@ jobs:
       - name: Checkout (includes steps 1 and 2 commits)
         uses: actions/checkout@v4
         with:
-          ref: main
+          ref: ${{ env.TARGET_BRANCH }}
           fetch-depth: 0          # full history + tags
 
       - name: Set up Python
@@ -271,7 +265,8 @@ jobs:
           GH_RELEASE: ${{ needs.update-docs.outputs.gh_release }}
         run: |
           set -euo pipefail
-          ARGS=(--version "$VERSION" --branch main)
+          # Release name = doc version + branch, e.g. "v1.0.36 auth-legacy".
+          ARGS=(--version "$VERSION" --branch "$TARGET_BRANCH" --title "$VERSION $TARGET_BRANCH")
           [ "$DRY_RUN" != "true" ] && ARGS+=(--confirm)
           [ "$GH_RELEASE" != "true" ] && ARGS+=(--no-gh-release)
           if [ "$DRY_RUN" = "true" ] && [ "${{ needs.update-docs.outputs.mode }}" != "update-current" ]; then
