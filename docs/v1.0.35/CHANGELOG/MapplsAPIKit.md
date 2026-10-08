@@ -1,4 +1,5 @@
 # Changes to the MapplsAPIKit SDK for iOS
+# Changes to the MapplsAPIKit SDK for iOS
 ## 2.0.38 - 25 Sep, 2026
 ### Added
 - Added a `responseLanguage` option to `MapplsNearbyAtlasOptions`, `MapplsTextSearchAtlasOptions`, and `MapplsPOIAlongTheRouteOptions` to request the response in a specified language.
