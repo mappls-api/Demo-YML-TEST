@@ -17,38 +17,75 @@ This plugin gets the layer specified which is stored in Mappls’s Database and 
 ## [Installation](#Installation)
 
 
-This plugin can be installed using CocoaPods. It is available with the name `MapplsGeoanalytics`.
+`MapplsGeoanalytics` can be installed with either CocoaPods or Swift Package Manager.
 
 ### [Using CocoaPods](#Using-CocoaPods)
 
-Create a Podfile with the following specification:
+Add the following line to your `Podfile`:
+
+```ruby
+pod 'MapplsGeoanalytics', '1.0.1'
+```
+
+Then run `pod repo update && pod install` and open the resulting `.xcworkspace`.
+
+### [Using Swift Package Manager](#Using-Swift-Package-Manager)
+
+Add the distribution package to your `Package.swift` dependencies:
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/mappls-api/mappls-geoanalytics-ios-distribution.git", from: "1.0.1")
+]
+```
+
+Or in Xcode: **File → Add Package Dependencies…** and enter the package URL:
 
 ```
-pod 'MapplsGeoanalytics', '0.2.0'
+https://github.com/mappls-api/mappls-geoanalytics-ios-distribution.git
 ```
 
-Run `pod repo update && pod install` and open the resulting Xcode workspace.
+The package exposes a single `MapplsGeoanalytics` library product backed by a binary XCFramework.
 
 ### [Version History](#Version-History)
 
-| Version | Dated | Description | 
+| Version | Dated | Description |
 | :---- | :---- | :---- |
-| `1.0.0` | 05 June 2022 | Initial version release with a Mappls geoanalytics. |
+| `1.0.1` | — | Updated minimum iOS deployment target to 15.0, revised authentication, and added SPM distribution. |
+| `1.0.0` | 20 June 2022 | Initial version release with a Mappls geoanalytics. |
 
-#### [Dependencies](#Dependencies)
+### [Dependencies](#Dependencies)
 
-This library depends upon several Mappls's own libraries. All dependent libraries will be automatically installed using CocoaPods.
+`MapplsGeoanalytics` depends on the following Mappls SDKs:
 
-Below are list of dependencies which are required to run this SDK:
+| Dependency | Minimum Version | Repository |
+| :---- | :---- | :---- |
+| MapplsAPICore | 1.0.18 | https://github.com/MapmyIndia/mappls-api-core-distribution.git |
+| MapplsAPIKit | 2.0.38 | https://github.com/MapmyIndia/mappls-api-kit-distribution.git |
+| MapplsMap | 6.0.2 | https://github.com/MapmyIndia/mappls-map-ios-distribution.git |
 
-- [MapplsAPICore](https://github.com/mappls-api/mappls-ios-sdk/docs/v1.0.0/MapplsAPICore.md)
-- [MapplsAPIKit](https://github.com/mappls-api/mappls-ios-sdk/docs/v1.0.0/MapplsAPIKit.md)
-- [MapplsMaps](https://github.com/mappls-api/mappls-ios-sdk/docs/v1.0.0/MapplsMap.md)
+When installing with CocoaPods, these dependencies are resolved automatically. When using Swift Package Manager, make sure the dependencies are also added to your project:
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/MapmyIndia/mappls-api-core-distribution.git", from: "1.0.18"),
+    .package(url: "https://github.com/MapmyIndia/mappls-api-kit-distribution.git", from: "2.0.38"),
+    .package(url: "https://github.com/MapmyIndia/mappls-map-ios-distribution.git", from: "6.0.2")
+]
+```
+
+### [Supported Platforms](#Supported-Platforms)
+
+| Platform | Minimum Deployment Target |
+| :---- | :---- |
+| iOS | 15.0 |
+
+The Swift Package distribution targets iOS 15.0 and above.
 
 ## [Authorization](#Authorization)
 
 ### [MapplsAPICore](#MapplsAPICore)
-It is required to set Mappls keys to use any MAPPL's SDK. Please refer the documenation [here](MapplsAPICore.md).
+It is required to set MAPPLS's keys to use any MAPPL's SDK. Please see [here](MapplsAPICore.md) to achieve this.
 
 ## [Precap](#Precap)
 
@@ -277,7 +314,7 @@ GeoanalyticsGetAttrValues is class which contains following attribute.
 
 For any queries and support, please contact:
 
-[<img src="https://about.mappls.com/images/mappls-b-logo.svg" height="40"/> </p>](https://about.mappls.com/api/)
+[<img src="https://mmi-api-team.s3.amazonaws.com/Mappls-SDKs/Resources/mappls-logo.png" height="40"/> </p>](https://about.mappls.com/api/)
 
 Email us at [apisupport@mappls.com](mailto:apisupport@mappls.com)
 
@@ -291,7 +328,7 @@ Need support? contact us!
 
 [<p align="center"> <img src="https://www.mapmyindia.com/june-newsletter/icon4.png"/> ](https://www.facebook.com/Mapplsofficial)[![](https://www.mapmyindia.com/june-newsletter/icon2.png)](https://twitter.com/mappls)[![](https://www.mapmyindia.com/newsletter/2017/aug/llinkedin.png)](https://www.linkedin.com/company/mappls/)[![](https://www.mapmyindia.com/june-newsletter/icon3.png)](https://www.youtube.com/channel/UCAWvWsh-dZLLeUU7_J9HiOA)
 
-<div align="center">@ Copyright 2022 CE Info Systems Pvt. Ltd. All Rights Reserved.</div>
+<div align="center">@ Copyright 2020 CE Info Systems Pvt. Ltd. All Rights Reserved.</div>
 
 <div align="center"> <a href="https://about.mappls.com/api/terms-&-conditions">Terms & Conditions</a> | <a href="https://www.mappls.com/about/privacy-policy">Privacy Policy</a> | <a href="https://www.mappls.com/pdf/mappls-sustainability-policy-healt-labour-rules-supplir-sustainability.pdf">Supplier Sustainability Policy</a> | <a href="https://www.mappls.com/pdf/Health-Safety-Management.pdf">Health & Safety Policy</a> | <a href="https://www.mappls.com/pdf/Environment-Sustainability-Policy-CSR-Report.pdf">Environmental Policy & CSR Report</a>
 

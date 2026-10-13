@@ -19,14 +19,24 @@ The plugin offers the following basic functionalities:
 **Step 1:-**
 ## [Installation](#Installation)
 
-This plugin can be installed using CocoaPods. It is available with name `MapplsDrivingRangePlugin`.
+This plugin can be installed using Swift Package Manager or CocoaPods. It is available with name `MapplsDrivingRangePlugin`.
+
+### [Using Swift Package Manager](#Using-Swift-Package-Manager)
+
+To add a package dependency to your Xcode project, select File > Add Package Dependencies and enter the repository URL below. See [Adding Package Dependencies to Your App](https://developer.apple.com/documentation/xcode/adding-package-dependencies-to-your-app).
+
+```
+https://github.com/MapmyIndia/mappls-driving-range-plugin.git
+```
+
+Select the dependency rule **Up to Next Major Version** starting from `1.0.3`.
 
 ### [Using CocoaPods](#Using-CocoaPods)
 
 Create a Podfile with the following specification:
 
 ```cocoapods
-pod 'MapplsDrivingRangePlugin', '1.0.2'
+pod 'MapplsDrivingRangePlugin', '1.0.3'
 ```
 
 Run `pod repo update && pod install` and open the resulting Xcode workspace.
@@ -35,18 +45,22 @@ Run `pod repo update && pod install` and open the resulting Xcode workspace.
 
 | Version | Dated         | Description |
 |:--------|:--------------|:------------|
+| `1.0.3` | 09 Oct, 2026 | Added support for installation via Swift Package Manager. Dependencies updated to the latest SDK versions. |
 | `1.0.2` | 29 Jun, 2023 | API wrappers are moved to MapplsAPIKit and so minimum dependency changed. |
 | `1.0.1` | 08 Jul, 2022 | Issue fixed where SDK was not compatible to Xcode 13+. `MapplsDrivingRangePlugin` is renamed to `MapplsDrivingRange` and Protocol class `MapplsDrivingRangePluginDelegate` is renamed to `MapplsDrivingRangeDelegate`. |
 | `1.0.0` | 14 Jun, 2022 | Initial MAPPLS release. |
 
 #### [Dependencies](#Dependencies)
 
-This library depends upon several Mappls's own libraries. All dependent libraries will be automatically installed using CocoaPods.
+This library depends upon several of Mappls's own libraries. All dependent libraries are resolved automatically by Swift Package Manager, or installed via CocoaPods.
 
-Below are list of dependcies which are required to run this SDK:
+Below is the list of dependencies required to run this SDK:
 
-- [MapplsAPIKit](MapplsAPIKit.md)
-- [MapplsMap](MapplsMap.md)
+| Dependency | Version | Repository |
+|:-----------|:--------|:-----------|
+| MapplsAPICore | `1.0.18` | [https://github.com/MapmyIndia/mappls-api-core-distribution.git](https://github.com/MapmyIndia/mappls-api-core-distribution.git) |
+| MapplsAPIKit | `2.0.38` | [https://github.com/MapmyIndia/mappls-api-kit-distribution.git](https://github.com/MapmyIndia/mappls-api-kit-distribution.git) |
+| MapplsMap | `6.0.2` | [https://github.com/MapmyIndia/mappls-map-ios-distribution.git](https://github.com/MapmyIndia/mappls-map-ios-distribution.git) |
 
 ### [Authorization](#Authorization)
 
