@@ -95,6 +95,9 @@ MODULE_REPOS: dict[str, str] = {
     "MapplsFeedbackUIKit": "https://github.com/MapmyIndia/mappls-feedback-ui-kit-ios-distribution.git",
     "MapplsAnnotationExtension": "https://github.com/MapmyIndia/mappls-annotation-extension-ios-distribution.git",
     "MapplsGeofenceUI": "https://github.com/MapmyIndia/mappls-geofence-ui-ios-distribution.git",
+    "MapplsRasterCatalogue": "https://github.com/MapmyIndia/mappls-raster-catalogue-distribution.git",
+    "MapplsDrivingRangePlugin": "https://github.com/MapmyIndia/mappls-driving-range-plugin.git",
+    "MapplsGeoanalytics": "https://github.com/MapmyIndia/mappls-geoanalytics-ios-distribution.git",
 }
 
 # A git tag that is a plain semantic version, e.g. "1.0.18" or "2.0.37".

@@ -1,5 +1,5 @@
 {
-  "originHash" : "9de36f2c2f69b51760465ef936468ebb18e69af6d2cd69c2e360cc126fe5bd53",
+  "originHash" : "1a506ae8d14de46ed41fa96b139f3bfbbebd69c0b9dcf8a699e5fc04ddb6717f",
   "pins" : [
     {
       "identity" : "fittedsheets",
@@ -110,6 +110,15 @@
       }
     },
     {
+      "identity" : "mappls-driving-range-plugin",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/MapmyIndia/mappls-driving-range-plugin.git",
+      "state" : {
+        "revision" : "6edc052297a7c2d6e2891d13dcff72ef077f3214",
+        "version" : "1.0.3"
+      }
+    },
+    {
       "identity" : "mappls-feedback-kit-ios-distribution",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/MapmyIndia/mappls-feedback-kit-ios-distribution.git",
@@ -125,6 +134,15 @@
       "state" : {
         "revision" : "9788f93caa2795b5af79acbf4711191928cca275",
         "version" : "2.0.0"
+      }
+    },
+    {
+      "identity" : "mappls-geoanalytics-ios-distribution",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/MapmyIndia/mappls-geoanalytics-ios-distribution.git",
+      "state" : {
+        "revision" : "55b71f3a00c146d36f46be96d92ccfaefee4e18d",
+        "version" : "1.0.1"
       }
     },
     {
@@ -161,6 +179,15 @@
       "state" : {
         "revision" : "aad1b15eac7397ec196521a190215f4f0a6dbbe1",
         "version" : "1.0.3"
+      }
+    },
+    {
+      "identity" : "mappls-raster-catalogue-distribution",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/MapmyIndia/mappls-raster-catalogue-distribution.git",
+      "state" : {
+        "revision" : "f8331cd54a25bc1c5403f048f8fc4e378fde522c",
+        "version" : "1.0.1"
       }
     },
     {

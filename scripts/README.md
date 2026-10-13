@@ -267,13 +267,14 @@ another. Each job only starts if the previous one succeeded.
 |---|---|
 | **1. Update documents** | `update_sdk_docs.py --skip-changelogs`: refreshes module docs and the Documentation History tables, then commits and pushes. |
 | **2. Update changelogs** | `update_sdk_docs.py --changelogs-only`: copies each distribution repo's `CHANGELOG.md` verbatim into `CHANGELOG/<Module>.md` in the newest docs folder (repos without one are skipped), then commits and pushes. |
-| **3. Create tag + release** | `create_release.py`: builds `RELEASE_NOTES.md` from the changed SDKs' changelogs, then **always publishes a GitHub release**. If the tag is new it also creates and pushes the tag (e.g. `1.0.36`); if the tag already exists it skips tagging and just (re)publishes the release for it (`--release-only`). |
+| **3. Create tag + release** | `create_release.py`: builds `RELEASE_NOTES.md` from the changed SDKs' changelogs, then **always publishes a GitHub release**. If the tag is new it also creates and pushes the tag; if the tag already exists it skips tagging and just (re)publishes the release for it (`--release-only`). |
 
 Each job checks out the latest `auth-legacy`, so it sees the previous job's commit.
 
-The release name is `<doc version> auth-legacy` (e.g. `v1.0.36 auth-legacy`),
-and its body lists only the SDKs that changed since the previous doc version,
-with their changelog entries.
+Both the tag and the release name are `<doc version>(<branch>)`, e.g.
+`v1.0.36(auth-legacy)`. The branch suffix keeps the tag distinct from any
+same-version tag on another branch. The release body lists only the SDKs that
+changed since the previous doc version, with their changelog entries.
 
 ## Triggers
 
@@ -293,9 +294,9 @@ only. Inputs:
   - **dry_run**: preview only (default **false**, so a run commits, tags, and
     pushes for real; tick it to preview).
 
-The tag name comes from the newest docs folder (e.g. `1.0.36`). A new folder
-gets a new tag plus a fresh release. When nothing new has shipped, no folder is
-created, so job 3 keeps the existing tag and refreshes that version's release
-from the latest changelogs.
+The tag is `<newest docs folder>(<branch>)`, e.g. `v1.0.36(auth-legacy)`. A new
+folder gets a new tag plus a fresh release. When nothing new has shipped, no
+folder is created, so job 3 keeps the existing tag and refreshes that version's
+release from the latest changelogs.
 
 Locally, the same behaviour is `python3 scripts/update_sdk_docs.py --auto`.

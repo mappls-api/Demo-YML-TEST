@@ -15,9 +15,9 @@ target 'MapplsSDKDemo' do
 #  pod 'MapplsDirectionUI/Base','1.0.10'
 #  pod 'MapplsNearbyUI/Base','1.0.2'
 #  pod 'MapplsGeofenceUI/Base', '1.0.2'
-  pod 'MapplsGeoanalytics/Base', '1.0.0'
-  pod 'MapplsDrivingRangePlugin/Base', '1.0.2'
-  pod 'MapplsRasterCatalogue/Base', '0.1.0'
+#  pod 'MapplsGeoanalytics/Base', '1.0.0'
+#  pod 'MapplsDrivingRangePlugin/Base', '1.0.2'
+#  pod 'MapplsRasterCatalogue/Base', '0.1.0'
   pod "MapplsUtils/Base"
 #  pod "FittedSheets"
 end

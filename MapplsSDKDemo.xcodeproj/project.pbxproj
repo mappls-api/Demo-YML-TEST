@@ -66,6 +66,9 @@
 		352BA86E2EFABCD2004EF53A /* TrackingExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352BA86C2EFABCD2004EF53A /* TrackingExampleViewController.swift */; };
 		353A3EE52D4D0A980015153C /* CustomUserLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353A3EE42D4D0A980015153C /* CustomUserLocationViewController.swift */; };
 		356BBF832D1053C200D1C518 /* IconScaleFactorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356BBF822D1053C200D1C518 /* IconScaleFactorController.swift */; };
+		35C9FF40307E39DA004F5005 /* MapplsRasterCatalogue in Frameworks */ = {isa = PBXBuildFile; productRef = 35C9FF3F307E39DA004F5005 /* MapplsRasterCatalogue */; };
+		35C9FF43307E3A91004F5005 /* MapplsDrivingRangePlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 35C9FF42307E3A91004F5005 /* MapplsDrivingRangePlugin */; };
+		35C9FF46307E3AED004F5005 /* MapplsGeoanalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 35C9FF45307E3AED004F5005 /* MapplsGeoanalytics */; };
 		3E5BBE268A8ABCF2FB38EEA0 /* Pods_MapplsSDKDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA1783C5ECF7702551DBD780 /* Pods_MapplsSDKDemo.framework */; };
 		4692D7322AA8822800B907AB /* MovingMarkerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4692D7312AA8822800B907AB /* MovingMarkerViewController.swift */; };
 		4726F0562647C017007EDB5E /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4726F0522647C017007EDB5E /* ColorPicker.swift */; };
@@ -332,6 +335,7 @@
 			files = (
 				35033F6330764FD800C9F922 /* MapplsGeofenceUI in Frameworks */,
 				350455BA3011F26300A745DE /* MapplsMap in Frameworks */,
+				35C9FF46307E3AED004F5005 /* MapplsGeoanalytics in Frameworks */,
 				35033F5D30764F4D00C9F922 /* FittedSheets in Frameworks */,
 				350455CF3011F2EF00A745DE /* MapplsDirectionUI in Frameworks */,
 				350455C33011F28400A745DE /* MapplsUIWidgets in Frameworks */,
@@ -340,6 +344,8 @@
 				350455CC3011F2D700A745DE /* MapplsFeedbackKit in Frameworks */,
 				350455C63011F2AE00A745DE /* MapplsNearbyUI in Frameworks */,
 				350455D23011F30F00A745DE /* MapplsLMS in Frameworks */,
+				35C9FF43307E3A91004F5005 /* MapplsDrivingRangePlugin in Frameworks */,
+				35C9FF40307E39DA004F5005 /* MapplsRasterCatalogue in Frameworks */,
 				350455C03011F27400A745DE /* MapplsAPICore in Frameworks */,
 				3E5BBE268A8ABCF2FB38EEA0 /* Pods_MapplsSDKDemo.framework in Frameworks */,
 				350455BD3011F26C00A745DE /* MapplsAPIKit in Frameworks */,
@@ -844,6 +850,9 @@
 				35033F5C30764F4D00C9F922 /* FittedSheets */,
 				35033F5F30764F7900C9F922 /* IQKeyboardManagerSwift */,
 				35033F6230764FD800C9F922 /* MapplsGeofenceUI */,
+				35C9FF3F307E39DA004F5005 /* MapplsRasterCatalogue */,
+				35C9FF42307E3A91004F5005 /* MapplsDrivingRangePlugin */,
+				35C9FF45307E3AED004F5005 /* MapplsGeoanalytics */,
 			);
 			productName = MapDemo;
 			productReference = 68A6BF132106E03C00547929 /* MapplsSDKDemo.app */;
@@ -887,6 +896,9 @@
 				35033F5B30764F4C00C9F922 /* XCRemoteSwiftPackageReference "FittedSheets" */,
 				35033F5E30764F7900C9F922 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				35033F6130764FD800C9F922 /* XCRemoteSwiftPackageReference "mappls-geofence-ui-ios-distribution" */,
+				35C9FF3E307E39DA004F5005 /* XCRemoteSwiftPackageReference "mappls-raster-catalogue-distribution" */,
+				35C9FF41307E3A91004F5005 /* XCRemoteSwiftPackageReference "mappls-driving-range-plugin" */,
+				35C9FF44307E3AED004F5005 /* XCRemoteSwiftPackageReference "mappls-geoanalytics-ios-distribution" */,
 			);
 			productRefGroup = 68A6BF142106E03C00547929 /* Products */;
 			projectDirPath = "";
@@ -1429,6 +1441,30 @@
 				minimumVersion = 1.0.6;
 			};
 		};
+		35C9FF3E307E39DA004F5005 /* XCRemoteSwiftPackageReference "mappls-raster-catalogue-distribution" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MapmyIndia/mappls-raster-catalogue-distribution.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.1;
+			};
+		};
+		35C9FF41307E3A91004F5005 /* XCRemoteSwiftPackageReference "mappls-driving-range-plugin" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MapmyIndia/mappls-driving-range-plugin.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.3;
+			};
+		};
+		35C9FF44307E3AED004F5005 /* XCRemoteSwiftPackageReference "mappls-geoanalytics-ios-distribution" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MapmyIndia/mappls-geoanalytics-ios-distribution.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1491,6 +1527,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 350455D03011F30F00A745DE /* XCRemoteSwiftPackageReference "mappls-lms-distribution" */;
 			productName = MapplsLMS;
+		};
+		35C9FF3F307E39DA004F5005 /* MapplsRasterCatalogue */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 35C9FF3E307E39DA004F5005 /* XCRemoteSwiftPackageReference "mappls-raster-catalogue-distribution" */;
+			productName = MapplsRasterCatalogue;
+		};
+		35C9FF42307E3A91004F5005 /* MapplsDrivingRangePlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 35C9FF41307E3A91004F5005 /* XCRemoteSwiftPackageReference "mappls-driving-range-plugin" */;
+			productName = MapplsDrivingRangePlugin;
+		};
+		35C9FF45307E3AED004F5005 /* MapplsGeoanalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 35C9FF44307E3AED004F5005 /* XCRemoteSwiftPackageReference "mappls-geoanalytics-ios-distribution" */;
+			productName = MapplsGeoanalytics;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
