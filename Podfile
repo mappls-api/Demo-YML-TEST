@@ -18,6 +18,6 @@ target 'MapplsSDKDemo' do
 #  pod 'MapplsGeoanalytics/Base', '1.0.0'
 #  pod 'MapplsDrivingRangePlugin/Base', '1.0.2'
 #  pod 'MapplsRasterCatalogue/Base', '0.1.0'
-  pod "MapplsUtils/Base"
+#  pod "MapplsUtils/Base"
 #  pod "FittedSheets"
 end
