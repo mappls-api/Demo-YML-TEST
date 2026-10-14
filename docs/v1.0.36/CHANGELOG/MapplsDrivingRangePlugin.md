@@ -1,5 +1,12 @@
 # Changes to the MapplsDrivingRangePlugin for iOS
 
+## 1.0.3 - 09 Oct, 2026
+
+#### Changed
+
+- Added support for installation via Swift Package Manager.
+- Dependencies updated to the latest SDK versions.
+
 ## 1.0.2 - 29 Jun, 2023
 
 #### Changed
