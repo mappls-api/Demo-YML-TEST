@@ -2,31 +2,46 @@
 
 # MapplsRasterCatalogue Plugin for iOS
 
-##  **DigitalSky Airspace Layers**
-
 ## [Introduction](#Introduction)
 
-This is an easy & FREE to integrate DigitalSky Airspace zones layers widget by Mappls.
+`MapplsRasterCatalogue` is a plugin over Mappls's `rasterCatalogue APIs`. RasterCatalogue APIs gives the users the power to display, style, and edit the data which is archived in Mappls's Database and overlay it on the user created maps.
 
-The drone airspace map is an interactive map of India that demarcates the yellow and red zones across the country. 
-
-The airspace map may be modified by authorised entities from time to time.
-Anyone planning to operate a drone should mandatorily check the latest airspace map for any changes in zone boundaries.
-
-Follow the below steps to integrate the plugin
+ - This is an easy & FREE to integrate DigitalSky Airspace zones layers widget by Mappls.
+ - The drone airspace map is an interactive map of India that demarcates the yellow and red zones across the country.
+ - The airspace map may be modified by authorised entities from time to time. Anyone planning to operate a drone should mandatorily check the latest airspace map for any changes in zone boundaries.
+ - We're helping ANY website or app developer to easily integrate this information, for the benefit of your users and visitors.
 
 
 ## [Installation](#Installation)
 
 
-This plugin can be installed using CocoaPods. It is available with the name `MapplsRasterCatalogue`.
+This plugin can be installed using either Swift Package Manager (SPM) or CocoaPods. It is available with the name `MapplsRasterCatalogue`.
+
+### [Using Swift Package Manager](#Using-Swift-Package-Manager)
+
+You can add `MapplsRasterCatalogue` to your project through Xcode:
+
+1. In Xcode, open your project and navigate to **File ▸ Add Package Dependencies…**
+2. Enter the repository URL of the package in the search field.
+3. Choose the dependency rule (recommended: **Up to Next Major Version** starting from `1.0.1`).
+4. Select the `MapplsRasterCatalogue` product and add it to your target.
+
+Alternatively, if you maintain a `Package.swift` manifest, add the package to your `dependencies`:
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/mappls-api/mappls-raster-catalogue-ios.git", .upToNextMajor(from: "1.0.1"))
+]
+```
+
+The Mappls dependencies (`MapplsAPICore`, `MapplsAPIKit`, and `MapplsMap`) are resolved automatically by SPM.
 
 ### [Using CocoaPods](#Using-CocoaPods)
 
 Create a Podfile with the following specification:
 
 ```
-pod 'MapplsRasterCatalogue', '0.1.0'
+pod 'MapplsRasterCatalogue', '1.0.1'
 ```
 
 Run `pod repo update && pod install` and open the resulting Xcode workspace.
@@ -35,17 +50,20 @@ Run `pod repo update && pod install` and open the resulting Xcode workspace.
 
 | Version | Dated | Description | 
 | :---- | :---- | :---- |
-| `0.1.0` | 18 Jul 2022 | Initial version release. |
+| `1.0.1` | 09 October 2026 | Added support for Mappls Authorization 2.0, SPM support, and dependency updates. |
+| `0.1.0` | 20 June 2022 | Initial version release. |
 
 #### [Dependencies](#Dependencies)
 
-This library depends upon several Mappls's own libraries. All dependent libraries will be automatically installed using CocoaPods.
+This library depends upon several of Mappls's own libraries. When installed via Swift Package Manager or CocoaPods, all dependent libraries are resolved and installed automatically.
 
-Below are list of dependencies which are required to run this SDK:
+Below is the list of dependencies which are required to run this SDK, along with their minimum versions and repository URLs:
 
-- [MapplsAPICore](https://github.com/mappls-api/mappls-ios-sdk/docs/v1.0.0/MapplsAPICore.md)
-- [MapplsAPIKit](https://github.com/mappls-api/mappls-ios-sdk/docs/v1.0.0/MapplsAPIKit.md)
-- [MapplsMaps](https://github.com/mappls-api/mappls-ios-sdk/docs/v1.0.0/MapplsMap.md)
+| Dependency | Version | Repository URL |
+| :---- | :---- | :---- |
+| `MapplsAPICore` | `2.1.4` | [mappls-api-core-ios-distribution](https://github.com/mappls-api/mappls-api-core-ios-distribution.git) |
+| `MapplsAPIKit` | `3.0.8` | [mappls-api-kit-ios-distribution](https://github.com/mappls-api/mappls-api-kit-ios-distribution.git) |
+| `MapplsMap` | `6.1.5` | [mappls-map-ios-distribution-base](https://github.com/mappls-api/mappls-map-ios-distribution-base.git) |
 
 ## [Authorization](#Authorization)
 
@@ -58,10 +76,10 @@ It is required to set MAPPLS's keys to use any MAPPL's SDK. Please see [here](Ma
 
 An enum `MapplsRasterCatalogueLayerType` can be used to get different types of layers. Below are different types which are available:
 
-1.  `MapplsRasterCatalogueLayerTypeInternationalBoundary25KM` -  Depicts International Boundary of India
-2.  `MapplsRasterCatalogueLayerTypeAirport8To12KMYellow` - This Yellow zone is the airspace above 400 feet in a designated green zone; above 200 feet in the area located between 8-12 km from the perimeter of an operational airport
-3.  `MapplsRasterCatalogueLayerTypeAirport5To8KM` - This Yellow zone is the airspace above 400 feet in a designated green zone; above 200 feet in the area located between 5-8 km from the perimeter of an operational airport
-4.  `MapplsRasterCatalogueLayerTypeAirport0To5KM` - Shows zone is the ‘no-drone zone’ within which drones can be operated only after a permission from the Central Government.
+1.  `MapplsRasterCatalogueLayerTypeInternationalBoundary25KM`
+2.  `MapplsRasterCatalogueLayerTypeAirport8To12KMYellow`
+3.  `MapplsRasterCatalogueLayerTypeAirport5To8KM`
+4.  `MapplsRasterCatalogueLayerTypeAirport0To5KM`
 
 **Now that you’re all caught up with the features, let's get down right to them and look at how you can integrate our RasterCatalogue plugin to add data on your map in few simple steps.**
 
@@ -74,6 +92,10 @@ var rasterCataloguePlugin : MapplsRasterCataloguePlugin = MapplsRasterCatalogueP
 ## [Use of RasterCatalogue API](#Use-of-RasterCatalogue-API)
 
 Use instance of `MapplsRasterCataloguePlugin` to show response of RasterCatalogue API as Map Layers.
+
+**For infomation about `RasterCatalogue API` go [here](https://about.mappls.com/api/advanced-maps/geoanalytics-web-js/geo-analytics-mapmyindia-js).**
+
+
 
 #### [MapplsRasterCatalogueLayerOptions](#MapplsGeoanalyticsLayerRequest)
 
@@ -107,6 +129,12 @@ self.rasterCataloguePlugin.addRasterCatalogueLayer(request)
 let request = MapplsRasterCatalogueLayerOptions(layerType: .airport5To8KM)
 geoanalyticsPlugin.removeRasterCatalogueLayer(layerRequestState))
 ```
+
+<br><br><br>
+
+## Our many happy customers:
+
+![](https://www.mapmyindia.com/api/img/logos1/PhonePe.png)![](https://www.mapmyindia.com/api/img/logos1/Arya-Omnitalk.png)![](https://www.mapmyindia.com/api/img/logos1/delhivery.png)![](https://www.mapmyindia.com/api/img/logos1/hdfc.png)![](https://www.mapmyindia.com/api/img/logos1/TVS.png)![](https://www.mapmyindia.com/api/img/logos1/Paytm.png)![](https://www.mapmyindia.com/api/img/logos1/FastTrackz.png)![](https://www.mapmyindia.com/api/img/logos1/ICICI-Pru.png)![](https://www.mapmyindia.com/api/img/logos1/LeanBox.png)![](https://www.mapmyindia.com/api/img/logos1/MFS.png)![](https://www.mapmyindia.com/api/img/logos1/TTSL.png)![](https://www.mapmyindia.com/api/img/logos1/Novire.png)![](https://www.mapmyindia.com/api/img/logos1/OLX.png)![](https://www.mapmyindia.com/api/img/logos1/sun-telematics.png)![](https://www.mapmyindia.com/api/img/logos1/Sensel.png)![](https://www.mapmyindia.com/api/img/logos1/TATA-MOTORS.png)![](https://www.mapmyindia.com/api/img/logos1/Wipro.png)![](https://www.mapmyindia.com/api/img/logos1/Xamarin.png)
 
 <br>
 
