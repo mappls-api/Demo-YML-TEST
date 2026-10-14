@@ -95,7 +95,9 @@ MODULE_REPOS: dict[str, str] = {
     "MapplsFeedbackUIKit": "https://github.com/MapmyIndia/mappls-feedback-ui-kit-ios-distribution.git",
     "MapplsAnnotationExtension": "https://github.com/MapmyIndia/mappls-annotation-extension-ios-distribution.git",
     "MapplsGeofenceUI": "https://github.com/MapmyIndia/mappls-geofence-ui-ios-distribution.git",
-    "MapplsRasterCatalogue": "https://github.com/MapmyIndia/mappls-raster-catalogue-distribution.git",
+    # Key must match the doc's filename stem. The doc is "RasterCatalouge.md"
+    # (no "Mappls" prefix, and "Catalouge" spelling), so the key matches that.
+    "RasterCatalouge": "https://github.com/MapmyIndia/mappls-raster-catalogue-distribution.git",
     "MapplsDrivingRangePlugin": "https://github.com/MapmyIndia/mappls-driving-range-plugin.git",
     "MapplsGeoanalytics": "https://github.com/MapmyIndia/mappls-geoanalytics-ios-distribution.git",
 }
