@@ -89,7 +89,24 @@ jobs:
           repository: ${{ env.SCRIPTS_REPO }}
           ref: ${{ env.SCRIPTS_REF }}
           token: ${{ secrets.SCRIPTS_REPO_TOKEN }}
-          path: scripts
+          path: .private-scripts
+
+      # The scripts must end up at ./scripts/*.py (they locate docs/ as
+      # ../docs from their own path). Accept either private-repo layout:
+      # files at the repo root, or inside a scripts/ folder.
+      - name: Install private scripts
+        run: |
+          set -euo pipefail
+          SRC="$(dirname "$(find .private-scripts -name update_sdk_docs.py -not -path '*/.git/*' | head -1)")"
+          if [ -z "$SRC" ] || [ "$SRC" = "." ]; then
+            echo "::error::update_sdk_docs.py not found in $SCRIPTS_REPO@$SCRIPTS_REF. Files present:"
+            find .private-scripts -not -path '*/.git*' | head -50
+            exit 1
+          fi
+          mkdir -p scripts
+          cp "$SRC"/*.py scripts/
+          echo "Installed scripts from $SRC:"
+          ls -la scripts
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -179,7 +196,24 @@ jobs:
           repository: ${{ env.SCRIPTS_REPO }}
           ref: ${{ env.SCRIPTS_REF }}
           token: ${{ secrets.SCRIPTS_REPO_TOKEN }}
-          path: scripts
+          path: .private-scripts
+
+      # The scripts must end up at ./scripts/*.py (they locate docs/ as
+      # ../docs from their own path). Accept either private-repo layout:
+      # files at the repo root, or inside a scripts/ folder.
+      - name: Install private scripts
+        run: |
+          set -euo pipefail
+          SRC="$(dirname "$(find .private-scripts -name update_sdk_docs.py -not -path '*/.git/*' | head -1)")"
+          if [ -z "$SRC" ] || [ "$SRC" = "." ]; then
+            echo "::error::update_sdk_docs.py not found in $SCRIPTS_REPO@$SCRIPTS_REF. Files present:"
+            find .private-scripts -not -path '*/.git*' | head -50
+            exit 1
+          fi
+          mkdir -p scripts
+          cp "$SRC"/*.py scripts/
+          echo "Installed scripts from $SRC:"
+          ls -la scripts
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -236,7 +270,24 @@ jobs:
           repository: ${{ env.SCRIPTS_REPO }}
           ref: ${{ env.SCRIPTS_REF }}
           token: ${{ secrets.SCRIPTS_REPO_TOKEN }}
-          path: scripts
+          path: .private-scripts
+
+      # The scripts must end up at ./scripts/*.py (they locate docs/ as
+      # ../docs from their own path). Accept either private-repo layout:
+      # files at the repo root, or inside a scripts/ folder.
+      - name: Install private scripts
+        run: |
+          set -euo pipefail
+          SRC="$(dirname "$(find .private-scripts -name update_sdk_docs.py -not -path '*/.git/*' | head -1)")"
+          if [ -z "$SRC" ] || [ "$SRC" = "." ]; then
+            echo "::error::update_sdk_docs.py not found in $SCRIPTS_REPO@$SCRIPTS_REF. Files present:"
+            find .private-scripts -not -path '*/.git*' | head -50
+            exit 1
+          fi
+          mkdir -p scripts
+          cp "$SRC"/*.py scripts/
+          echo "Installed scripts from $SRC:"
+          ls -la scripts
 
       - name: Set up Python
         uses: actions/setup-python@v5
