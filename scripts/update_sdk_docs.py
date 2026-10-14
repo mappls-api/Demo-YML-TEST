@@ -102,6 +102,15 @@ MODULE_REPOS: dict[str, str] = {
     "MapplsGeoanalytics": "https://github.com/MapmyIndia/mappls-geoanalytics-ios-distribution.git",
 }
 
+# Some modules are labelled differently in the README's Documentation History
+# table than their doc filename stem (the MODULE_REPOS key). Map the stem to
+# the exact README label so version numbers get updated there too. Modules not
+# listed here fall back to the stem plus a singular/plural guess.
+README_LABELS: dict[str, str] = {
+    # Doc file is "RasterCatalouge.md"; README lists it as "MapplsRasterCatalogue".
+    "RasterCatalouge": "MapplsRasterCatalogue",
+}
+
 # A git tag that is a plain semantic version, e.g. "1.0.18" or "2.0.37".
 SEMVER_TAG_RE = re.compile(r"^\d+(?:\.\d+){1,3}$")
 
@@ -483,7 +492,10 @@ def update_readme_versions(readme_path: Path, docs_version: str,
             # differently from its doc filename (e.g. doc "MapplsUIWidgets" is
             # listed as "MapplsUIWidget"). Try the exact name first, then a few
             # tolerant singular/plural variants.
-            label_variants = [module]
+            label_variants = []
+            if module in README_LABELS:
+                label_variants.append(README_LABELS[module])  # explicit override
+            label_variants.append(module)
             if module.endswith("s"):
                 label_variants.append(module[:-1])   # MapplsUIWidgets -> ...Widget
             else:
