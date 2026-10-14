@@ -516,6 +516,45 @@ def update_readme_versions(readme_path: Path, docs_version: str,
     return changed
 
 
+# Any "./docs/vX.Y.Z/" path in the root README (e.g. "docs/v1.0.35/" without a
+# leading "./" also matches).
+_DOCS_PATH_RE = re.compile(r"(\./)?docs/v\d+(?:\.\d+){1,3}/")
+
+
+def retarget_root_readme_links(readme_path: Path, docs_version: str,
+                               dry_run: bool) -> bool:
+    """Point every ``docs/vX.Y.Z/`` link in the root README at ``docs_version``.
+
+    The root README's Table of Contents (and other inline links) hard-code a
+    docs folder, e.g. ``./docs/v1.0.35/MapplsMap.md``. These are NOT part of
+    the Documentation History table and so were never updated, leaving the TOC
+    stuck on an old version. This rewrites them all to the current folder so
+    every link resolves to the latest docs.
+    """
+    bare = docs_version.lstrip("v")
+    lines = readme_path.read_text(encoding="utf-8").splitlines(keepends=True)
+
+    def _sub(m: re.Match) -> str:
+        prefix = m.group(1) or ""
+        return f"{prefix}docs/v{bare}/"
+
+    changed = False
+    for i, line in enumerate(lines):
+        # Skip Documentation History table rows: their older rows legitimately
+        # link to their own (older) folders and must stay put. The current row
+        # is handled by update_readme_versions / _prepend_root_readme_row.
+        if DOC_HISTORY_ROW_RE.match(line):
+            continue
+        new_line = _DOCS_PATH_RE.sub(_sub, line)
+        if new_line != line:
+            lines[i] = new_line
+            changed = True
+
+    if changed and not dry_run:
+        readme_path.write_text("".join(lines), encoding="utf-8")
+    return changed
+
+
 # --------------------------------------------------------------------------- #
 # New-doc-version creation
 # --------------------------------------------------------------------------- #
@@ -638,8 +677,12 @@ def _prepend_root_readme_row(root_readme: Path, old_bare: str, new_bare: str,
             f"{template_bare} instead)")
 
     old_row = lines[idx]
-    new_row = old_row.replace(f"v{template_bare}", f"v{new_bare}")
-    new_row = new_row.replace(f"[{template_bare}]", f"[{new_bare}]")
+    # Force BOTH the label and every ./docs/vX.Y.Z/ path in the cloned row to
+    # new_bare, so the label and the folder it links to can never drift apart
+    # (which previously produced rows like "[1.0.36](./docs/v1.0.37/...)").
+    new_row = re.sub(r"\[\d+(?:\.\d+){1,3}\]", f"[{new_bare}]", old_row, count=1)
+    new_row = re.sub(r"/docs/v\d+(?:\.\d+){1,3}/", f"/docs/v{new_bare}/", new_row)
+    _ = template_bare  # retained for the gap-note log above
     if dry_run:
         # Preview which oldest row would be dropped (don't mutate real lines).
         preview = list(lines)
@@ -1063,6 +1106,17 @@ def main() -> int:
         )
         status = ("would update" if args.dry_run else "updated") if changed else "no change"
         log(f"  {readme.relative_to(REPO_ROOT)}: {status}")
+
+    # Point the root README's Table of Contents / inline links at the current
+    # docs folder (history-table rows are left alone).
+    root_readme = REPO_ROOT / "README.md"
+    if root_readme.exists():
+        retargeted = retarget_root_readme_links(
+            root_readme, docs_version, args.dry_run
+        )
+        if retargeted:
+            log(f"  README.md TOC links -> docs/{docs_version} "
+                f"({'would retarget' if args.dry_run else 'retargeted'})")
 
     log("\nDone.")
     if args.dry_run:
