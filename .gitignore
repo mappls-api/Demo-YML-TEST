@@ -1,1 +1,6 @@
 Pods
+
+# The release pipeline checks the private scripts repo out into ./scripts at
+# run time. Keep that runtime folder out of this public repo so the scripts are
+# never committed/exposed here. (Source of truth: the private SCRIPTS_REPO.)
+scripts/

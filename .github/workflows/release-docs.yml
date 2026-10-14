@@ -50,6 +50,11 @@ permissions:
 # Only this branch is updated, tagged and released.
 env:
   TARGET_BRANCH: auth-legacy
+  # The scripts live in a PRIVATE repo so they aren't visible in this public
+  # repo. Each job checks it out into ./scripts at run time. Requires a repo
+  # secret SCRIPTS_REPO_TOKEN (fine-grained PAT with Contents:Read on this repo).
+  SCRIPTS_REPO: mappls-api/sdk-docs-scripts
+  SCRIPTS_REF: main
 
 # Don't let overlapping runs race on the branch's commits/tags.
 concurrency:
@@ -77,6 +82,14 @@ jobs:
         with:
           ref: ${{ env.TARGET_BRANCH }}
           fetch-depth: 0
+
+      - name: Checkout private scripts
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.SCRIPTS_REPO }}
+          ref: ${{ env.SCRIPTS_REF }}
+          token: ${{ secrets.SCRIPTS_REPO_TOKEN }}
+          path: scripts
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -160,6 +173,14 @@ jobs:
           ref: ${{ env.TARGET_BRANCH }}
           fetch-depth: 0
 
+      - name: Checkout private scripts
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.SCRIPTS_REPO }}
+          ref: ${{ env.SCRIPTS_REF }}
+          token: ${{ secrets.SCRIPTS_REPO_TOKEN }}
+          path: scripts
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -208,6 +229,14 @@ jobs:
         with:
           ref: ${{ env.TARGET_BRANCH }}
           fetch-depth: 0          # full history + tags
+
+      - name: Checkout private scripts
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.SCRIPTS_REPO }}
+          ref: ${{ env.SCRIPTS_REF }}
+          token: ${{ secrets.SCRIPTS_REPO_TOKEN }}
+          path: scripts
 
       - name: Set up Python
         uses: actions/setup-python@v5
