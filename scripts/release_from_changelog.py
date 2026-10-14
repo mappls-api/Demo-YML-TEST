@@ -160,11 +160,11 @@ def _top_version(path: Path) -> str | None:
 def build_release_note(docs_dir: Path, docs_version: str) -> tuple[str, dict[str, str]]:
     """Assemble the release note from the version's CHANGELOG folder.
 
-    Each module's changelog is compared with the same module's changelog in the
-    previous docs version. Only the entries released since then go into the
-    note, so it describes what actually changed in this doc version. Modules
-    with no new entries are left out of the note. If there is no previous docs
-    version, each module's latest entry is used.
+    Each module's CHANGELOG is compared with the same file in the previous docs
+    version. A module is included only if its changelog content changed, and the
+    note shows the entries that are new or whose body text changed since last
+    version. Modules whose changelog is identical to last version are left out.
+    If there is no previous docs version, each module's latest entry is used.
 
     Returns ``(note_markdown, module_versions)`` where ``module_versions`` maps
     each module to the newest version in its changelog.
@@ -190,20 +190,33 @@ def build_release_note(docs_dir: Path, docs_version: str) -> tuple[str, dict[str
             newest = entries[0][0]
             module_versions[module] = newest
 
-            if prev_dir is not None:
-                old = _top_version(prev_dir / "CHANGELOG" / md.name)
-                if old is None:
-                    new_entries = entries[:1]          # new module: latest entry
-                else:
-                    new_entries = [e for e in entries
-                                   if version_key(e[0]) > version_key(old)]
-            else:
+            # Decide what changed by comparing this module's CHANGELOG with the
+            # same file in the previous docs version. A module is included only
+            # if its changelog content actually differs from last version.
+            prev_path = (prev_dir / "CHANGELOG" / md.name) if prev_dir else None
+            prev_entries = (all_entries(prev_path.read_text(encoding="utf-8"))
+                            if prev_path and prev_path.exists() else [])
+
+            if prev_dir is None:
+                # No previous docs version to compare against: use latest entry.
                 old = None
                 new_entries = entries[:1]
+            elif not prev_entries:
+                # Brand-new module (no changelog last version): include all.
+                old = None
+                new_entries = list(entries)
+            else:
+                # Map previous (version -> body) so we can tell which entries
+                # are new OR have changed body text since last version.
+                prev_body = {v: b for v, _d, b in prev_entries}
+                old = prev_entries[0][0]
+                new_entries = [
+                    (v, d, b) for (v, d, b) in entries
+                    if v not in prev_body or prev_body[v].strip() != b.strip()
+                ]
 
             if not new_entries:
-                # No new entries since the previous doc version: leave the
-                # module out of the release note entirely.
+                # Changelog identical to last version: leave the module out.
                 continue
 
             updated.append((module, old, newest))
