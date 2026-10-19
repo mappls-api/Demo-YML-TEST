@@ -1,5 +1,12 @@
 # Changes to the MapplsNearbyUI SDK for iOS
 
+## 1.0.4 - 19 Oct, 2026
+
+### Changed
+- Updated minimum iOS deployment target to iOS 13.0.
+- Updated dependency `MapplsAPIKit` to `2.0.39`.
+- Updated dependency `MapplsUIWidgets` to `1.0.16`.
+
 ## 1.0.3 - 07 Oct, 2026
 
 ### Changed

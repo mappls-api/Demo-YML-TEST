@@ -1,5 +1,16 @@
 # Changes to the MapplsUIWidgets SDK for iOS
 
+## 1.0.16 - 19 Oct, 2026
+
+### Added
+- Added a `global` property to `MapplsAutocompleteFilter` to request global autosuggest results.
+
+### Removed
+- Removed the `hyperLocal` property from `MapplsAutocompleteFilter`.
+
+### Changed
+- Bumped the minimum `MapplsAPIKit` dependency to `2.0.39`.
+
 ## 1.0.15 - 06 Oct, 2026
 
 ### Changed
