@@ -1,5 +1,10 @@
 # Changes to the MapplsGeofenceUI SDK for iOS
 
+## 1.0.7 - 21 Oct, 2026
+
+### Changed
+- Updated to the latest dependencies.
+
 ## 1.0.4 - 08 Oct, 2026
 
 ### Changed

@@ -1,7 +1,13 @@
 # Changes to the MapplsFeedbackUIKit - SDK for iOS
 
-## 2.0.0 - 16 Nov, 2024
+## 2.0.1 - 21 Oct, 2026
 
+- Built against the legacy `MapplsAPICore` (`mappls-api-core-distribution`) `1.0.18` and `MapplsFeedbackKit` `2.0.1`.
+- SDK is distributed as an XCFramework through Swift Package Manager.
+- Minimum supported iOS version is 15.0.
+
+## 2.0.0 - 16 Nov, 2024
+- `bitcode` is disabled to support Xcode 16.
 - UI screen is changed.
 - URL property for icon is used to show icon for Report Categories.
 

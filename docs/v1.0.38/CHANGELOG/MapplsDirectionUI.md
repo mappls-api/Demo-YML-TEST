@@ -1,4 +1,20 @@
 # Changes to the MapplsDirectionUI SDK for iOS
+## 1.0.12 - 19 Oct, 2026
+
+### Added
+- Added `resetDirectionsUI()` in `MapplsDirectionViewController`.
+- Added accessibility labels for map control buttons.
+
+### Changed
+- `restDirectionsUI()` is deprecated, use `resetDirectionsUI()` instead.
+
+### Fixed
+- Fixed crashes from unknown location authorization status, missing routes and out-of-range route indexes.
+- Fixed toll cost estimation finishing before results arrived on iOS 14 and below.
+- Fixed older route responses overwriting newer routes.
+- Fixed via points given as Mappls Pin being plotted at the source location.
+- Fixed placeholder distance shown on the add waypoint panel.
+
 ## 1.0.11 - 07 Oct, 2026
 
 ### Added
